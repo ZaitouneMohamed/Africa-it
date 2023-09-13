@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('landing.layouts.master')
 
-@section('title', __('Page Expired'))
-@section('code', '419')
-@section('message', __('Page Expired'))
+@section('content')
+    <h1 class="error_text">419 , Page Expired</h1>
+@endsection

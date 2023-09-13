@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('landing.layouts.master')
 
-@section('title', __('Too Many Requests'))
-@section('code', '429')
-@section('message', __('Too Many Requests'))
+@section('content')
+    <h1 class="error_text">429 , Too Many Requests</h1>
+@endsection

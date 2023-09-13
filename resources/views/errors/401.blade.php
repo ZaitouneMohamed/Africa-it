@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends("landing.layouts.master")
 
-@section('title', __('Unauthorized'))
-@section('code', '401')
-@section('message', __('Unauthorized'))
+@section("content")
+    <h1 class="text text-center">401 , Unauthorized</h1>
+@endsection

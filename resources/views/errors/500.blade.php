@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('landing.layouts.master')
 
-@section('title', __('Server Error'))
-@section('code', '500')
-@section('message', __('Server Error'))
+@section('content')
+    <h1 class="error_text">419 , Server Eror</h1>
+@endsection

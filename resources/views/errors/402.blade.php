@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends("landing.layouts.master")
 
-@section('title', __('Payment Required'))
-@section('code', '402')
-@section('message', __('Payment Required'))
+@section("content")
+    <h1 class="text text-center">402 , Payment Required</h1>
+@endsection

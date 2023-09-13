@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('landing.layouts.master')
 
-@section('title', __('Forbidden'))
-@section('code', '403')
-@section('message', __($exception->getMessage() ?: 'Forbidden'))
+@section('content')
+    <h1 class="error_text">403 , {{ $exception->getMessage() ?: 'Forbidden' }}</h1>
+@endsection
