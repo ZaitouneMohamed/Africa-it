@@ -44,7 +44,7 @@
             <!--====== Primary Nav ======-->
             <div class="primary-nav">
                 <!--====== Main Logo ======-->
-                <a class="main-logo" href="index-2.html">
+                <a class="main-logo" href="/">
                     <img src="{{ asset('assets/ludus/images/logo/africa-It-full-removebg-preview.png') }}" width="180px" height="80px" alt="">
                 </a>
                 <!--====== End - Main Logo ======-->
