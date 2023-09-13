@@ -5674,14 +5674,14 @@ input::-ms-clear {
 
 /* Extension Mega Menu */
 .mega-text {
-  width: 34px;
+  width: 120px;
   height: 34px;
   display: inline-block;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #ff4500;
+  /* background-color: #ff4500;  */
   font-size: 12px;
   font-weight: 600;
   line-height: 34px;
