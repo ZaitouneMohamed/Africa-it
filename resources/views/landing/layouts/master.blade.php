@@ -8,13 +8,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
-    <title>Ludus - Electronics, Apparel, Computers, Books, DVDs & more</title>
+    <title>AFRICA IT INNOVATION - @yield('title')</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/ludus/images/logo/africa-it-logo.jpeg') }}"/>
 
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
     <!--====== Vendor Css ======-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/ludus/css/vendor.css') }} ">
 
     <!--====== Utility-Spacing ======-->
@@ -353,7 +356,8 @@
 
                                 <a class="new-l__img-wrap u-d-block" href="#">
 
-                                    <img class="u-img-fluid u-d-block" src="{{ asset('assets/ludus/images/newsletter/newsletter.jpg') }} "
+                                    <img class="u-img-fluid u-d-block"
+                                        src="{{ asset('assets/ludus/images/newsletter/newsletter.jpg') }} "
                                         alt=""></a>
                             </div>
                             <div class="col-lg-6 new-l__col-2">

@@ -1,5 +1,7 @@
 @extends('landing.layouts.master')
 
+@section("title","SHOP")
+
 @section('content')
     <!--====== App Content ======-->
     <div class="app-content">
