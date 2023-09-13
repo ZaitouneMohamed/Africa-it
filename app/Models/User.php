@@ -42,4 +42,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function adresses()
+    {
+        return $this->hasMany(Adresse::class);
+    }
+    public function Orders()
+    {
+        return $this->hasMany(Orders::class);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
