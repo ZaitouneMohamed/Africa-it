@@ -10,7 +10,8 @@ class Categorie extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name"
+        "name",
+        "icon-class",
     ];
 
     public function subcategories()
