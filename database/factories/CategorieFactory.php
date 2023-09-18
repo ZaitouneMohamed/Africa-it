@@ -18,7 +18,7 @@ class CategorieFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'icon-class' => "fas fa-tv u-s-m-r-6",
+            'icon_class' => "fas fa-tv u-s-m-r-6",
         ];
     }
 }

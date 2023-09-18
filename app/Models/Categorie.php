@@ -11,7 +11,7 @@ class Categorie extends Model
 
     protected $fillable = [
         "name",
-        "icon-class",
+        "icon_class",
     ];
 
     public function subcategories()
