@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,16 @@ Route::prefix("admin")->middleware(['auth', 'role:admin'])->group(function () {
     });
     // product functions
     Route::resource("product", ProductController::class)->except("show");
+});
+
+
+// Auth Controller
+
+Route::prefix("auth")->group(function(){
+    Route::controller(AuthController::class)->group(function(){
+        Route::get("login","LoginForm")->name("login");
+        Route::get("register","RegisterForm")->name("register");
+        Route::post("login","Login")->name("login");
+        Route::post("register","Register")->name("register");
+    });
 });
