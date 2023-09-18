@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(HomeController::class)->group(function () {
+    // Home Page
+    Route::get('/', 'index');
 });
-Route::get('/admin', function () {
-    return view('admin.index');
+// product show
+Route::resource("product", ProductController::class)->only("show");
+
+Route::prefix("admin")->middleware(['auth', 'role:admin'])->group(function () {
+    // home
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    // product functions
+    Route::resource("product", ProductController::class)->except("show");
 });
