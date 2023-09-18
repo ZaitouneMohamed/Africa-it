@@ -345,7 +345,7 @@
 
 
         <!--====== Newsletter Subscribe Modal ======-->
-        <div class="modal fade new-l" id="newsletter-modal">
+        {{-- <div class="modal fade new-l" id="newsletter-modal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content modal--shadow">
 
@@ -394,7 +394,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--====== End - Newsletter Subscribe Modal ======-->
         <!--====== End - Modal Section ======-->
     </div>
