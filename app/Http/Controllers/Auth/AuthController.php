@@ -42,4 +42,9 @@ class AuthController extends Controller
             "success" => __("Registration successful. You can now log-in.")
         ]);
     }
+
+    function logout() {
+        Auth::logout();
+        return redirect('/');
+    }
 }
