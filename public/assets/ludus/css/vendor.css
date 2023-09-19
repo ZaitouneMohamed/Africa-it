@@ -8750,7 +8750,6 @@ template {
 .owl-carousel .owl-item img {
     display: block;
     width: 100%;
-    height: 62px;
 }
 .owl-carousel .owl-dots.disabled,
 .owl-carousel .owl-nav.disabled {
