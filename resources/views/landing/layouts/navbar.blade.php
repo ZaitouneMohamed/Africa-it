@@ -318,17 +318,12 @@
                                 <!--====== End - Dropdown ======-->
                             </li>
                             <li>
-
                                 <a href="#"><i class="far fa-heart"></i></a>
                             </li>
                             <li class="has-dropdown">
-
                                 <a class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>
-
                                     <span class="total-item-round">2</span></a>
-
                                 <!--====== Dropdown ======-->
-
                                 <span class="js-menu-toggle"></span>
                                 <div class="mini-cart">
 
