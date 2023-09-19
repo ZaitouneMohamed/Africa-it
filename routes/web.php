@@ -57,5 +57,6 @@ Route::prefix("auth")->group(function () {
         Route::get("register", "RegisterForm")->name("register");
         Route::post("login", "Login")->name("login");
         Route::post("register", "Register")->name("register");
+        Route::get("logout", "logout")->name("logout");
     });
 });
