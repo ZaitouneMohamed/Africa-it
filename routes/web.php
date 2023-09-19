@@ -24,9 +24,16 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
     Route::middleware("auth")->group(function(){
-        Route::get("/cart", "cartlist")->name("list");
+        Route::get('checkout', 'cartlist')->name('list')->middleware("auth");
+        Route::post('cart/store', 'addToCart')->name('store')->middleware("auth");
     });
+    // Route::get('cart', 'cartlist')->name('cart.list');
+    Route::post('cart/remove', 'removeCart')->name('remove.item');
     Route::get('AddToCart/{id}', 'addToCart')->name('addProdustToCart');
+    Route::delete('deleteProduct',  'deleteProduct')->name('deleteProduct');
+    Route::patch('updateCart',  'updateCart')->name('updateCart');
+    Route::get('getCartCount',  'getCartCount')->name('getCartCount');
+    Route::get('getCartContent',  'getCartContent')->name('getCartContent');
 });
 
 // product show
