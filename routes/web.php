@@ -39,14 +39,7 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
 // product show
 Route::resource("product", ProductController::class)->only("show");
 
-Route::prefix("admin")->middleware(['auth', 'role:admin'])->group(function () {
-    // home
-    Route::get('/', function () {
-        return view('admin.index');
-    });
-    // product functions
-    Route::resource("product", ProductController::class)->except("show");
-});
+
 
 
 // Auth Controller
