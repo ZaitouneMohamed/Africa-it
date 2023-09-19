@@ -326,7 +326,7 @@
                                                                     </li>
                                                                     <li>
                                                                         <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            data-tooltip="tooltip" data-placement="top"  onclick="AddToCart({{$item->id}})"
                                                                             title="Add to Cart"><i
                                                                                 class="fas fa-plus-circle"></i></a>
                                                                     </li>
