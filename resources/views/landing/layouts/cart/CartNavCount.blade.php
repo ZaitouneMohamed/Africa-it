@@ -7,7 +7,6 @@
             type: 'GET',
             url: "getCartCount",
             success: function(response) {
-                console.log(response.count);
                 document.getElementById('CartCount').innerHTML = response.count
             },
             error: function() {
