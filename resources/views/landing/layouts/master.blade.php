@@ -10,7 +10,7 @@
     <link href="images/favicon.png" rel="shortcut icon">
     <title>AFRICA IT INNOVATION - @yield('title')</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/ludus/images/logo/africa-it-logo.jpeg') }}"/>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
@@ -19,6 +19,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/ludus/css/vendor.css') }} ">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--====== Utility-Spacing ======-->
     <link rel="stylesheet" href="{{ asset('assets/ludus/css/utility.css') }} ">
@@ -410,9 +411,36 @@
         ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto');
         ga('send', 'pageview')
+
+        function AddToCart(id) {
+            $.ajax({
+                type: 'GET',
+                url: "AddToCart/" + id,
+                success: function(response) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product added successfully'
+                    })
+                },
+                error: function() {
+                    alert('An error occurred .');
+                }
+            })
+        }
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!--====== Vendor Js ======-->
     <script src="{{ asset('assets/ludus/js/vendor.js') }} "></script>
 
