@@ -1,230 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<!DOCTYPE html>
-<html>
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
 
-<head>
-    <title>Login Form</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Raleway, sans-serif;
-        }
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style customizer-hide"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
 
-        body {
-            background: linear-gradient(90deg, #C7C5F4, #776BCC);
-        }
+    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
+    <meta name="description" content="" />
 
-        .screen {
-            background: linear-gradient(90deg, #5D54A4, #7C78B8);
-            position: relative;
-            height: 600px;
-            width: 360px;
-            box-shadow: 0px 0px 24px #5C5696;
-        }
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/admin/assets/img/favicon/favicon.ico') }}" />
 
-        .screen__content {
-            z-index: 1;
-            position: relative;
-            height: 100%;
-        }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
 
-        .screen__background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            -webkit-clip-path: inset(0 0 0 0);
-            clip-path: inset(0 0 0 0);
-        }
+    <!-- Icons. Uncomment required icon fonts -->
 
-        .screen__background__shape {
-            transform: rotate(45deg);
-            position: absolute;
-        }
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/vendor/fonts/boxicons.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/vendor/css/theme-default.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/vendor/css/pages/page-auth.css') }}" />
 
-        .screen__background__shape1 {
-            height: 520px;
-            width: 520px;
-            background: #FFF;
-            top: -50px;
-            right: 120px;
-            border-radius: 0 72px 0 0;
-        }
+    <!-- Vendors CSS -->
 
-        .screen__background__shape2 {
-            height: 220px;
-            width: 220px;
-            background: #6C63AC;
-            top: -172px;
-            right: 0;
-            border-radius: 32px;
-        }
+    <!-- Page CSS -->
+    <!-- Page -->
+    <!-- Helpers -->
+    <script src="{{ asset('assets/admin/assets/vendor/js/helpers.js') }}"></script>
 
-        .screen__background__shape3 {
-            height: 540px;
-            width: 190px;
-            background: linear-gradient(270deg, #5D54A4, #6A679E);
-            top: -24px;
-            right: 0;
-            border-radius: 32px;
-        }
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{{ asset('assets/admin/assets/js/config.js') }}"></script>
+  </head>
 
-        .screen__background__shape4 {
-            height: 400px;
-            width: 200px;
-            background: #7E7BB9;
-            top: 420px;
-            right: 50px;
-            border-radius: 60px;
-        }
+  <body>
+    <!-- Content -->
 
-        .login {
-            width: 320px;
-            padding: 30px;
-            padding-top: 156px;
-        }
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="index.html" class="app-brand-link gap-2">
+                    <img src="{{ asset('assets/ludus/images/logo/africa-It-full-removebg-preview.png') }}" width="127px" alt="">
+                  {{-- <span class="app-brand-text demo text-body fw-bolder">Admin</span> --}}
+                </a>
+              </div>
+              <!-- /Logo -->
 
-        .login__field {
-            padding: 20px 0px;
-            position: relative;
-        }
-
-        .login__icon {
-            position: absolute;
-            top: 30px;
-            color: #7875B5;
-        }
-
-        .login__input {
-            border: none;
-            border-bottom: 2px solid #D1D1D4;
-            background: none;
-            padding: 10px;
-            padding-left: 24px;
-            font-weight: 700;
-            width: 75%;
-            transition: .2s;
-        }
-
-        .login__input:active,
-        .login__input:focus,
-        .login__input:hover {
-            outline: none;
-            border-bottom-color: #6A679E;
-        }
-
-        .login__submit {
-            background: #fff;
-            font-size: 14px;
-            margin-top: 30px;
-            padding: 16px 20px;
-            border-radius: 26px;
-            border: 1px solid #D4D3E8;
-            text-transform: uppercase;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            color: #4C489D;
-            box-shadow: 0px 2px 2px #5C5696;
-            cursor: pointer;
-            transition: .2s;
-        }
-
-        .login__submit:active,
-        .login__submit:focus,
-        .login__submit:hover {
-            border-color: #6A679E;
-            outline: none;
-        }
-
-        .button__icon {
-            font-size: 24px;
-            margin-left: auto;
-            color: #7875B5;
-        }
-
-        .social-login {
-            position: absolute;
-            height: 140px;
-            width: 160px;
-            text-align: center;
-            bottom: 0px;
-            right: 0px;
-            color: #fff;
-        }
-
-        .social-icons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-login__icon {
-            padding: 20px 10px;
-            color: #fff;
-            text-decoration: none;
-            text-shadow: 0px 0px 8px #7875B5;
-        }
-
-        .social-login__icon:hover {
-            transform: scale(1.5);
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="screen">
-            <div class="screen__content">
-                <form class="login" action="{{route('login.function')}}" method="POST">
-                    @csrf
-                    @method('post')
-                    <div class="login__field">
-                        <i class="login__icon fas fa-user"></i>
-                        <input type="email" class="login__input" placeholder="Email" name="email">
-                    </div>
-                    <div class="login__field">
-                        <i class="login__icon fas fa-lock"></i>
-                        <input type="password" name="password" class="login__input" placeholder="Password">
-                    </div>
-                    <button class="button login__submit" type="submit">
-                        <span class="button__text">Log In Now</span>
-                        <i class="button__icon fas fa-chevron-right"></i>
-                    </button>
-                </form>
-                <div class="social-login">
-                    <h3>log in via</h3>
-                    <div class="social-icons">
-                        <a href="#" class="social-login__icon fab fa-instagram"></a>
-                        <a href="#" class="social-login__icon fab fa-facebook"></a>
-                        <a href="#" class="social-login__icon fab fa-twitter"></a>
-                    </div>
+              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email or Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email-username"
+                    placeholder="Enter your email or username"
+                    autofocus
+                  />
                 </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                </div>
+              </form>
             </div>
-            <div class="screen__background">
-                <span class="screen__background__shape screen__background__shape4"></span>
-                <span class="screen__background__shape screen__background__shape3"></span>
-                <span class="screen__background__shape screen__background__shape2"></span>
-                <span class="screen__background__shape screen__background__shape1"></span>
-            </div>
+          </div>
+          <!-- /Register -->
         </div>
+      </div>
     </div>
-</body>
 
+    <!-- / Content -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="{{ asset('assets/admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/vendor/libs/popper/popper.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/vendor/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/vendor/js/menu.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/js/main.js') }}"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
 </html>
