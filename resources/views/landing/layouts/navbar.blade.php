@@ -278,11 +278,12 @@
                                 <ul style="width:120px">
                                     @auth
                                         <li>
-                                            <a href="#"><i class="fas fa-user-circle u-s-m-r-6"></i>
+                                            <a href="{{ route('user.profile.index') }}"><i
+                                                    class="fas fa-user-circle u-s-m-r-6"></i>
                                                 <span>Account</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fas fa-lock-open u-s-m-r-6"></i>
+                                            <a href="{{ route('logout') }}"><i class="fas fa-lock-open u-s-m-r-6"></i>
                                                 <span>Signout</span></a>
                                         </li>
                                     @else
@@ -302,10 +303,10 @@
                                 <a href="#"><i class="far fa-heart"></i></a>
                             </li>
                             <li class="has-dropdown">
-                                @include("landing.layouts.cart.CartNavCount")
+                                @include('landing.layouts.cart.CartNavCount')
                                 <!--====== Dropdown ======-->
                                 <span class="js-menu-toggle"></span>
-                                @include("landing.layouts.cart.CartNavContent")
+                                @include('landing.layouts.cart.CartNavContent')
                                 <!--====== End - Dropdown ======-->
                             </li>
                         </ul>
