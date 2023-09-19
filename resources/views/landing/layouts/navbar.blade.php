@@ -1,5 +1,3 @@
-
-
 <!--====== Main Header ======-->
 <header class="header--style-2">
 
@@ -10,8 +8,8 @@
             <div class="primary-nav">
                 <!--====== Main Logo ======-->
                 <a class="main-logo" href="/">
-                    <img src="{{ asset('assets/ludus/images/logo/africa-It-full-removebg-preview.png') }}"
-                        width="180px" height="80px" alt="">
+                    <img src="{{ asset('assets/ludus/images/logo/africa-It-full-removebg-preview.png') }}" width="180px"
+                        height="80px" alt="">
                 </a>
                 <!--====== End - Main Logo ======-->
                 <!--====== Search Form ======-->
@@ -247,8 +245,7 @@
                 <!--====== Dropdown Main plugin ======-->
                 <div class="menu-init" id="navigation2">
 
-                    <button class="btn btn--icon toggle-button toggle-button--white fas fa-cog"
-                        type="button"></button>
+                    <button class="btn btn--icon toggle-button toggle-button--white fas fa-cog" type="button"></button>
 
                     <!--====== Menu ======-->
                     <div class="ah-lg-mode">
@@ -309,11 +306,11 @@
                                         </li>
                                     @else
                                         <li>
-                                            <a href="#"><i class="fas fa-user-plus u-s-m-r-6"></i>
+                                            <a href="{{ route('register') }}"><i class="fas fa-user-plus u-s-m-r-6"></i>
                                                 <span>Signup</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="fas fa-lock u-s-m-r-6"></i>
+                                            <a href="{{ route('login') }}"><i class="fas fa-lock u-s-m-r-6"></i>
                                                 <span>Signin</span></a>
                                         </li>
                                     @endauth
