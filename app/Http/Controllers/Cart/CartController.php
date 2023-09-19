@@ -46,12 +46,11 @@ class CartController extends Controller
     {
         $total = 0;
         $count = 0;
-        foreach (session('cart') as $id => $item) {
-            $total += $item['price'] * $item['quantity'];
-            $count++;
-        };
-        if ($count === 0) {
-            $count = 0;
+        if (session("cart")) {
+            foreach (session('cart') as $id => $item) {
+                $total += $item['price'] * $item['quantity'];
+                $count++;
+            };
         }
         return response()->json([
             "total" => $total,
