@@ -44,11 +44,13 @@ Route::resource("product", ProductController::class)->only("show");
 
 Route::prefix("auth")->group(function () {
     Route::controller(AuthController::class)->group(function () {
-        Route::get("login", "LoginForm")->name("login");
-        Route::get("register", "RegisterForm")->name("register");
-        Route::post("login", "Login")->name("login");
-        Route::post("register", "Register")->name("register");
-        Route::get("logout", "logout")->name("logout");
+        Route::middleware("guest")->group(function () {
+            Route::get("login", "LoginForm")->name("login");
+            Route::get("register", "RegisterForm")->name("register");
+            Route::post("login", "Login")->name("login");
+            Route::post("register", "Register")->name("register");
+        });
+        Route::get("logout", "logout")->name("logout")->middleware("auth");
     });
 });
 
@@ -63,13 +65,15 @@ Route::middleware(['auth'])->controller(ProfileController::class)->prefix("user"
 
 
 // Admin Routes
-Route::prefix("admin")->name("admin.")->middleware(['web', 'AdminRedirection', 'role:admin'])->group(function () {
-    // home
-    Route::get('/', function () {
-        return view('admin.index');
+Route::prefix("admin")->name("admin.")->group(function () {
+    Route::middleware(['web', 'AdminRedirection', 'role:admin'])->group(function () {
+        Route::get('/', function () {
+            return view('admin.index');
+        });
+        Route::resource("product", ProductController::class)->except("show");
     });
-    Route::resource("product", ProductController::class)->except("show");
+    // home
     Route::get('/login', function () {
         return view('admin.auth.login');
-    })->name("login");
+    })->name("login")->middleware("guest");
 });
