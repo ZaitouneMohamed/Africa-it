@@ -23,7 +23,7 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
-    Route::middleware("auth")->group(function(){
+    Route::middleware("auth")->group(function () {
         Route::get('checkout', 'cartlist')->name('list')->middleware("auth");
         Route::post('cart/store', 'addToCart')->name('store')->middleware("auth");
     });
@@ -40,8 +40,6 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
 Route::resource("product", ProductController::class)->only("show");
 
 
-
-
 // Auth Controller
 
 Route::prefix("auth")->group(function () {
@@ -52,4 +50,26 @@ Route::prefix("auth")->group(function () {
         Route::post("register", "Register")->name("register");
         Route::get("logout", "logout")->name("logout");
     });
+});
+
+// User Profile Routes
+
+Route::middleware(['auth'])->controller(ProfileController::class)->prefix("user")->name("user.profile.")->group(function () {
+    Route::get('/', "index")->name("index");
+    Route::get('/profile', "profile")->name("profile");
+});
+
+
+
+
+// Admin Routes
+Route::prefix("admin")->name("admin.")->middleware(['web', 'AdminRedirection', 'role:admin'])->group(function () {
+    // home
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    Route::resource("product", ProductController::class)->except("show");
+    Route::get('/login', function () {
+        return view('admin.auth.login');
+    })->name("login");
 });
