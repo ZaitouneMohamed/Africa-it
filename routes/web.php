@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Cart\CartController;
@@ -71,6 +72,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
             return view('admin.index');
         });
         Route::resource("product", ProductController::class)->except("show");
+        Route::resource("categories", CategorieController::class)->except("show");
     });
     // home
     Route::get('/login', function () {
