@@ -76,8 +76,11 @@
                                         @method('post')
                                         <div class="u-s-m-b-30">
                                             <label class="gl-label" for="reg-fname">NAME *</label>
-                                            <input class="input-text input-text--primary-style" type="text" name="name"
-                                                id="reg-fname" placeholder="First Name">
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                name="name" id="reg-fname" placeholder="First Name">
+                                            @error('name')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         {{-- <div class="gl-inline">
                                         <div class="u-s-m-b-30">
@@ -118,22 +121,28 @@
 
                                             <label class="gl-label" for="reg-email">E-MAIL *</label>
 
-                                            <input class="input-text input-text--primary-style" type="email" name="email"
-                                                id="reg-email" placeholder="Enter E-mail">
+                                            <input class="input-text input-text--primary-style" type="email"
+                                                name="email" id="reg-email" placeholder="Enter E-mail">
+                                            @error('email')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="reg-password">PASSWORD *</label>
 
-                                            <input class="input-text input-text--primary-style" type="password" name="password"
-                                                id="reg-password" placeholder="Enter Password">
+                                            <input class="input-text input-text--primary-style" type="password"
+                                                name="password" id="reg-password" placeholder="Enter Password">
+                                                @error('password')
+                                                    <span style="color: red">{{ $message }}</span>
+                                                @enderror
                                         </div>
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="reg-password">REPEAT PASSWORD *</label>
 
-                                            <input class="input-text input-text--primary-style" type="password" name="password"
-                                                id="reg-password" placeholder="Enter Password">
+                                            <input class="input-text input-text--primary-style" type="password"
+                                                name="password" id="reg-password" placeholder="Enter Password">
                                         </div>
                                         <div class="u-s-m-b-15">
 

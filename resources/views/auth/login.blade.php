@@ -94,6 +94,9 @@
 
                                             <input class="input-text input-text--primary-style" type="email"
                                                 id="login-email" placeholder="Enter E-mail" name="email">
+                                                @error("email")
+                                                    <span style="color: red">{{ $message }}</span>
+                                                @enderror
                                         </div>
                                         <div class="u-s-m-b-30">
 
@@ -101,6 +104,9 @@
 
                                             <input class="input-text input-text--primary-style" type="text"
                                                 name="password" id="login-password" placeholder="Enter Password">
+                                                @error("password")
+                                                    <span style="color: red">{{ $message }}</span>
+                                                @enderror
                                         </div>
                                         <div class="gl-inline">
                                             <div class="u-s-m-b-30">
