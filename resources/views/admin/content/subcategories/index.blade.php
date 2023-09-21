@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-header">
             <h1 class="card-title">Sub Categories : ({{ $subcategories->count() }})</h1>
-            <a href="{{route('admin.SubCategories.create')}}" class="btn btn-success">create sub categorie</a>
+            <a href="{{route('admin.SubCategorie.create')}}" class="btn btn-success">create sub categorie</a>
         </div>
         <div class="card-body">
             <table class="table table-bordered">

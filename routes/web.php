@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SubCategorieController;
 use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Cart\CartController;
@@ -77,6 +78,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::resource("categories", CategorieController::class)->except("show");
         Route::resource("branch", BranchController::class);
         Route::resource("TimeSlot", TimeSlotController::class);
+        Route::resource("SubCategorie", SubCategorieController::class);
     });
     // home
     Route::get('/login', function () {

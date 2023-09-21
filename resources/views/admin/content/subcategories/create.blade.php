@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">Add New Sub Categorie</h3>
         </div>
-        <form method="POST" action="{{ route('admin.SubCategories.store') }}">
+        <form method="POST" action="{{ route('admin.SubCategorie.store') }}">
             @csrf
             <div class="card-body">
                 <div class="form-group">
