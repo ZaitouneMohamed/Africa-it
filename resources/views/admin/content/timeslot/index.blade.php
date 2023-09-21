@@ -51,7 +51,7 @@
                                             value="{{ $item->end }}" disabled="">
                                     </td>
                                     <td style="padding: 10px;border: 1px solid;cursor: pointer">
-                                        <a href="{{ route('admin.SwitchActiveModeForTimeSlot', $item->id) }}"
+                                        <a href="#"
                                             style="color: black">
                                             {!! $item->Statue !!}
                                         </a>

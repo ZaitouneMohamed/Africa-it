@@ -236,13 +236,13 @@
                 </li>
                 <!-- Tables -->
                 <li class="menu-item">
-                <a href="#" class="menu-link">
+                <a href="{{ route('admin.TimeSlot.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-table"></i>
                     <div data-i18n="Tables">Time Slot</div>
                 </a>
                 </li>
                 <li class="menu-item">
-                <a href="{{route('admin.branch.index')}}" class="menu-link">
+                <a href="{{ route('admin.branch.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-table"></i>
                     <div data-i18n="Tables">Branch</div>
                 </a>
