@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
@@ -73,6 +74,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         });
         Route::resource("product", ProductController::class)->except("show");
         Route::resource("categories", CategorieController::class)->except("show");
+        Route::resource("branch", BranchController::class);
     });
     // home
     Route::get('/login', function () {
