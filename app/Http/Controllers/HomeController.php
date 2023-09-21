@@ -21,4 +21,8 @@ class HomeController extends Controller
             "subCategories" => $subCategories
         ]);
     }
+    function AllProducts()
+    {
+        return view('landing.ProductsIndex');
+    }
 }

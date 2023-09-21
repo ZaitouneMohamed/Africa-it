@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::controller(HomeController::class)->group(function () {
     // Home Page
     Route::get('/', 'index');
+    // All Products
+    Route::get('/AllProducts', 'AllProducts');
 });
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
