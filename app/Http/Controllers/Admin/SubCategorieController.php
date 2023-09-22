@@ -17,7 +17,7 @@ class SubCategorieController extends Controller
     public function index()
     {
         $subcategories = SubCategorie::latest()->paginate(10);
-        return view('admin.content.subcategories.index',compact("subcategories"));
+        return view('admin.content.subcategories.index', compact("subcategories"));
     }
 
     /**
@@ -28,7 +28,7 @@ class SubCategorieController extends Controller
     public function create()
     {
         $categories = Categorie::latest()->get();
-        return view('admin.content.subcategories.create',compact('categories'));
+        return view('admin.content.subcategories.create', compact('categories'));
     }
 
     /**
@@ -39,7 +39,15 @@ class SubCategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "name" => "required",
+            "categorie" => "required"
+        ]);
+        SubCategorie::create([
+            "name" => $request->name,
+            "categorie_id" => $request->categorie
+        ]);
+        return redirect()->route('admin.SubCategorie.index');
     }
 
     /**
@@ -61,7 +69,8 @@ class SubCategorieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = SubCategorie::find($id)->with("categorie")->get();
+        dd($item);
     }
 
     /**

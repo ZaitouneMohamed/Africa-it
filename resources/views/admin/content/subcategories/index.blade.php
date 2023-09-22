@@ -26,7 +26,7 @@
                                 <td>{{ $item->categorie->name }}</td>
                                 <td>{{ $item->products->count() }}</td>
                                 <td>
-                                    <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
+                                    <a href="{{route('admin.SubCategorie.edit',$item->id)}}" class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></a>
                                     {{-- @if ($item->subcategories->count() == 0)
                                         <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
                                     @endif --}}
