@@ -162,7 +162,7 @@
                                             <ul>
                                                 @foreach ($categories as $item)
                                                     <li @if ($loop->first) class="js-active" @endif>
-                                                        <a href="#"><i class="{{ $item->icon_class }}"></i>
+                                                        <a href="{{route('ProductOfCategorie',$item->id)}}"><i class="{{ $item->icon_class }}"></i>
                                                             <span>{{ $item->name }}</span></a>
                                                         <span class="js-menu-toggle js-toggle-mark"></span>
                                                     </li>

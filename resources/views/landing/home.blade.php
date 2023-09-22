@@ -127,7 +127,7 @@
                                             </div>
                                             <div class="category-o__info">
                                                 <a class="category-o__shop-now btn--e-white-brand"
-                                                    href="#">{{ $item->name }}</a>
+                                                    href="{{route('ProductOfCategorie',$item->id)}}">{{ $item->name }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@
                                                             </div>
                                                         </div>
                                                         <span class="product-o__category">
-                                                            <a href="#">Electronics</a></span>
+                                                            <a href="#">{{ $item->subcategorie->name }}</a></span>
                                                         <span class="product-o__name">
                                                             <a
                                                                 href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>

@@ -28,6 +28,7 @@ Route::controller(HomeController::class)->group(function () {
     // All Products
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
+    Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
 });
 
 Route::controller(CartController::class)->name("cart.")->group(function () {

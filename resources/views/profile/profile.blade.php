@@ -58,27 +58,16 @@
                                                     <h2 class="dash__h2 u-s-m-b-8">E-mail</h2>
 
                                                     <span class="dash__text">{{ Auth::user()->email }}</span>
-                                                    <div class="dash__link dash__link--secondary">
+                                                    {{-- <div class="dash__link dash__link--secondary">
 
-                                                        <a href="#">Change</a></div>
+                                                        <a href="#">Change</a>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="col-lg-4 u-s-m-b-30">
                                                     <h2 class="dash__h2 u-s-m-b-8">Phone</h2>
-
                                                     <span class="dash__text">Please enter your mobile</span>
                                                     <div class="dash__link dash__link--secondary">
-
                                                         <a href="#">Add</a></div>
-                                                </div>
-                                                <div class="col-lg-4 u-s-m-b-30">
-                                                    <h2 class="dash__h2 u-s-m-b-8">Birthday</h2>
-
-                                                    <span class="dash__text">1991-02-02</span>
-                                                </div>
-                                                <div class="col-lg-4 u-s-m-b-30">
-                                                    <h2 class="dash__h2 u-s-m-b-8">Gender</h2>
-
-                                                    <span class="dash__text">Male</span>
                                                 </div>
                                             </div>
                                             <div class="row">
