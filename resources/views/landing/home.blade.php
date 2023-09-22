@@ -196,7 +196,7 @@
                                                     <div class="product-o product-o--hover-on">
                                                         <div class="product-o__wrap">
                                                             <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                                href="{{ route('product.show', $item->id) }}">
+                                                                href="{{ route('oneProduct', $item->id) }}">
                                                                 <img class="aspect__img"
                                                                     src="{{ asset('assets/ludus/images/product/electronic/product7.jpg') }}"
                                                                     alt=""></a>
@@ -233,7 +233,7 @@
                                                             <a href="#">Electronics</a></span>
                                                         <span class="product-o__name">
                                                             <a
-                                                                href="{{ route('product.show', $item->id) }}">{{ $item->title }}</a></span>
+                                                                href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>
                                                         <div class="product-o__rating gl-rating-style"><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
@@ -312,7 +312,7 @@
                                                     <div class="product-o product-o--hover-on">
                                                         <div class="product-o__wrap">
                                                             <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                                href="{{ route('product.show', $item->id) }}">
+                                                                href="{{ route('oneProduct', $item->id) }}">
                                                                 <img class="aspect__img"
                                                                     src="{{ asset('assets/ludus/images/product/electronic/product7.jpg') }}"
                                                                     alt=""></a>
@@ -349,7 +349,7 @@
                                                             <a href="#">Electronics</a></span>
                                                         <span class="product-o__name">
                                                             <a
-                                                                href="{{ route('product.show', $item->id) }}">{{ $item->title }}</a></span>
+                                                                href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>
                                                         <div class="product-o__rating gl-rating-style"><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
