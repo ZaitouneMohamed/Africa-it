@@ -26,7 +26,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
     // All Products
     Route::get('/AllProducts', 'AllProducts');
-    Route::get('/Product/{id} ', 'OneProduct');
+    Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
 });
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
