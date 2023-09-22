@@ -26,6 +26,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
     // All Products
     Route::get('/AllProducts', 'AllProducts');
+    Route::get('/Product/{id} ', 'OneProduct');
 });
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
@@ -43,7 +44,7 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
 });
 
 // product show
-Route::resource("product", ProductController::class)->only("show");
+// Route::resource("product", ProductController::class)->only("show");
 
 
 // Auth Controller
@@ -76,8 +77,8 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get('/', function () {
             return view('admin.index');
         });
-        Route::resource("product", ProductController::class)->except("show");
-        Route::resource("categories", CategorieController::class)->except("show");
+        Route::resource("product", ProductController::class);
+        Route::resource("categories", CategorieController::class);
         Route::resource("branch", BranchController::class);
         Route::resource("TimeSlot", TimeSlotController::class);
         Route::resource("SubCategorie", SubCategorieController::class);
