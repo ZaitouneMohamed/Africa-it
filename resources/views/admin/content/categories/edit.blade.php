@@ -7,7 +7,7 @@
         </div>
         <form method="POST" action="{{ route('admin.categories.update', $categorie->id) }}" enctype="multipart/form-data">
             @csrf
-            @method("put")
+            @method('put')
             <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
@@ -18,13 +18,11 @@
                     <label for="exampleInputFile">Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                            <input type="file" name="image" class="custom-file-input" id="imageInput">
                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                        </div>
                     </div>
+                    <img src="{{ $categorie->CategorieImage }}" width="100px" id="selectedImage" alt="">
                 </div>
             </div>
             <!-- /.card-body -->
@@ -34,4 +32,21 @@
             </div>
         </form>
     </div>
+@endsection
+@section('scripts')
+<script>
+    const imageInput = document.getElementById('imageInput');
+    const selectedImage = document.getElementById('selectedImage');
+
+    imageInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader(); // Define 'reader' within this block
+            reader.onload = function() {
+                selectedImage.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 @endsection
