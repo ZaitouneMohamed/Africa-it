@@ -27,10 +27,6 @@ class Product extends Model
     {
         return $query->where("prenium", 1);
     }
-    public function pictures()
-    {
-        return $this->hasMany(Picture::class);
-    }
     public function SubCategorie()
     {
         return $this->belongsTo(SubCategorie::class);
