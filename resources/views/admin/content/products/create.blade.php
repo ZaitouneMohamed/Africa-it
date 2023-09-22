@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">Add New Product</h3>
         </div>
-        <form method="POST" enctype="multipart/form-data" action="{{ route('admin.products.store') }}" method="POST">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('admin.product.store') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -37,6 +37,7 @@
                     <div class="col-6">
                         <label for="exampleSelectBorder">Select Categorie</label>
                         <select class="form-select" id="categorie" name="categorie_id">
+                            <option value=""></option>
                             @foreach (\App\Models\Categorie::all() as $item)
                                 <option value="{{ $item->id }}"> {{ $item->name }} </option>
                             @endforeach
@@ -62,11 +63,8 @@
         document.getElementById('categorie').addEventListener('change', function() {
             var selectedCategorie = this.value;
             $.ajax({
-                url: '{{ route('getSubCategories') }}',
+                url: 'http://127.0.0.1:8000/api/GetSubCategories/' + selectedCategorie,
                 type: 'GET',
-                data: {
-                    categorie: selectedCategorie
-                },
                 dataType: 'json',
                 success: function(response) {
                     var subCategoriesHtml = '';
