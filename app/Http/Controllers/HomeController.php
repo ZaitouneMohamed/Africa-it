@@ -27,7 +27,7 @@ class HomeController extends Controller
     }
     function OneProduct($id)
     {
-        $product = Product::find($id);
-        return view('landing.ProductDetail',compact("product"));
+        $product = Product::findOrFail($id);
+        return view('landing.ProductDetail', compact("product"));
     }
 }
