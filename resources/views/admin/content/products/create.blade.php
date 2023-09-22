@@ -63,7 +63,7 @@
         document.getElementById('categorie').addEventListener('change', function() {
             var selectedCategorie = this.value;
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/GetSubCategories/' + selectedCategorie,
+                url: 'http://africait.electroniqueclasse.com/api/GetSubCategories/' + selectedCategorie,
                 type: 'GET',
                 dataType: 'json',
                 success: function(response) {
