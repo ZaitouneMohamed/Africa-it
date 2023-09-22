@@ -38,58 +38,27 @@
                         <div class="pd u-s-m-b-30">
                             <div class="slider-fouc pd-wrap">
                                 <div id="pd-o-initiate">
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-1.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-1.jpg"
-                                            data-zoom-image="images/product/product-d-1.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-2.jpg"
-                                            data-zoom-image="images/product/product-d-2.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-3.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-3.jpg"
-                                            data-zoom-image="images/product/product-d-3.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-4.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-4.jpg"
-                                            data-zoom-image="images/product/product-d-4.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-5.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-5.jpg"
-                                            data-zoom-image="images/product/product-d-5.jpg" alt="">
-                                    </div>
+                                    @foreach ($product->Images as $item)
+                                        <div class="pd-o-img-wrap"
+                                            data-src="{{ asset('images/products') }}/{{ $item->url }}">
+                                            <img class="u-img-fluid"
+                                                src="{{ asset('images/products') }}/{{ $item->url }}"
+                                                data-zoom-image="{{ asset('images/products') }}/{{ $item->url }}"
+                                                alt="">
+                                        </div>
+                                    @endforeach
                                 </div>
-
                                 <span class="pd-text">Click for larger zoom</span>
                             </div>
                             <div class="u-s-m-t-15">
                                 <div class="slider-fouc">
                                     <div id="pd-o-thumbnail">
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt="">
-                                        </div>
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt="">
-                                        </div>
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt="">
-                                        </div>
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt="">
-                                        </div>
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt="">
-                                        </div>
+                                        @foreach ($product->Images as $item)
+                                            <div>
+                                                <img class="u-img-fluid"
+                                                    src="{{ asset('images/products') }}/{{ $item->url }}" alt="">
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -148,8 +117,7 @@
                                     </li>
                                     <li>
 
-                                        <a class="s-insta--color-hover" href="#"><i
-                                                class="fab fa-instagram"></i></a>
+                                        <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
                                     </li>
                                     <li>
 
@@ -163,28 +131,28 @@
                                 </ul>
                             </div>
                             <div class="u-s-m-b-15">
-                                <form class="pd-detail__form">
-                                    <div class="pd-detail-inline-2">
-                                        <div class="u-s-m-b-15">
+                                <div class="pd-detail-inline-2">
+                                    <div class="u-s-m-b-15">
 
-                                            <!--====== Input Counter ======-->
-                                            <div class="input-counter">
+                                        <!--====== Input Counter ======-->
+                                        <div class="input-counter">
 
-                                                <span class="input-counter__minus fas fa-minus"></span>
+                                            <span class="input-counter__minus fas fa-minus"></span>
 
-                                                <input class="input-counter__text input-counter--text-primary-style"
-                                                    type="text" value="1" data-min="1" data-max="1000">
+                                            <input class="input-counter__text input-counter--text-primary-style"
+                                                type="text" value="1" data-min="1" data-max="1000">
 
-                                                <span class="input-counter__plus fas fa-plus"></span>
-                                            </div>
-                                            <!--====== End - Input Counter ======-->
+                                            <span class="input-counter__plus fas fa-plus"></span>
                                         </div>
-                                        <div class="u-s-m-b-15">
-
-                                            <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button>
-                                        </div>
+                                        <!--====== End - Input Counter ======-->
                                     </div>
-                                </form>
+                                    <div class="u-s-m-b-15">
+
+                                        <button class="btn btn--e-brand-b-2"
+                                            style="padding: 1rem 3rem ; border-radius: 0.375rem "
+                                            onclick="AddToCart({{ $product->id }})">Add to Cart</button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="u-s-m-b-15">
 
@@ -231,7 +199,7 @@
 
                                         <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
 
-                                            <span>(23)</span></a>
+                                            <span>({{ $product->reviews->count() }})</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -241,104 +209,13 @@
                                 <div class="tab-pane fade show active" id="pd-desc">
                                     <div class="pd-tab__desc">
                                         <div class="u-s-m-b-15">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                Lorem Ipsum has been the industry's standard dummy text ever since the
-                                                1500s, when an unknown printer took a galley of type and scrambled it to
-                                                make a type specimen book. It has survived not only five centuries, but also
-                                                the leap into electronic typesetting, remaining essentially unchanged. It
-                                                was popularised in the 1960s with the release of Letraset sheets containing
-                                                Lorem Ipsum passages, and more recently with desktop publishing software
-                                                like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                        </div>
-                                        <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk"
-                                                allowfullscreen></iframe></div>
-                                        <div class="u-s-m-b-30">
-                                            <ul>
-                                                <li><i class="fas fa-check u-s-m-r-8"></i>
-
-                                                    <span>Buyer Protection.</span>
-                                                </li>
-                                                <li><i class="fas fa-check u-s-m-r-8"></i>
-
-                                                    <span>Full Refund if you don't receive your order.</span>
-                                                </li>
-                                                <li><i class="fas fa-check u-s-m-r-8"></i>
-
-                                                    <span>Returns accepted if product not as described.</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="u-s-m-b-15">
-                                            <h4>PRODUCT INFORMATION</h4>
-                                        </div>
-                                        <div class="u-s-m-b-15">
-                                            <div class="pd-table gl-scroll">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Main Material</td>
-                                                            <td>Cotton</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Color</td>
-                                                            <td>Green, Blue, Red</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Sleeves</td>
-                                                            <td>Long Sleeve</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Top Fit</td>
-                                                            <td>Regular</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Print</td>
-                                                            <td>Not Printed</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Neck</td>
-                                                            <td>Round Neck</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Pieces Count</td>
-                                                            <td>1 Piece</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Occasion</td>
-                                                            <td>Casual</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Shipping Weight (kg)</td>
-                                                            <td>0.5</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            <p>
+                                                {{ $product->description }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <!--====== End - Tab 1 ======-->
-
-
-                                <!--====== Tab 2 ======-->
-                                <div class="tab-pane" id="pd-tag">
-                                    <div class="pd-tab__tag">
-                                        <h2 class="u-s-m-b-15">ADD YOUR TAGS</h2>
-                                        <div class="u-s-m-b-15">
-                                            <form>
-
-                                                <input class="input-text input-text--primary-style" type="text">
-
-                                                <button class="btn btn--e-brand-b-2" type="submit">ADD TAGS</button>
-                                            </form>
-                                        </div>
-
-                                        <span class="gl-text">Use spaces to separate tags. Use single quotes (') for
-                                            phrases.</span>
-                                    </div>
-                                </div>
-                                <!--====== End - Tab 2 ======-->
-
 
                                 <!--====== Tab 3 ======-->
                                 <div class="tab-pane" id="pd-rev">
@@ -346,7 +223,8 @@
                                         <div class="u-s-m-b-30">
                                             <div class="pd-tab__rev-score">
                                                 <div class="u-s-m-b-8">
-                                                    <h2>23 Reviews - 4.6 (Overall)</h2>
+                                                    <h2>{{ $product->reviews->count() }} Reviews -
+                                                        {{ $product->OverallReviews }} (Overall)</h2>
                                                 </div>
                                                 <div class="gl-rating-style-2 u-s-m-b-8"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star"></i><i
@@ -362,78 +240,32 @@
                                             <form class="pd-tab__rev-f1">
                                                 <div class="rev-f1__group">
                                                     <div class="u-s-m-b-15">
-                                                        <h2>23 Review(s) for Man Ruched Floral Applique Tee</h2>
-                                                    </div>
-                                                    <div class="u-s-m-b-15">
-
-                                                        <label for="sort-review"></label><select
-                                                            class="select-box select-box--primary-style" id="sort-review">
-                                                            <option selected>Sort by: Best Rating</option>
-                                                            <option>Sort by: Worst Rating</option>
-                                                        </select>
+                                                        <h2>{{ $product->reviews->count() }} Review(s) for
+                                                            {{ $product->title }} </h2>
                                                     </div>
                                                 </div>
                                                 <div class="rev-f1__review">
+                                                    @foreach ($product->Reviews as $item)
+
                                                     <div class="review-o u-s-m-b-15">
                                                         <div class="review-o__info u-s-m-b-8">
 
-                                                            <span class="review-o__name">John Doe</span>
+                                                            <span class="review-o__name">{{ $item->name }}</span>
 
-                                                            <span class="review-o__date">27 Feb 2018 10:57:43</span>
+                                                            <span class="review-o__date">{{ $item->created_at }}</span>
                                                         </div>
                                                         <div class="review-o__rating gl-rating-style u-s-m-b-8"><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="far fa-star"></i>
 
-                                                            <span>(4)</span>
+                                                            <span>({{ $item->stars }})</span>
                                                         </div>
-                                                        <p class="review-o__text">Lorem Ipsum is simply dummy text of the
-                                                            printing and typesetting industry. Lorem Ipsum has been the
-                                                            industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type and scrambled it to make a
-                                                            type specimen book.</p>
+                                                        <p class="review-o__text">
+                                                            {{ $item->review }}
+                                                        </p>
                                                     </div>
-                                                    <div class="review-o u-s-m-b-15">
-                                                        <div class="review-o__info u-s-m-b-8">
-
-                                                            <span class="review-o__name">John Doe</span>
-
-                                                            <span class="review-o__date">27 Feb 2018 10:57:43</span>
-                                                        </div>
-                                                        <div class="review-o__rating gl-rating-style u-s-m-b-8"><i
-                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                class="far fa-star"></i>
-
-                                                            <span>(4)</span>
-                                                        </div>
-                                                        <p class="review-o__text">Lorem Ipsum is simply dummy text of the
-                                                            printing and typesetting industry. Lorem Ipsum has been the
-                                                            industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type and scrambled it to make a
-                                                            type specimen book.</p>
-                                                    </div>
-                                                    <div class="review-o u-s-m-b-15">
-                                                        <div class="review-o__info u-s-m-b-8">
-
-                                                            <span class="review-o__name">John Doe</span>
-
-                                                            <span class="review-o__date">27 Feb 2018 10:57:43</span>
-                                                        </div>
-                                                        <div class="review-o__rating gl-rating-style u-s-m-b-8"><i
-                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                class="far fa-star"></i>
-
-                                                            <span>(4)</span>
-                                                        </div>
-                                                        <p class="review-o__text">Lorem Ipsum is simply dummy text of the
-                                                            printing and typesetting industry. Lorem Ipsum has been the
-                                                            industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type and scrambled it to make a
-                                                            type specimen book.</p>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </form>
                                         </div>
@@ -669,7 +501,7 @@
                                                                         <div class="radio-box">
 
                                                                             <input type="radio" id="star-5"
-                                                                                name="rating">
+                                                                                name="rating" checked>
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
