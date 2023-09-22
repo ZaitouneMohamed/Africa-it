@@ -197,8 +197,7 @@
                                                         <div class="product-o__wrap">
                                                             <a class="aspect aspect--bg-grey aspect--square u-d-block"
                                                                 href="{{ route('oneProduct', $item->id) }}">
-                                                                <img class="aspect__img"
-                                                                    src="{{ asset('assets/ludus/images/product/electronic/product7.jpg') }}"
+                                                                <img class="aspect__img" src="{{ $item->FirstImage }}"
                                                                     alt=""></a>
                                                             <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
@@ -210,7 +209,8 @@
                                                                     </li>
                                                                     <li>
                                                                         <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                            data-tooltip="tooltip" data-placement="top" onclick="AddToCart({{$item->id}})"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            onclick="AddToCart({{ $item->id }})"
                                                                             title="Add to Cart"><i
                                                                                 class="fas fa-plus-circle"></i></a>
                                                                     </li>
@@ -238,7 +238,7 @@
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i>
-                                                            <span class="product-o__review">(23)</span>
+                                                            <span class="product-o__review">({{$item->OverallReviews}})</span>
                                                         </div>
                                                         <span class="product-o__price">${{ $item->price }}
                                                             <span
@@ -326,7 +326,8 @@
                                                                     </li>
                                                                     <li>
                                                                         <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                            data-tooltip="tooltip" data-placement="top"  onclick="AddToCart({{$item->id}})"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            onclick="AddToCart({{ $item->id }})"
                                                                             title="Add to Cart"><i
                                                                                 class="fas fa-plus-circle"></i></a>
                                                                     </li>
