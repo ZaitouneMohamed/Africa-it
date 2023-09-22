@@ -23,7 +23,8 @@ class HomeController extends Controller
     }
     function AllProducts()
     {
-        return view('landing.ProductsIndex');
+        $products = Product::latest()->take(20)->get();
+        return view('landing.ProductsIndex',compact('products'));
     }
     function OneProduct($id)
     {
