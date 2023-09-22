@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\products\CreateProductRequest;
+use App\Models\Image;
 use App\Models\Product;
+use Illuminate\Support\Str;
+use App\Services\ImagesServices;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,9 +17,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $imagesservices;
+
+    public function __construct(ImagesServices $ImagesServices)
+    {
+        $this->imagesservices = $ImagesServices;
+    }
     public function index()
     {
-        //
+        $products = Product::with("SubCategorie")->paginate(10);
+        return view('admin.content.products.index',compact('products'));
     }
 
     /**
@@ -25,7 +36,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.content.products.create');
     }
 
     /**
@@ -34,9 +45,27 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+        $product = Product::create([
+            "title" => $request->title,
+            "description" => $request->description,
+            "slug" => Str::slug($request->title),
+            "price" => $request->price,
+            "old_price" => $request->old_price,
+            "sub_categorie_id" => $request->sub_categorie,
+        ]);
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $picture) {
+                $image = $this->imagesservices->uploadImage($picture, "products");
+                $new_image = new Image(["url" => $image]);
+                $product->Images()->save($new_image);
+            }
+        }
+
+        return redirect()->route('admin.product.index')->with([
+            "success" => "produc added successfly"
+        ]);
     }
 
     /**
