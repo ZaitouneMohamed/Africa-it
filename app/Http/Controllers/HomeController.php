@@ -24,11 +24,22 @@ class HomeController extends Controller
     function AllProducts()
     {
         $products = Product::latest()->take(20)->get();
-        return view('landing.ProductsIndex',compact('products'));
+        return view('landing.ProductsIndex', compact('products'));
     }
     function OneProduct($id)
     {
         $product = Product::findOrFail($id);
         return view('landing.ProductDetail', compact("product"));
+    }
+    function ProductOfCategorie($id)
+    {
+        // Retrieve the category and its subcategories with their products
+        $categoryWithProducts = Categorie::with(['subcategories.products'])->find($id);
+
+        // You can access the products like this
+        $products = $categoryWithProducts->subcategories->flatMap(function ($subcategory) {
+            return $subcategory->products;
+        });
+        return view('landing.ProductsIndex', compact('products'));
     }
 }
