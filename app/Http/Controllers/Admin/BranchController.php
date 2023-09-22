@@ -16,7 +16,7 @@ class BranchController extends Controller
     public function index()
     {
         $branches = Branch::latest()->paginate(5);
-        return view('admin.content.branch.index',compact("branches"));
+        return view('admin.content.branch.index', compact("branches"));
     }
 
     /**
@@ -26,7 +26,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        // return view("branch")
+        return view("admin.content.branch.create");
     }
 
     /**
@@ -37,7 +37,23 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "name" => "required|unique:branches,name",
+            "attitude" => "required",
+            "longtitude" => "required",
+            "distance" => "required",
+            "charge_delivery" => "required"
+        ]);
+        $branch = Branch::create([
+            "name" => $request->name,
+            "attitude" => $request->attitude,
+            "longtitude" =>$request->longtitude,
+            "distance" => $request->distance,
+            "charge_delivery" => $request->charge_delivery
+        ]);
+        return redirect()->route('admin.branch.index')->with([
+            "success" => "branch added successfully"
+        ]);
     }
 
     /**
