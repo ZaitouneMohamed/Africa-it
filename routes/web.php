@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategorieController;
 use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\Profile\ProfileController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
