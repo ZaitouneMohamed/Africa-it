@@ -99,36 +99,6 @@
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
-                                <div class="pd-detail__inline">
-                                    <span class="pd-detail__click-wrap"><i class="far fa-envelope u-s-m-r-6"></i>
-                                        <a href="signin.html">Email me When the price drops</a>
-                                        <span class="pd-detail__click-count">(20)</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-15">
-                                <ul class="pd-social-list">
-                                    <li>
-                                        <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-
-                                        <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
-                                    </li>
-                                    <li>
-
-                                        <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a>
-                                    </li>
-                                    <li>
-
-                                        <a class="s-gplus--color-hover" href="#"><i
-                                                class="fab fa-google-plus-g"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="u-s-m-b-15">
                                 <div class="pd-detail-inline-2">
                                     <div class="u-s-m-b-15">
 
@@ -186,17 +156,10 @@
                             <div class="u-s-m-b-30">
                                 <ul class="nav pd-tab__list">
                                     <li class="nav-item">
-
                                         <a class="nav-link active" data-toggle="tab" href="#pd-desc">DESCRIPTION</a>
                                     </li>
                                     <li class="nav-item">
-
-                                        <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a>
-                                    </li>
-                                    <li class="nav-item">
-
                                         <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
-
                                             <span>({{ $product->reviews->count() }})</span></a>
                                     </li>
                                 </ul>
@@ -214,7 +177,6 @@
                                     </div>
                                 </div>
                                 <!--====== End - Tab 1 ======-->
-
                                 <!--====== Tab 3 ======-->
                                 <div class="tab-pane" id="pd-rev">
                                     <div class="pd-tab__rev">
@@ -230,7 +192,6 @@
                                                 <div class="u-s-m-b-8">
                                                     <h4>We want to hear from you!</h4>
                                                 </div>
-
                                                 <span class="gl-text">Tell us what you think about this item</span>
                                             </div>
                                         </div>
