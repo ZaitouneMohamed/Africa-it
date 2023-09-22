@@ -27,6 +27,10 @@ class Product extends Model
     {
         return $query->where("prenium", 1);
     }
+    public function Reviews()
+    {
+        return $this->hasMany(Review::class)->latest();
+    }
     public function SubCategorie()
     {
         return $this->belongsTo(SubCategorie::class);
@@ -34,5 +38,14 @@ class Product extends Model
     public function Images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+    public function getOverallReviewsAttribute()
+    {
+        $count = $this->Reviews->count();
+        $stars = 0;
+        foreach ($this->Reviews as $item) {
+            $stars += $item->stars;
+        };
+        return $stars / $count;
     }
 }
