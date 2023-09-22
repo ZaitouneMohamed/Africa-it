@@ -122,7 +122,7 @@
                                         <div class="category-o">
                                             <div class="aspect aspect--bg-grey aspect--square category-o__img-wrap">
                                                 <img class="aspect__img category-o__img"
-                                                    src="{{ asset('assets/ludus/images/product/electronic/product23.jpg') }} "
+                                                    src="{{ $item->CategorieImage }}"
                                                     alt="">
                                             </div>
                                             <div class="category-o__info">
