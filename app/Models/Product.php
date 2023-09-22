@@ -41,11 +41,13 @@ class Product extends Model
     }
     public function getOverallReviewsAttribute()
     {
-        $count = $this->Reviews->count();
-        $stars = 0;
-        foreach ($this->Reviews as $item) {
-            $stars += $item->stars;
-        };
-        return $stars / $count;
+        if ($this->Reviews->count() > 0) {
+            $count = $this->Reviews->count();
+            $stars = 0;
+            foreach ($this->Reviews as $item) {
+                $stars += $item->stars;
+            };
+            return $stars / $count;
+        }
     }
 }
