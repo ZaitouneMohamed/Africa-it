@@ -14,20 +14,16 @@
                         <div class="pd-breadcrumb u-s-m-b-30">
                             <ul class="pd-breadcrumb__list">
                                 <li class="has-separator">
-
-                                    <a href="index.hml">Home</a>
+                                    <a href="#"><i class="fa-solid fa-house"></i>Home</a>
                                 </li>
                                 <li class="has-separator">
-
-                                    <a href="shop-side-version-2.html">Electronics</a>
+                                    <a href="#">{{ $product->subcategorie->categorie->name }}</a>
                                 </li>
                                 <li class="has-separator">
-
-                                    <a href="shop-side-version-2.html">DSLR Cameras</a>
+                                    <a href="#">{{ $product->subcategorie->name }}</a>
                                 </li>
                                 <li class="is-marked">
-
-                                    <a href="shop-side-version-2.html">Nikon Cameras</a>
+                                    <a href="#">{{ $product->title }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -56,7 +52,8 @@
                                         @foreach ($product->Images as $item)
                                             <div>
                                                 <img class="u-img-fluid"
-                                                    src="{{ asset('images/products') }}/{{ $item->url }}" alt="">
+                                                    src="{{ asset('images/products') }}/{{ $item->url }}"
+                                                    alt="">
                                             </div>
                                         @endforeach
                                     </div>
@@ -87,7 +84,8 @@
 
                                     <span class="pd-detail__review u-s-m-l-4">
 
-                                        <a data-click-scroll="#view-review">23 Reviews</a></span>
+                                        <a data-click-scroll="#view-review">{{ $product->reviews->count() }}
+                                            Reviews</a></span>
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
@@ -246,25 +244,25 @@
                                                 </div>
                                                 <div class="rev-f1__review">
                                                     @foreach ($product->Reviews as $item)
+                                                        <div class="review-o u-s-m-b-15">
+                                                            <div class="review-o__info u-s-m-b-8">
 
-                                                    <div class="review-o u-s-m-b-15">
-                                                        <div class="review-o__info u-s-m-b-8">
+                                                                <span class="review-o__name">{{ $item->name }}</span>
 
-                                                            <span class="review-o__name">{{ $item->name }}</span>
+                                                                <span
+                                                                    class="review-o__date">{{ $item->created_at }}</span>
+                                                            </div>
+                                                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i
+                                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                                    class="far fa-star"></i>
 
-                                                            <span class="review-o__date">{{ $item->created_at }}</span>
+                                                                <span>({{ $item->stars }})</span>
+                                                            </div>
+                                                            <p class="review-o__text">
+                                                                {{ $item->review }}
+                                                            </p>
                                                         </div>
-                                                        <div class="review-o__rating gl-rating-style u-s-m-b-8"><i
-                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                class="far fa-star"></i>
-
-                                                            <span>({{ $item->stars }})</span>
-                                                        </div>
-                                                        <p class="review-o__text">
-                                                            {{ $item->review }}
-                                                        </p>
-                                                    </div>
                                                     @endforeach
                                                 </div>
                                             </form>
