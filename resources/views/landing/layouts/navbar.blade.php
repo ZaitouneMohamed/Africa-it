@@ -246,6 +246,9 @@
                                 <a href="/">Home</a>
                             </li>
                             <li>
+                                <a href="{{ route('allProducts') }}">Products</a>
+                            </li>
+                            <li>
                                 <a href="#">Offres</a>
                             </li>
                             <li>
