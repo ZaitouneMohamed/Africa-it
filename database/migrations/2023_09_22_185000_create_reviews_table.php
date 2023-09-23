@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string("name");
             $table->string("email");
-            $table->integer("stars");
+            $table->float("stars");
             $table->text("review");
             $table->timestamps();
         });
