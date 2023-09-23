@@ -120,10 +120,12 @@
                                                 </div>
                                                 <div class="product-m__content">
                                                     <div class="product-m__category">
-                                                        <a href="shop-side-version-2.html">{{ $item->subcategorie->title }}</a>
+                                                        <a
+                                                            href="shop-side-version-2.html">{{ $item->subcategorie->title }}</a>
                                                     </div>
                                                     <div class="product-m__name">
-                                                        <a href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a>
+                                                        <a
+                                                            href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a>
                                                     </div>
                                                     <div class="product-m__rating gl-rating-style"><i
                                                             class="fas fa-star"></i><i class="fas fa-star"></i><i
@@ -148,6 +150,7 @@
                                     @empty
                                     @endforelse
                                 </div>
+                                {{ $products->links() }}
                             </div>
                         </div>
                     </div>
