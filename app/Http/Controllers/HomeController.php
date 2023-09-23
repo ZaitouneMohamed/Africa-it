@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\SubCategorie;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -49,6 +51,25 @@ class HomeController extends Controller
         $product->save();
         return redirect()->back()->with([
             "success" => "product updated sucessfly"
+        ]);
+    }
+    function AddReview($id, Request $request)
+    {
+        // dd($request->all());
+        $this->validate($request, [
+            "body" => "required|min:1",
+            "email" => "required|email|max:200",
+            "name" => "required|max:200",
+        ]);
+        $review = Review::create([
+            'product_id' => $id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'review'=>$request->body,
+            'stars'=> $request->rating,
+        ]);
+        return redirect()->back()->with([
+            "success" => "review added successfully"
         ]);
     }
 }
