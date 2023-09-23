@@ -29,6 +29,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
     Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
+    Route::get('/SwitchPreniumModeForProduct/{id} ', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct");
+    Route::post('/AddReview/{id} ', 'AddReview')->name("AddReview");
 });
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
