@@ -25,8 +25,7 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products = Product::with("SubCategorie")->paginate(10);
-        return view('admin.content.products.index',compact('products'));
+        return view('admin.content.products.index');
     }
 
     /**
