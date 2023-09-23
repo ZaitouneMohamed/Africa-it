@@ -186,9 +186,7 @@
                                                     <h2>{{ $product->reviews->count() }} Reviews -
                                                         {{ $product->OverallReviews }} (Overall)</h2>
                                                 </div>
-                                                <div class="gl-rating-style-2 u-s-m-b-8"><i class="fas fa-star"></i><i
-                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                                <div class="gl-rating-style-2 u-s-m-b-8">{!! GetStarsIcon($product->OverallReviews) !!}</div>
                                                 <div class="u-s-m-b-8">
                                                     <h4>We want to hear from you!</h4>
                                                 </div>
@@ -207,17 +205,12 @@
                                                     @foreach ($product->Reviews as $item)
                                                         <div class="review-o u-s-m-b-15">
                                                             <div class="review-o__info u-s-m-b-8">
-
                                                                 <span class="review-o__name">{{ $item->name }}</span>
-
                                                                 <span
                                                                     class="review-o__date">{{ $item->created_at }}</span>
                                                             </div>
-                                                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i
-                                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                                    class="far fa-star"></i>
-
+                                                            <div class="review-o__rating gl-rating-style u-s-m-b-8">
+                                                                {!! GetStarsIcon($item->stars) !!}
                                                                 <span>({{ $item->stars }})</span>
                                                             </div>
                                                             <p class="review-o__text">
@@ -332,8 +325,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-1" value="1"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-1"
+                                                                                value="1" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -348,8 +341,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-1.5" value="1.5"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-1.5"
+                                                                                value="1.5" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -364,8 +357,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-2" value="2"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-2"
+                                                                                value="2" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -380,8 +373,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-2.5" value="2.5"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-2.5"
+                                                                                value="2.5" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -396,8 +389,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-3" value="3"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-3"
+                                                                                value="3" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -412,8 +405,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-3.5" value="3.5"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-3.5"
+                                                                                value="3.5" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -428,8 +421,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-4" value="4"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-4"
+                                                                                value="4" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -444,8 +437,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-4.5" value="4.5"
-                                                                                name="rating">
+                                                                            <input type="radio" id="star-4.5"
+                                                                                value="4.5" name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -460,8 +453,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-5" value="5"
-                                                                                name="rating" checked>
+                                                                            <input type="radio" id="star-5"
+                                                                                value="5" name="rating" checked>
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -485,13 +478,13 @@
                                                     <div>
                                                         <p class="u-s-m-b-30">
                                                             <label class="gl-label" for="reviewer-name">NAME *</label>
-                                                            <input class="input-text input-text--primary-style" name="name"
-                                                                type="text" id="reviewer-name">
+                                                            <input class="input-text input-text--primary-style"
+                                                                name="name" type="text" id="reviewer-name">
                                                         </p>
-                                                        <p class="u-s-m-b-30"
-                                                            <label class="gl-label" for="reviewer-email">EMAIL *</label>
-                                                            <input class="input-text input-text--primary-style" name="email"
-                                                                type="text" id="reviewer-email">
+                                                        <p class="u-s-m-b-30" <label class="gl-label"
+                                                            for="reviewer-email">EMAIL *</label>
+                                                            <input class="input-text input-text--primary-style"
+                                                                name="email" type="text" id="reviewer-email">
                                                         </p>
                                                     </div>
                                                 </div>
