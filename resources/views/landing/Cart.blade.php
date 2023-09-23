@@ -37,9 +37,8 @@
                                                         <div class="table-p__box">
                                                             <div class="table-p__img-wrap">
 
-                                                                <img class="u-img-fluid"
-                                                                    src="{{ asset('assets/ludus/images/product/electronic/product3.jpg') }}"
-                                                                    alt="">
+                                                                <img class="u-img-fluid" src="{{ $item['image'] }}"
+                                                                    alt="{{ $item['image'] }}">
                                                             </div>
                                                             <div class="table-p__info">
                                                                 <span class="table-p__name">
@@ -241,4 +240,4 @@
     <!--====== End - App Content ======-->
 @endsection
 
-@section("title","cart")
+@section('title', 'checkout')
