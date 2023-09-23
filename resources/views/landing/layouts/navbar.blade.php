@@ -123,8 +123,6 @@
         </div>
     </nav>
     <!--====== End - Nav 1 ======-->
-
-
     <!--====== Nav 2 ======-->
     <nav class="secondary-nav-wrapper" style="background-color: rgb(155,116,59)">
         <div class="container">
@@ -184,7 +182,7 @@
                                                                         @foreach ($item->products->take(4) as $item)
                                                                             <li>
                                                                                 <a
-                                                                                    href="#">{{ $item->title }}</a>
+                                                                                    href="{{route('oneProduct',$item->id)}}">{{ $item->title }}</a>
                                                                             </li>
                                                                         @endforeach
                                                                     @else
