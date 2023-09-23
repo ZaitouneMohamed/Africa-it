@@ -43,11 +43,10 @@
                                 <td>{{ $item->SubCategorie->name }}</td>
                                 <td>
                                     @if ($item->prenium == 1)
-                                        <button class="btn btn-success"
-                                            wire:click="preniumToogle({{ $item->id }})">prenium</button>
+                                        <a class="btn btn-success" href="{{route('SwitchPreniumModeForProduct',$item->id)}}">prenium</a>
                                     @else
-                                        <button class="btn btn-danger" wire:click="preniumToogle({{ $item->id }})">not
-                                            prenium</button>
+                                        <a class="btn btn-danger" href="{{route('SwitchPreniumModeForProduct',$item->id)}}">not
+                                            prenium</a>
                                     @endif
                                 </td>
                                 <td>

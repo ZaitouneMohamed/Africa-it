@@ -42,4 +42,13 @@ class HomeController extends Controller
         });
         return view('landing.ProductsIndex', compact('products'));
     }
+    function SwitchPreniumModeForProduct($id)
+    {
+        $product = Product::find($id);
+        $product->prenium = !$product->prenium;
+        $product->save();
+        return redirect()->back()->with([
+            "success" => "product updated sucessfly"
+        ]);
+    }
 }
