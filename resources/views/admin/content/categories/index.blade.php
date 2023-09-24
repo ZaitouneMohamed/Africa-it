@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td> {{ $item->name, 10 }}</td>
-                            <td>{{ $item->subcategories->count() }}</td>
+                            <td>{{ $item->subcategories_count }}</td>
                             <td> <img width="70px" height="50px" src="{{ $item->CategorieImage }}" alt=""> </td>
                             <td>
                                 <div class="dropdown">
