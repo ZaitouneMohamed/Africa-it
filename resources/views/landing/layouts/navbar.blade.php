@@ -150,9 +150,9 @@
                                 </span>
 
                                 <!--====== Mega Menu ======-->
-                                @php
+                                {{-- @php
                                     $categories = \App\Models\Categorie::latest()->get();
-                                @endphp
+                                @endphp --}}
                                 <span class="js-menu-toggle"></span>
                                 <div class="mega-menu">
                                     <div class="mega-menu-wrap">
