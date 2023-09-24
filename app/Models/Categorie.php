@@ -18,6 +18,11 @@ class Categorie extends Model
     {
         return $this->hasMany(SubCategorie::class);
     }
+    public function products()
+    {
+        return $this->hasManyThrough(Product::class, SubCategorie::class);
+    }
+
     public function Image()
     {
         return $this->morphOne(Image::class, 'imageable');
