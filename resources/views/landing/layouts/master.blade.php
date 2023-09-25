@@ -20,7 +20,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/ludus/css/vendor.css') }} ">
-    @yield("styles")
+    @yield('styles')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--====== Utility-Spacing ======-->
@@ -62,20 +62,14 @@
                                 <div class="pd-breadcrumb u-s-m-b-30">
                                     <ul class="pd-breadcrumb__list">
                                         <li class="has-separator">
-
-                                            <a href="index.hml">Home</a>
+                                            <a href="/">Home</a>
                                         </li>
                                         <li class="has-separator">
-
-                                            <a href="shop-side-version-2.html">Electronics</a>
-                                        </li>
-                                        <li class="has-separator">
-
-                                            <a href="shop-side-version-2.html">DSLR Cameras</a>
+                                            <a href="#" id="product_categorie_model"></a>
                                         </li>
                                         <li class="is-marked">
 
-                                            <a href="shop-side-version-2.html">Nikon Cameras</a>
+                                            <a href="#" id="product_sub_categorie_model"></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -151,15 +145,14 @@
                                 <div class="pd-detail">
                                     <div>
 
-                                        <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span>
+                                        <span class="pd-detail__name" id="product_name_model">Nikon Camera 4k Lens Zoom Pro</span>
                                     </div>
                                     <div>
                                         <div class="pd-detail__inline">
 
-                                            <span class="pd-detail__price">$6.99</span>
+                                            <span class="pd-detail__price" id="product_price_model"></span>
 
-                                            <span class="pd-detail__discount">(76% OFF)</span><del
-                                                class="pd-detail__del">$28.97</del>
+                                            <del class="pd-detail__del" id="product_old_price_model"></del>
                                         </div>
                                     </div>
                                     <div class="u-s-m-b-15">
@@ -182,17 +175,14 @@
                                     </div>
                                     <div class="u-s-m-b-15">
 
-                                        <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the
-                                            printing and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</span>
+                                        <span class="pd-detail__preview-desc" id="product_description_model"></span>
                                     </div>
                                     <div class="u-s-m-b-15">
                                         <div class="pd-detail__inline">
 
                                             <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
 
-                                                <a href="signin.html">Add to Wishlist</a>
+                                                <a href="#">Add to Wishlist</a>
 
                                                 <span class="pd-detail__click-count">(222)</span></span>
                                         </div>
@@ -203,7 +193,7 @@
                                             <span class="pd-detail__click-wrap"><i
                                                     class="far fa-envelope u-s-m-r-6"></i>
 
-                                                <a href="signin.html">Email me When the price drops</a>
+                                                <a href="#">Email me When the price drops</a>
 
                                                 <span class="pd-detail__click-count">(20)</span></span>
                                         </div>
@@ -413,6 +403,29 @@
         ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto');
         ga('send', 'pageview')
+
+        function GetProduct(id) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('GetProduct') }}",
+                data: {
+                    id: id
+                },
+                success: function(response) {
+                    product = response
+                    document.getElementById('product_name_model').innerHTML = response.title
+                    document.getElementById('product_description_model').innerHTML = response.description
+                    document.getElementById('product_old_price_model').innerHTML = response.old_price
+                    document.getElementById('product_price_model').innerHTML = response.price
+                    document.getElementById('product_sub_categorie_model').innerHTML = response.sub_categorie.name
+                    document.getElementById('product_categorie_model').innerHTML = response.sub_categorie.categorie.name
+                    console.log(product);
+                },
+                error: function() {
+                    alert('An error occurred .');
+                }
+            })
+        }
 
         function AddToCart(id) {
             $.ajax({

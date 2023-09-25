@@ -183,7 +183,7 @@
                                                             <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
                                                                     <li>
-                                                                        <a data-modal="modal" data-modal-id="#quick-look"
+                                                                        <a data-modal="modal" data-modal-id="#quick-look" onclick="GetProduct({{$item->id}})"
                                                                             data-tooltip="tooltip" data-placement="top"
                                                                             title="Quick View"><i
                                                                                 class="fas fa-search-plus"></i></a>
@@ -299,7 +299,7 @@
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
-                                                                    <a data-modal="modal" data-modal-id="#quick-look"
+                                                                    <a data-modal="modal" data-modal-id="#quick-look" onclick="GetProduct({{$item->id}})"
                                                                         data-tooltip="tooltip" data-placement="top"
                                                                         title="Quick View"><i
                                                                             class="fas fa-search-plus"></i></a>
