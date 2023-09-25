@@ -25,7 +25,8 @@ class HomeController extends Controller
     }
     function AllProducts()
     {
-        return view('landing.ProductsIndex');
+        $products = Product::with("SubCategorie")->paginate(20);
+        return view('landing.ProductsIndex',compact("products"));
     }
     function OneProduct($id)
     {
@@ -35,12 +36,8 @@ class HomeController extends Controller
     function ProductOfCategorie($id)
     {
         // Retrieve the category and its subcategories with their products
-        $categoryWithProducts = Categorie::with(['subcategories.products'])->find($id);
-
-        // You can access the products like this
-        $products = $categoryWithProducts->subcategories->flatMap(function ($subcategory) {
-            return $subcategory->products;
-        });
+        $categorie = Categorie::find($id);
+        dd($categorie->products);
         return view('landing.ProductsIndex', compact('products'));
     }
     function SwitchPreniumModeForProduct($id)
