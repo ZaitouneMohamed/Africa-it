@@ -163,7 +163,7 @@
                                                     <div class="col-6">
                                                         @foreach (\App\Models\TimeSlot::all() as $item)
                                                             <div class="radio-box">
-                                                                <input type="radio" id="{{ $item->id }}"
+                                                                <input type="radio" id="{{ $item->id }}" @if ($loop->first) checked @endif
                                                                     name="DeliveryTime" value="{{ $item->Fulltime }}">
                                                                 <div class="radio-box__state radio-box__state--primary">
                                                                     <label class="radio-box__label"
@@ -252,11 +252,9 @@
                                             <h1 class="gl-h1">Adresse</h1>
                                             @forelse (Auth::user()->adresses as $item)
                                                 <div class="radio-box">
-                                                    <input type="radio" id="CashOnDelivery" name="PayementMethod"
-                                                        value="on delivery">
+                                                    <input type="radio" id="CashOnDelivery" name="adresse" @if ($loop->first) checked @endif value="{{$item->id}}">
                                                     <div class="radio-box__state radio-box__state--primary">
-                                                        <label class="radio-box__label" for="CashOnDelivery">Cash On
-                                                            Delivery</label>
+                                                        <label class="radio-box__label" for="CashOnDelivery">{{ $item->adresse }}</label>
                                                     </div>
                                                 </div>
                                             @empty
