@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
     function OneProduct($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with(['Reviews', 'SubCategorie', 'Images'])->findOrFail($id);
         return view('landing.ProductDetail', compact("product"));
     }
     function ProductOfCategorie($id)
