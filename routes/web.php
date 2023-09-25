@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
     // Home Page
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name("home");
     // All Products
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
