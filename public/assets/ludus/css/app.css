@@ -3724,6 +3724,7 @@ input::-ms-clear {
     padding: 16px;
     font-weight: 600;
     font-size: 13px;
+    width: 200px;
 }
 
 @media (max-width: 991px) {
