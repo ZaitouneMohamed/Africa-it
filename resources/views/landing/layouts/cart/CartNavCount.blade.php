@@ -14,7 +14,4 @@
             }
         })
     }
-    setInterval(() => {
-        CartCount();
-    }, 100);
 </script>

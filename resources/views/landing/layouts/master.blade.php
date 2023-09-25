@@ -20,6 +20,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/ludus/css/vendor.css') }} ">
+    @yield("styles")
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--====== Utility-Spacing ======-->
@@ -405,14 +406,13 @@
 
     <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
     <script>
-        alert('gjw9')
-        // window.ga = function() {
-        //     ga.q.push(arguments)
-        // };
-        // ga.q = [];
-        // ga.l = +new Date;
-        // ga('create', 'UA-XXXXX-Y', 'auto');
-        // ga('send', 'pageview')
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview')
 
         function AddToCart(id) {
             $.ajax({
@@ -434,7 +434,7 @@
                         icon: 'success',
                         title: 'product added successfully'
                     })
-                    getCartContent();
+                    MyFunctions();
                 },
                 error: function() {
                     alert('An error occurred .');
@@ -442,67 +442,90 @@
             })
         }
 
+        function getcartCount() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('cart.getCartCount') }}",
+                success: function(response) {
+                    console.log("cart count" + response.count);
+                    document.getElementById('CartCount').innerHTML = response.count
+                },
+                error: function() {
+                    console.log('An error occurred .');
+                }
+            })
+        }
+
         function getCartContent() {
-            console.log("hello world");
+            total = 0;
+            cart = "";
             $.ajax({
                 type: 'GET',
                 url: "{{ route('cart.getCartContent') }}",
                 success: function(response) {
-                    console.log("response" + response);
-                    // var cart = "";
-                    // var total = 0;
-                    // if (response.length > 0) {
-                    //     response.forEach(function(item) {
-                    //         total += item.price * item.quantity
-                    //         cart +=
-                    //             `
-                    //                             <div class="mini-product">
-                    //             <div class="mini-product__image-wrapper">
-
-                    //                 <a class="mini-product__link" href="#">
-
-                    //                     <img class="u-img-fluid"
-                    //                         src="` + item.image + `"
-                    //                         alt=""></a>
-                    //             </div>
-                    //             <div class="mini-product__info-wrapper">
-
-                    //                 <span class="mini-product__category">
-
-                    //                     <a href="#">` + item.title + `</a></span>
-
-                    //                 <span class="mini-product__name">
-
-                    //                     <a href="#">` + item.title + `</a></span>
-
-                    //                 <span class="mini-product__quantity">` + item.quantity + ` x</span>
-
-                    //                 <span class="mini-product__price">$8</span>
-                    //             </div>
-                    //         </div>
-
-                    //         <a class="mini-product__delete-link far fa-trash-alt"></a>
-                    //             `
-                    //     });
-                    //     document.getElementById('cart_parent').innerHTML = cart;
-                    //     document.getElementById('total_content').innerHTML = "$" + total;
-                    //     console.log(cart);
+                    if (response.length > 0) {
+                        response.forEach(function(item) {
+                            total += item.price * item.quantity
+                            cart +=
+                                `
+                                <div class="card-mini-product">
+                                    <div class="mini-product">
+                                        <div class="mini-product__image-wrapper">
+                                            <a class="mini-product__link" href="#">
+                                                <img class="u-img-fluid" src="` + item.image + `" alt=""></a>
+                                        </div>
+                                        <div class="mini-product__info-wrapper">
+                                            <span class="mini-product__category">
+                                                <a href="#">` + item.title + `</a>
+                                            </span>
+                                            <span class="mini-product__name">
+                                                <a href="#">` + item.title + `</a>
+                                            </span>
+                                            <span class="mini-product__quantity">` + item.quantity + ` x</span>
+                                            <span class="mini-product__price">$` + item.price + `</span>
+                                        </div>
+                                    </div>
+                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
+                                </div>
+                                `
+                        });
+                        document.getElementById('cart_parent').innerHTML = cart;
+                        document.getElementById('total_content').innerHTML = "$" + total;
                     } else {
-                        cart = "<li>Your cart is empty</li>";
-                        // document.getElementById('cart_content').innerHTML = cart;
+                        console.log("response 0");
                     }
+                },
+                error: function() {
+                    console.log('An error occurred .');
+                }
+            })
+        }
+
+        function DeleteProductFromCard(id) {
+            $.ajax({
+                type: 'DELETE',
+                url: "{{ route('cart.deleteProduct') }}",
+                data: {
+                    id: id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    MyFunctions();
                 },
                 error: function() {
                     console.log('An error occurred.');
                 }
             });
         }
-        setInterval(() => {
-            console.log('An error occurred.');
-        }, 2000);
-        window.onload = function() {
-            alert('gjw9')
-        };
+
+
+        function MyFunctions() {
+            getCartContent();
+            getcartCount()
+        }
+        MyFunctions()
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

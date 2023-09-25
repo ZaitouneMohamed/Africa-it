@@ -78,7 +78,7 @@
                                                     <td>
                                                         <div class="table-p__del-wrap">
                                                             <a class="far fa-trash-alt table-p__delete-link"
-                                                                href="#"></a>
+                                                                onclick="DeleteProductFromCard({{ $item['id'] }})"></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -91,20 +91,14 @@
                             <div class="col-lg-12">
                                 <div class="route-box">
                                     <div class="route-box__g1">
-
-                                        <a class="route-box__link" href="shop-side-version-2.html"><i
+                                        <a class="route-box__link" href="{{route('home')}}"><i
                                                 class="fas fa-long-arrow-alt-left"></i>
-
                                             <span>CONTINUE SHOPPING</span></a>
                                     </div>
                                     <div class="route-box__g2">
-
-                                        <a class="route-box__link" href="cart.html"><i class="fas fa-trash"></i>
-
+                                        <a class="route-box__link" href="#"><i class="fas fa-trash"></i>
                                             <span>CLEAR CART</span></a>
-
-                                        <a class="route-box__link" href="cart.html"><i class="fas fa-sync"></i>
-
+                                        <a class="route-box__link" href="#"><i class="fas fa-sync"></i>
                                             <span>UPDATE CART</span></a>
                                     </div>
                                 </div>
@@ -133,66 +127,53 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
                                             <div class="f-cart__pad-box">
-                                                <h1 class="gl-h1">ESTIMATE SHIPPING AND TAXES</h1>
-
-                                                <span class="gl-text u-s-m-b-30">Enter your destination to get a shipping
-                                                    estimate.</span>
-                                                <div class="u-s-m-b-30">
-
-                                                    <!--====== Select Box ======-->
-
-                                                    <label class="gl-label" for="shipping-country">COUNTRY *</label><select
-                                                        class="select-box select-box--primary-style" id="shipping-country">
-                                                        <option selected value="">Choose Country</option>
-                                                        <option value="uae">United Arab Emirate (UAE)</option>
-                                                        <option value="uk">United Kingdom (UK)</option>
-                                                        <option value="us">United States (US)</option>
-                                                    </select>
-                                                    <!--====== End - Select Box ======-->
+                                                <h1 class="gl-h1">Delivery Option</h1>
+                                                <!--====== Radio Box ======-->
+                                                <div class="radio-box">
+                                                    <input type="radio" id="cash-on-delivery" checked
+                                                        name="DeliveryOption">
+                                                    <div class="radio-box__state radio-box__state--primary">
+                                                        <label class="radio-box__label" for="cash-on-delivery">Delivery (30
+                                                            MAD)</label>
+                                                    </div>
                                                 </div>
-                                                <div class="u-s-m-b-30">
-
-                                                    <!--====== Select Box ======-->
-
-                                                    <label class="gl-label" for="shipping-state">STATE/PROVINCE
-                                                        *</label><select class="select-box select-box--primary-style"
-                                                        id="shipping-state">
-                                                        <option selected value="">Choose State/Province</option>
-                                                        <option value="al">Alabama</option>
-                                                        <option value="al">Alaska</option>
-                                                        <option value="ny">New York</option>
-                                                    </select>
-                                                    <!--====== End - Select Box ======-->
-                                                </div>
-                                                <div class="u-s-m-b-30">
-
-                                                    <label class="gl-label" for="shipping-zip">ZIP/POSTAL CODE *</label>
-
-                                                    <input class="input-text input-text--primary-style" type="text"
-                                                        id="shipping-zip" placeholder="Zip/Postal Code">
-                                                </div>
-                                                <div class="u-s-m-b-30">
-
-                                                    <a class="f-cart__ship-link btn--e-transparent-brand-b-2"
-                                                        href="cart.html">CALCULATE SHIPPING</a>
-                                                </div>
-
-                                                <span class="gl-text">Note: There are some countries where free shipping is
-                                                    available otherwise our flat rate charges or country delivery charges
-                                                    will
-                                                    be apply.</span>
+                                                <!--====== End - Radio Box ======-->
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
                                             <div class="f-cart__pad-box">
-                                                <h1 class="gl-h1">NOTE</h1>
-
-                                                <span class="gl-text u-s-m-b-30">Add Special Note About Your Product</span>
-                                                <div>
-
-                                                    <label for="f-cart-note"></label>
-                                                    <textarea class="text-area text-area--primary-style" id="f-cart-note"></textarea>
+                                                <h1 class="gl-h1">Preference Time</h1>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="radio-box">
+                                                            <input type="radio" id="tomorrow" name="DeliveryDay" checked>
+                                                            <div class="radio-box__state radio-box__state--primary">
+                                                                <label class="radio-box__label"
+                                                                    for="tomorrow">Tomorrow</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="radio-box">
+                                                            <input type="radio" id="AftrerTomorrow" name="DeliveryDay">
+                                                            <div class="radio-box__state radio-box__state--primary">
+                                                                <label class="radio-box__label"
+                                                                    for="AftrerTomorrow">Tomorrow</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        @foreach (\App\Models\TimeSlot::all() as $item)
+                                                            <div class="radio-box">
+                                                                <input type="radio" id="{{ $item->id }}"
+                                                                    name="DeliveryTime" value="{{ $item->Fulltime }}">
+                                                                <div class="radio-box__state radio-box__state--primary">
+                                                                    <label class="radio-box__label"
+                                                                        for="{{ $item->id }}">{{ $item->FullTime }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
@@ -219,14 +200,71 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div>
-
-                                                    <button class="btn btn--e-brand-b-2" type="submit"> PROCEED TO
-                                                        CHECKOUT</button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-6 u-s-m-b-30">
+                                            <div class="f-cart__pad-box">
+                                                <h1 class="gl-h1">Select Branch</h1>
+                                                @foreach (\App\Models\Branch::all() as $item)
+                                                    <!--====== Radio Box ======-->
+                                                    <div class="radio-box">
+                                                        <input type="radio" id="{{ $item->id }}" name="branch"
+                                                            @if ($loop->first) checked @endif>
+                                                        <div class="radio-box__state radio-box__state--primary">
+                                                            <label class="radio-box__label"
+                                                                for="{{ $item->id }}">{{ $item->name }}</label>
+                                                        </div>
+                                                    </div>
+                                                    <!--====== End - Radio Box ======-->
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-6 u-s-m-b-30">
+                                            <div class="f-cart__pad-box">
+                                                <h1 class="gl-h1">Payement Method</h1>
+                                                <!--====== Radio Box ======-->
+                                                <div class="radio-box">
+                                                    <input type="radio" id="CashOnDelivery" name="PayementMethod"
+                                                        checked value="on delivery">
+                                                    <div class="radio-box__state radio-box__state--primary">
+                                                        <label class="radio-box__label" for="CashOnDelivery">Cash On
+                                                            Delivery</label>
+                                                    </div>
+                                                </div><br>
+                                                <div class="radio-box">
+                                                    <input type="radio" id="CashOnDelivery" name="PayementMethod"
+                                                        value="card">
+                                                    <div class="radio-box__state radio-box__state--primary">
+                                                        <label class="radio-box__label" for="CashOnDelivery">By
+                                                            Card</label>
+                                                    </div>
+                                                </div>
+                                                <!--====== End - Radio Box ======-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6 u-s-m-b-30">
+                                        <div class="f-cart__pad-box">
+                                            <h1 class="gl-h1">Adresse</h1>
+                                            @forelse (Auth::user()->adresses as $item)
+                                                <div class="radio-box">
+                                                    <input type="radio" id="CashOnDelivery" name="PayementMethod"
+                                                        value="on delivery">
+                                                    <div class="radio-box__state radio-box__state--primary">
+                                                        <label class="radio-box__label" for="CashOnDelivery">Cash On
+                                                            Delivery</label>
+                                                    </div>
+                                                </div>
+                                            @empty
+                                                <p>Add Adresse</p>
+                                            @endforelse
+                                        </div>
+                                    </div>
+                                        <button class="btn btn--e-brand-b-2" type="submit">PLACE ORDER</button></div>
                                 </form>
                             </div>
                         </div>
@@ -241,3 +279,7 @@
 @endsection
 
 @section('title', 'checkout')
+
+@section('styles')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
