@@ -26,7 +26,7 @@ class HomeController extends Controller
     function AllProducts()
     {
         $products = Product::with("SubCategorie")->paginate(20);
-        return view('landing.ProductsIndex',compact("products"));
+        return view('landing.ProductsIndex', compact("products"));
     }
     function OneProduct($id)
     {
@@ -61,8 +61,8 @@ class HomeController extends Controller
             'product_id' => $id,
             'name' => $request->name,
             'email' => $request->email,
-            'review'=>$request->body,
-            'stars'=> $request->rating,
+            'review' => $request->body,
+            'stars' => $request->rating,
         ]);
         return redirect()->back()->with([
             "success" => "review added successfully"
