@@ -13,7 +13,7 @@
             </li>
             <li>
 
-                <a href="#">Address Book</a>
+                <a href="{{route('user.profile.adresse.index')}}">Address Book</a>
             </li>
             <li>
 
