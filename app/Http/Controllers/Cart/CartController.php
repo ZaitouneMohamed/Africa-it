@@ -83,7 +83,9 @@ class CartController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product successfully deleted.');
+            if (!session("cart")) {
+                return response()->json("empty");
+            }
         }
     }
 }
