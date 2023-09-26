@@ -142,7 +142,7 @@
                                             <label class="gl-label" for="reg-password">REPEAT PASSWORD *</label>
 
                                             <input class="input-text input-text--primary-style" type="password"
-                                                name="password" id="reg-password" placeholder="Enter Password">
+                                                name="password_confirmation" id="reg-password" placeholder="Enter Password">
                                         </div>
                                         <div class="u-s-m-b-15">
 
