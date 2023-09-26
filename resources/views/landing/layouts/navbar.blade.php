@@ -160,7 +160,8 @@
                                             <ul>
                                                 @foreach ($categories as $item)
                                                     <li @if ($loop->first) class="js-active" @endif>
-                                                        <a href="{{route('ProductOfCategorie',$item->id)}}"><i class="{{ $item->icon_class }}"></i>
+                                                        <a href="{{ route('ProductOfCategorie', $item->id) }}"><i
+                                                                class="{{ $item->icon_class }}"></i>
                                                             <span>{{ $item->name }}</span></a>
                                                         <span class="js-menu-toggle js-toggle-mark"></span>
                                                     </li>
@@ -182,7 +183,7 @@
                                                                         @foreach ($item->products->take(4) as $item)
                                                                             <li>
                                                                                 <a
-                                                                                    href="{{route('oneProduct',$item->id)}}">{{ $item->title }}</a>
+                                                                                    href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a>
                                                                             </li>
                                                                         @endforeach
                                                                     @else
@@ -241,7 +242,7 @@
                         <!--====== List ======-->
                         <ul class="ah-list ah-list--design2 ah-list--link-color-white">
                             <li>
-                                <a href="/">Home</a>
+                                <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
                                 <a href="{{ route('allProducts') }}">Products</a>
@@ -253,7 +254,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="{{ route('contact') }}">Contact</a>
                             </li>
                         </ul>
                         <!--====== End - List ======-->

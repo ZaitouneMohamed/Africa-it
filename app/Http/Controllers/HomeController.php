@@ -68,4 +68,7 @@ class HomeController extends Controller
             "success" => "review added successfully"
         ]);
     }
+    function Contact() {
+        return view('landing.contact');
+    }
 }
