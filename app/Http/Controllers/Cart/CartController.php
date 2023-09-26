@@ -13,9 +13,9 @@ class CartController extends Controller
     {
         $cart = session()->get('cart', []);
         // dd($cart);
-        return view('landing.Cart',compact("cart"));
+        return view('landing.Cart', compact("cart"));
     }
-    public function addToCart($id)
+    public function addToCart($id, Request $request)
     {
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
@@ -26,8 +26,8 @@ class CartController extends Controller
                 "id" => $product->id,
                 "image" => $product->FirstImage,
                 "title" => $product->title,
-                "quantity" => 1,
-                "price" => $product->price,
+                "quantity" => $request->qty ?? 1,
+                "price" => $product->price
             ];
         }
         session()->put('cart', $cart);
@@ -62,7 +62,7 @@ class CartController extends Controller
     public function CheckOut()
     {
         $branches = Branch::all();
-        return view('electro.checkout',compact("branches"));
+        return view('electro.checkout', compact("branches"));
     }
 
     public function getCartContent()
