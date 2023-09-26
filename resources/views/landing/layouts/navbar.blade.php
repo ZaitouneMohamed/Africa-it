@@ -251,7 +251,7 @@
                                 <a href="#">Offres</a>
                             </li>
                             <li>
-                                <a href="#">About</a>
+                                <a href="{{route('about')}}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('contact') }}">Contact</a>

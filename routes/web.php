@@ -27,6 +27,7 @@ Route::controller(HomeController::class)->group(function () {
     // Home Page
     Route::get('/', 'index')->name("home");
     Route::get('/contact', 'contact')->name("contact");
+    Route::get('/about', 'about')->name("about");
     // All Products
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");

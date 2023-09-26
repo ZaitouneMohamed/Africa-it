@@ -13,8 +13,8 @@ class HomeController extends Controller
     function index()
     {
         $last_categories = Categorie::latest()->with('Image')->take(4)->get();
-        $prenium_product = Product::Prenium()->with(["SubCategorie","Images","Reviews"])->get();
-        $last_product = Product::latest()->with(["SubCategorie","Images","Reviews"])->get();
+        $prenium_product = Product::Prenium()->with(["SubCategorie", "Images", "Reviews"])->get();
+        $last_product = Product::latest()->with(["SubCategorie", "Images", "Reviews"])->get();
         $subCategories = SubCategorie::latest()->get();
         return view('landing.home')->with([
             "lastCategories" => $last_categories,
@@ -68,7 +68,12 @@ class HomeController extends Controller
             "success" => "review added successfully"
         ]);
     }
-    function Contact() {
+    function Contact()
+    {
         return view('landing.contact');
+    }
+    function about()
+    {
+        return view('landing.about');
     }
 }
