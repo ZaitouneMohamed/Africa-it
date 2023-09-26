@@ -12,9 +12,9 @@ class HomeController extends Controller
 {
     function index()
     {
-        $last_categories = Categorie::latest()->take(4)->get();
-        $prenium_product = Product::Prenium()->get();
-        $last_product = Product::latest()->get();
+        $last_categories = Categorie::latest()->with('Image')->take(4)->get();
+        $prenium_product = Product::Prenium()->with(["SubCategorie","Images","Reviews"])->get();
+        $last_product = Product::latest()->with(["SubCategorie","Images","Reviews"])->get();
         $subCategories = SubCategorie::latest()->get();
         return view('landing.home')->with([
             "lastCategories" => $last_categories,

@@ -76,7 +76,7 @@
 
 
                 <!--====== Electronic Category ======-->
-                <div class="u-s-p-y-60" id="electronic-01">
+                <div class="u-s-p-y-60" id="top">
 
                     <!--====== Section Intro ======-->
                     <div class="section__intro u-s-m-b-46">
@@ -125,7 +125,7 @@
 
                 <!--====== Section 2 ======-->
                 <!--====== Latest Product Tab ======-->
-                <div class="u-s-p-b-60">
+                <div class="u-s-p-b-60" id="latest">
                     <!--====== Section Intro ======-->
                     <div class="section__intro u-s-m-b-46">
                         <div class="container">
@@ -697,32 +697,6 @@
                 </div>
                 <!--====== End - Section 11 ======-->
 
-
-                <!--====== Section 12 ======-->
-                <div class="u-s-p-b-60">
-
-                    <!--====== Section Content ======-->
-                    <div class="section__content">
-                        <div class="container">
-
-                            <!--====== Brand Slider ======-->
-                            <div class="slider-fouc">
-                                <div class="owl-carousel" id="brand-slider" data-item="5">
-                                    @foreach ($subCategories as $item)
-                                        <div class="brand-slide">
-                                            <a href="#">
-                                                <img src="https://via.placeholder.com/640x480.png/0055bb?text={{ $item->name }}"
-                                                    height="60px" alt=""></a>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <!--====== End - Brand Slider ======-->
-                        </div>
-                    </div>
-                    <!--====== End - Section Content ======-->
-                </div>
-                <!--====== End - Section 12 ======-->
                 <!--====== Section 10 ======-->
                 <div class="u-s-p-b-60">
 
@@ -782,36 +756,16 @@
         <ul class="nav" id="init-scrollspy">
             <li>
 
-                <a class="nav-link" href="#electronic-01" data-click-scroll="#electronic-01"><i
+                <a class="nav-link" href="#top" data-click-scroll="#top"><i
                         class="fas fa-tv"></i></a>
             </li>
             <li>
 
-                <a class="nav-link" href="#female-02" data-click-scroll="#female-02"><i class="fas fa-female"></i></a>
+                <a class="nav-link" href="#latest" data-click-scroll="#latest"><i class="fas fa-female"></i></a>
             </li>
             <li>
 
                 <a class="nav-link" href="#male-03" data-click-scroll="#male-03"><i class="fas fa-male"></i></a>
-            </li>
-            <li>
-
-                <a class="nav-link"><i class="fas fa-fighter-jet"></i></a>
-            </li>
-            <li>
-
-                <a class="nav-link"><i class="fas fa-cookie-bite"></i></a>
-            </li>
-            <li>
-
-                <a class="nav-link"><i class="fas fa-futbol"></i></a>
-            </li>
-            <li>
-
-                <a class="nav-link"><i class="fas fa-book-open"></i></a>
-            </li>
-            <li>
-
-                <a class="nav-link"><i class="fas fa-briefcase-medical"></i></a>
             </li>
         </ul>
     </div>

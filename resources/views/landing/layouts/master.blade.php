@@ -145,7 +145,8 @@
                                 <div class="pd-detail">
                                     <div>
 
-                                        <span class="pd-detail__name" id="product_name_model">Nikon Camera 4k Lens Zoom Pro</span>
+                                        <span class="pd-detail__name" id="product_name_model">Nikon Camera 4k Lens Zoom
+                                            Pro</span>
                                     </div>
                                     <div>
                                         <div class="pd-detail__inline">
@@ -231,17 +232,13 @@
                                         <form class="pd-detail__form">
                                             <div class="pd-detail-inline-2">
                                                 <div class="u-s-m-b-15">
-
                                                     <!--====== Input Counter ======-->
                                                     <div class="input-counter">
-
                                                         <span class="input-counter__minus fas fa-minus"></span>
-
                                                         <input
                                                             class="input-counter__text input-counter--text-primary-style"
                                                             type="text" value="1" data-min="1"
                                                             data-max="1000">
-
                                                         <span class="input-counter__plus fas fa-plus"></span>
                                                     </div>
                                                     <!--====== End - Input Counter ======-->
@@ -417,8 +414,10 @@
                     document.getElementById('product_description_model').innerHTML = response.description
                     document.getElementById('product_old_price_model').innerHTML = response.old_price
                     document.getElementById('product_price_model').innerHTML = response.price
-                    document.getElementById('product_sub_categorie_model').innerHTML = response.sub_categorie.name
-                    document.getElementById('product_categorie_model').innerHTML = response.sub_categorie.categorie.name
+                    document.getElementById('product_sub_categorie_model').innerHTML = response.sub_categorie
+                        .name
+                    document.getElementById('product_categorie_model').innerHTML = response.sub_categorie
+                        .categorie.name
                     console.log(product);
                 },
                 error: function() {
@@ -471,6 +470,7 @@
 
         function getCartContent() {
             total = 0;
+            cartNav = "";
             cart = "";
             $.ajax({
                 type: 'GET',
@@ -479,7 +479,7 @@
                     if (response.length > 0) {
                         response.forEach(function(item) {
                             total += item.price * item.quantity
-                            cart +=
+                            cartNav +=
                                 `
                                 <div class="card-mini-product">
                                     <div class="mini-product">
@@ -501,8 +501,59 @@
                                     <a class="mini-product__delete-link far fa-trash-alt"></a>
                                 </div>
                                 `
+                            cart +=
+                                `
+                            <tr>
+                                                    <td>
+                                                        <div class="table-p__box">
+                                                            <div class="table-p__img-wrap">
+                                                                <img class="u-img-fluid" src="` + item.image + `"
+                                                                    alt="` + item.image + `">
+                                                            </div>
+                                                            <div class="table-p__info">
+                                                                <span class="table-p__name">
+                                                                    <a href="#">` + item.title + `</a>
+                                                                </span>
+                                                                {{-- <span class="table-p__category">
+                                                                    <a href="#">Electronics</a>
+                                                                </span>
+                                                                <ul class="table-p__variant-list">
+                                                                    <li>
+                                                                        <span>Size: 22</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span>Color: Red</span>
+                                                                    </li>
+                                                                </ul> --}}
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="table-p__price">` + item.price + `</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-p__input-counter-wrap">
+                                                            <div class="input-counter">
+                                                                <span class="input-counter__minus fas fa-minus"></span>
+                                                                <input
+                                                                    class="input-counter__text input-counter--text-primary-style"
+                                                                    type="text" value="` + item.quantity + `"
+                                                                    data-min="1" data-max="1000">
+                                                                <span class="input-counter__plus fas fa-plus"></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-p__del-wrap">
+                                                            <a class="far fa-trash-alt table-p__delete-link"
+                                                                onclick="DeleteProductFromCard(` + item.id + `)"></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                            `
                         });
-                        document.getElementById('cart_parent').innerHTML = cart;
+                        document.getElementById('cart_parent').innerHTML = cartNav;
+                        document.getElementById('cart_body').innerHTML = cart;
                         document.getElementById('total_content').innerHTML = "$" + total;
                     } else {
                         console.log("response 0");
@@ -526,6 +577,24 @@
                 },
                 success: function(response) {
                     MyFunctions();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product deleted successfully'
+                    })
+                    if (response === "empty") {
+                        location.reload();
+                    }
                 },
                 error: function() {
                     console.log('An error occurred.');
