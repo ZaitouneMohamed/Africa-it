@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth\Profile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     function index()
     {
-        return view('profile.index');
+        $orders = Auth::user()->Orders;
+        return view('profile.index',compact("orders"));
     }
     function profile()
     {
