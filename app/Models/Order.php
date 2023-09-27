@@ -49,6 +49,17 @@ class Order extends Model
         }
         // return $value = 1 ? "confirmed" : "dfger";
     }
+    public function getUserStatueAttribute($value)
+    {
+        if ($value == 1) {
+            return 'confirmed';
+        } elseif ($value == 2) {
+            return 'annuller';
+        } else {
+            return "hj";
+        }
+        // return $value = 1 ? "confirmed" : "dfger";
+    }
     public function getTotalAttribute($value)
     {
         return Order::where('order_number', $this->order_number)->sum('total');

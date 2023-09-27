@@ -13,15 +13,10 @@
             </li>
             <li>
 
-                <a href="{{route('user.profile.adresse.index')}}">Address Book</a>
+                <a href="{{ route('user.profile.adresse.index') }}">Address Book</a>
             </li>
             <li>
-
-                <a href="#">Track Order</a>
-            </li>
-            <li>
-
-                <a href="#">My Orders</a>
+                <a href="{{ route('user.profile.MyOrders') }}">My Orders</a>
             </li>
             <li>
 
