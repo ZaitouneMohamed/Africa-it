@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         // Retrieve the category and its subcategories with their products
         $categorie = Categorie::find($id);
-        dd($categorie->products);
+        $products = $categorie->products()->paginate(20);
         return view('landing.ProductsIndex', compact('products'));
     }
     function SwitchPreniumModeForProduct($id)
