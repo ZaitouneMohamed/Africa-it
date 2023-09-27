@@ -274,7 +274,7 @@
                         <!--====== List ======-->
                         <ul class="ah-list ah-list--design1 ah-list--link-color-white">
                             <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
-                                <a><i class="far fa-user-circle"></i></a>
+                                <a><i class="far fa-user-circle" style="color: white"></i></a>
                                 <!--====== Dropdown ======-->
                                 <span class="js-menu-toggle"></span>
                                 <ul style="width:120px">

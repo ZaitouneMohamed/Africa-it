@@ -3,6 +3,7 @@
 @section('title', 'SHOP')
 
 @section('content')
+<input type="hidden" name="" id="qty" value="1">
     <!--====== App Content ======-->
     <div class="app-content">
 
@@ -134,35 +135,12 @@
                                     <div class="block">
 
                                         <span class="block__title">Latest Products</span>
-                                        {{-- <ul class="nav tab-list">
-                                            <li class="nav-item">
-
-                                                <a class="nav-link btn--e-white-brand-shadow" data-toggle="tab"
-                                                    href="#e-l-p">LATEST PRODUCTS</a>
-                                            </li>
-                                            <li class="nav-item">
-
-                                                <a class="nav-link btn--e-white-brand-shadow active" data-toggle="tab"
-                                                    href="#e-b-s">BEST SELLING</a>
-                                            </li>
-                                            <li class="nav-item">
-
-                                                <a class="nav-link btn--e-white-brand-shadow" data-toggle="tab"
-                                                    href="#e-t-r">TOP RATING</a>
-                                            </li>
-                                            <li class="nav-item">
-
-                                                <a class="nav-link btn--e-white-brand-shadow" data-toggle="tab"
-                                                    href="#e-f-p">FEATURED PRODUCTS</a>
-                                            </li>
-                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--====== End - Section Intro ======-->
-
 
                     <!--====== Section Content ======-->
                     <div class="section__content">
