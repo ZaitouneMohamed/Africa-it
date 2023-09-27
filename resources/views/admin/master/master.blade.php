@@ -106,35 +106,30 @@
                     </a>
                     <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="{{route('admin.orders.all')}}" class="menu-link">
+                        <a href="{{ route('admin.orders.all') }}" class="menu-link">
                         <div data-i18n="Account">All
                             <span class="badge bg-label-success me-1">
-                                {{ \App\Models\Order::groupBy('order_number')->count() }}
+                                {{ \App\Models\Order::all()->unique('order_number')->count() }}
                             </span>
                         </div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.orders.ConfirmedOrders') }}" class="menu-link">
                         <div data-i18n="Account">comfirmed
                             <span class="badge bg-label-success me-1">
-                                {{-- {{ \App\Models\Orders::where('statue', 1)->groupBy('order_number')->count() }} --}}
+                                {{ \App\Models\Order::groupBy('order_number')->Confirmed()->count() }}
                             </span>
                         </div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                        <div data-i18n="Account">annuller
-                            <span class="badge bg-label-success me-1">
-                                {{-- {{ \App\Models\Orders::groupBy('order_number')->where('statue', 2)->count() }} --}}
+                    </a>
+                </li>
+                <li class="menu-item">
+                        <a href="{{ route('admin.orders.AnnuledOrders') }}" class="menu-link">
+                            <div data-i18n="Account">annuller
+                                <span class="badge bg-label-success me-1">
+                                {{ \App\Models\Order::groupBy('order_number')->Annuller()->count() }}
                             </span>
                         </div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
-                        <div data-i18n="Connections">Create</div>
                         </a>
                     </li>
                     </ul>

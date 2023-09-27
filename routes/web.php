@@ -102,6 +102,8 @@ Route::prefix("admin")->name("admin.")->group(function () {
     // orders
     Route::controller(AdminOrderController::class)->group(function() {
         Route::get('/orders', 'OrdersList')->name("orders.all");
+        Route::get('/orders/confirmed', 'ConfirmedOrders')->name("orders.ConfirmedOrders");
+        Route::get('/orders/annuller', 'AnnuledOrders')->name("orders.AnnuledOrders");
         Route::get('/order/{order_number}', 'ViewOrder')->name("order.view");
         Route::get('/ChangeStatue/{statue}-{order_number}', 'ChangeStatue')->name("order.ChangeStatue");
     });

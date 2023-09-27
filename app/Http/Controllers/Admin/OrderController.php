@@ -31,4 +31,14 @@ class OrderController extends Controller
             "success" => "statue updated successfly"
         ]);
     }
+    function ConfirmedOrders()
+    {
+        $orders = Order::confirmed()->get();
+        return view('admin.content.orders.orders', compact('orders'));
+    }
+    function AnnuledOrders()
+    {
+        $orders = Order::Annuller()->get();
+        return view('admin.content.orders.orders', compact('orders'));
+    }
 }

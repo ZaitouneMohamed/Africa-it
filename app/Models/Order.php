@@ -64,4 +64,14 @@ class Order extends Model
     {
         return Order::where('order_number', $this->order_number)->sum('total');
     }
+    // get annuled orderd
+    public function scopeAnnuller($query)
+    {
+        return $query->where("statue", 2);
+    }
+    // get confirmed orderd
+    public function scopeConfirmed($query)
+    {
+        return $query->where("statue", 1);
+    }
 }
