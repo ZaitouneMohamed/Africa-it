@@ -1,33 +1,10 @@
 @extends('landing.layouts.master')
 
 @section('content')
+    <br><br><br><br>
     <!--====== App Content ======-->
     <div class="app-content">
 
-        <!--====== Section 1 ======-->
-        <div class="u-s-p-y-60">
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="container">
-                    <div class="breadcrumb">
-                        <div class="breadcrumb__wrap">
-                            <ul class="breadcrumb__list">
-                                <li class="has-separator">
-
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li class="is-marked">
-
-                                    <a href="signin.html">Signin</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--====== End - Section 1 ======-->
 
 
         <!--====== Section 2 ======-->
@@ -56,10 +33,6 @@
                             <div class="l-f-o">
                                 <div class="l-f-o__pad-box">
                                     <h1 class="gl-h1">I'M NEW CUSTOMER</h1>
-
-                                    <span class="gl-text u-s-m-b-30">By creating an account with our store, you will be able
-                                        to move through the checkout process faster, store shipping addresses, view and
-                                        track your orders in your account and more.</span>
                                     <div class="u-s-m-b-15">
 
                                         <a class="l-f-o__create-link btn--e-transparent-brand-b-2"
@@ -94,9 +67,9 @@
 
                                             <input class="input-text input-text--primary-style" type="email"
                                                 id="login-email" placeholder="Enter E-mail" name="email">
-                                                @error("email")
-                                                    <span style="color: red">{{ $message }}</span>
-                                                @enderror
+                                            @error('email')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="u-s-m-b-30">
 
@@ -104,9 +77,9 @@
 
                                             <input class="input-text input-text--primary-style" type="text"
                                                 name="password" id="login-password" placeholder="Enter Password">
-                                                @error("password")
-                                                    <span style="color: red">{{ $message }}</span>
-                                                @enderror
+                                            @error('password')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="gl-inline">
                                             <div class="u-s-m-b-30">
