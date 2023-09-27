@@ -9,15 +9,34 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "order_number", "user_id",
-        "category", "sub_categorie",
-        "product", "qty", "adresse", "delivery_date",
-        "branch", "payement_methode", "delivery_time", "statue", "product_price", "total"
+        "order_number",
+        "user_id",
+        "product_id",
+        "qty",
+        "adresse_id",
+        "delivery_date",
+        "branch",
+        "payement_methode",
+        "delivery_time",
+        "statue",
+        "total"
     ];
 
     public function User()
     {
         return $this->belongsTo(User::class);
+    }
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+    public function Adresse()
+    {
+        return $this->belongsTo(Adresse::class);
+    }
+    public function Branch()
+    {
+        return $this->belongsTo(Branch::class);
     }
     public function getStatueAttribute($value)
     {
