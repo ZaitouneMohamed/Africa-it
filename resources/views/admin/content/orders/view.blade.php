@@ -78,6 +78,7 @@
                 <thead class="bg-light">
                     <tr>
                         <th>OrdersNumber</th>
+                        <th>image</th>
                         <th>product</th>
                         <th>price</th>
                         <th>qty</th>
@@ -88,6 +89,7 @@
                     @foreach ($order as $item)
                         <tr>
                             <td>{{ $item->order_number }}</td>
+                            <td><img src="{{ $item->product->first_image }}" alt="" width="77px" style="border-radius: 25%"></td>
                             <td>{{ $item->product->title }}</td>
                             <td>{{ $item->product->price }}</td>
                             <td>{{ $item->qty }}</td>
