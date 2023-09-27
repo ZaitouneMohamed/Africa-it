@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\Profile\ProfileController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserAdresse;
 use Illuminate\Support\Facades\Route;
 
@@ -50,8 +51,11 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
     Route::get('getCartContent',  'getCartContent')->name('getCartContent');
 });
 
-// product show
-// Route::resource("product", ProductController::class)->only("show");
+// Orders controller
+
+Route::controller(OrderController::class)->name("order.")->group(function() {
+    Route::post('placeOrder',"PlaceOrder")->name("place");
+});
 
 
 // Auth Controller

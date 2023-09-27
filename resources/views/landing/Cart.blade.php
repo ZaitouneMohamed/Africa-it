@@ -1,6 +1,10 @@
 @extends('landing.layouts.master')
 
 @section('content')
+    @php
+        $tomorrow = date('Y-m-d', strtotime('+1 day'));
+        $after_tomorrow = date('Y-m-d', strtotime('+2 day'));
+    @endphp
     <!--====== App Content ======-->
     <div class="app-content">
 
@@ -120,7 +124,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
-                                <form class="f-cart">
+                                <form class="f-cart" action="{{ route('order.place') }}" method="POST">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
                                             <div class="f-cart__pad-box">
@@ -143,17 +148,19 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="radio-box">
-                                                            <input type="radio" id="tomorrow" name="DeliveryDay" checked>
+                                                            <input type="radio" id="tomorrow" name="delivery_date"
+                                                                value="{{ $tomorrow }}" checked>
                                                             <div class="radio-box__state radio-box__state--primary">
                                                                 <label class="radio-box__label"
                                                                     for="tomorrow">Tomorrow</label>
                                                             </div>
                                                         </div>
                                                         <div class="radio-box">
-                                                            <input type="radio" id="AftrerTomorrow" name="DeliveryDay">
+                                                            <input type="radio" id="AftrerTomorrow" name="delivery_date"
+                                                                value="{{ $after_tomorrow }}">
                                                             <div class="radio-box__state radio-box__state--primary">
                                                                 <label class="radio-box__label"
-                                                                    for="AftrerTomorrow">Tomorrow</label>
+                                                                    for="AftrerTomorrow">{{ $after_tomorrow }}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -162,7 +169,7 @@
                                                             <div class="radio-box">
                                                                 <input type="radio" id="{{ $item->id }}"
                                                                     @if ($loop->first) checked @endif
-                                                                    name="DeliveryTime" value="{{ $item->Fulltime }}">
+                                                                    name="delivery_time" value="{{ $item->Fulltime }}">
                                                                 <div class="radio-box__state radio-box__state--primary">
                                                                     <label class="radio-box__label"
                                                                         for="{{ $item->id }}">{{ $item->FullTime }}</label>
@@ -208,7 +215,8 @@
                                                 @foreach (\App\Models\Branch::all() as $item)
                                                     <!--====== Radio Box ======-->
                                                     <div class="radio-box">
-                                                        <input type="radio" id="{{ $item->id }}" name="branch"
+                                                        <input type="radio" id="{{ $item->name }}" name="branch"
+                                                            value="{{ $item->id }}"
                                                             @if ($loop->first) checked @endif>
                                                         <div class="radio-box__state radio-box__state--primary">
                                                             <label class="radio-box__label"
@@ -226,7 +234,7 @@
                                                 <h1 class="gl-h1">Payement Method</h1>
                                                 <!--====== Radio Box ======-->
                                                 <div class="radio-box">
-                                                    <input type="radio" id="CashOnDelivery" name="PayementMethod"
+                                                    <input type="radio" id="CashOnDelivery" name="payement_methode"
                                                         checked value="on delivery">
                                                     <div class="radio-box__state radio-box__state--primary">
                                                         <label class="radio-box__label" for="CashOnDelivery">Cash On
@@ -234,7 +242,7 @@
                                                     </div>
                                                 </div><br>
                                                 <div class="radio-box">
-                                                    <input type="radio" id="CashOnDelivery" name="PayementMethod"
+                                                    <input type="radio" id="CashOnDelivery" name="payement_methode"
                                                         value="card">
                                                     <div class="radio-box__state radio-box__state--primary">
                                                         <label class="radio-box__label" for="CashOnDelivery">By
@@ -250,7 +258,7 @@
                                             <h1 class="gl-h1">Adresse</h1>
                                             @forelse (Auth::user()->adresses as $item)
                                                 <div class="radio-box">
-                                                    <input type="radio" id="CashOnDelivery" name="adresse"
+                                                    <input type="radio" id="CashOnDelivery" name="adresse_id"
                                                         @if ($loop->first) checked @endif
                                                         value="{{ $item->id }}">
                                                     <div class="radio-box__state radio-box__state--primary">
