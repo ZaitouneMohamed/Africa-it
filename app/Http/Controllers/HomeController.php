@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Review;
 use App\Models\SubCategorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,11 +16,15 @@ class HomeController extends Controller
         $last_categories = Categorie::latest()->with('Image')->take(4)->get();
         $prenium_product = Product::Prenium()->with(["SubCategorie", "Images", "Reviews"])->get();
         $last_product = Product::latest()->with(["SubCategorie", "Images", "Reviews"])->get();
+        $random_products = Product::inRandomOrder()
+        ->limit(5)
+        ->get();
         $subCategories = SubCategorie::latest()->get();
         return view('landing.home')->with([
             "lastCategories" => $last_categories,
             "prenium_product" => $prenium_product,
             "last_products" => $last_product,
+            "random_products" => $random_products,
             "subCategories" => $subCategories
         ]);
     }
