@@ -1,7 +1,7 @@
 @extends('admin.master.master')
 
 @section('content')
-    <h1>Orders List ({{ $orders->count() }}) </h1>
+    <h1>Orders List ({{ $orders->unique('order_number')->count() }}) </h1>
     <div class="card">
         @if (session()->has('success'))
             <div class="alert alert-success">
@@ -27,13 +27,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $item)
+                    @foreach ($orders->unique('order_number') as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->order_number }}</td>
                             <td>{{ $item->delivery_date }}</td>
                             <td>{{ $item->delivery_time }}</td>
-                            <td>{{ $item->user->full_name }}</td>
+                            <td>{{ $item->user->name }}</td>
                             <td>{{ $item->Total }} $</td>
                             <td>{!! $item->statue !!}</td>
                             <td>
@@ -43,7 +43,7 @@
                                         <i class="fa fa-gear" aria-hidden="true"></i>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{route('admin.ViewOrder',$item->order_number)}}">View</a></li>
+                                        <li><a class="dropdown-item" href="{{route('admin.order.view',$item->order_number)}}">View</a></li>
                                     </ul>
                                 </div>
                             </td>

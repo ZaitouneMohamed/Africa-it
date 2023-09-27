@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategorieController;
 use App\Http\Controllers\Admin\TimeSlotController;
@@ -97,6 +98,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::resource("branch", BranchController::class);
         Route::resource("TimeSlot", TimeSlotController::class);
         Route::resource("SubCategorie", SubCategorieController::class);
+    });
+    // orders
+    Route::controller(AdminOrderController::class)->group(function() {
+        Route::get('/orders', 'OrdersList')->name("orders.all");
+        Route::get('/order/{order_number}', 'ViewOrder')->name("order.view");
+        Route::get('/ChangeStatue/{statue}-{order_number}', 'ChangeStatue')->name("order.ChangeStatue");
     });
     // home
     Route::get('/login', function () {

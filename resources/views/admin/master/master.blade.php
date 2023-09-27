@@ -106,10 +106,10 @@
                     </a>
                     <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{route('admin.orders.all')}}" class="menu-link">
                         <div data-i18n="Account">All
                             <span class="badge bg-label-success me-1">
-                                {{-- {{ \App\Models\Orders::groupBy('order_number')->count() }} --}}
+                                {{ \App\Models\Order::groupBy('order_number')->count() }}
                             </span>
                         </div>
                         </a>

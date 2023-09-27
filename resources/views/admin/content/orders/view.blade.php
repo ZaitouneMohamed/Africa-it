@@ -8,8 +8,8 @@
                 <div class="card-body">
                     <h5 class="card-title">order number : {{ $order->first()->order_number }}</h5>
                     <h5 class="card-title">total item : {{ $order->count('product') }}</h5>
-                    <h5 class="card-title">order time : {{ $order->first()->created_at }}</h5>
-                    <h5 class="card-title">delivery time : {{ $order->first()->delivery_date }}</h5>
+                    <h5 class="card-title">delivery time : {{ $order->first()->delivery_time }}</h5>
+                    <h5 class="card-title">order time : {{ $order->first()->delivery_date }}</h5>
                 </div>
             </div>
         </div>
@@ -22,10 +22,11 @@
                     @endphp
                     @foreach ($order as $item)
                         @php
-                            $total += $item->qty * $item->product_price;
+                            $total += $item->qty * $item->product->price;
                         @endphp
                     @endforeach
                     <h5 class="card-title">Total : @php echo $total + 30; @endphp </h5>
+                    {{-- <h5 class="card-title">Total : {{ $order->total }} </h5> --}}
                     <h5 class="cart-text">Payement Method : {{ $order->first()->payement_methode }} </h5>
                 </div>
             </div>
@@ -34,17 +35,29 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Delivery Adresse</h5>
-                    <h5 class="card-title">{{ $order->first()->adresse }}</h5>
+                    <h5 class="card-title">{{ $order->first()->adresse->adresse }}</h5>
                     {!! $order->first()->statue !!}
                     <div class="mb-3">
                         <label for="defaultSelect" class="form-label">Change statue</label>
-                        <select id="defaultSelect" onchange="f1()" class="form-select">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa fa-gear" aria-hidden="true"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('admin.order.ChangeStatue', [1, $order->first()->order_number]) }}">confirm</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('admin.order.ChangeStatue', [2, $order->first()->order_number]) }}">annuller</a>
+                                </li>
+                            </ul>
+                        </div>
+                        {{-- <select id="defaultSelect" onchange="f1()" class="form-select">
                             <option>Default select</option>
-                            <option value="confirmed">@php $statue = "confirmed"  @endphp<a
-                                    href="{{ route('admin.ChangeStatue', ['statue', $order->first()->order_number]) }}">confirmed</a>
+                            <option value="confirmed"><a
+                                    href="{{ route('admin.order.ChangeStatue', ['statue', $order->first()->order_number]) }}">confirmed</a>
                             </option>
                             <option value="annuller">annuller</option>
-                        </select>
+                        </select> --}}
                     </div>
                 </div>
             </div>
@@ -75,10 +88,10 @@
                     @foreach ($order as $item)
                         <tr>
                             <td>{{ $item->order_number }}</td>
-                            <td>{{ $item->product }}</td>
-                            <td>{{ $item->product_price }}</td>
+                            <td>{{ $item->product->title }}</td>
+                            <td>{{ $item->product->price }}</td>
                             <td>{{ $item->qty }}</td>
-                            <td>{{ $item->qty * $item->product_price }} $</td>
+                            <td>{{ $item->qty * $item->product->price }} $</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -96,7 +109,7 @@
         function f1() {
             statue = document.getElementById('defaultSelect').value;
             order_number = {{ $order->first()->order_number }}
-            link = "admin/ChangeStatue/" + statue +"/" + order_number
+            link = "admin/ChangeStatue/" + statue + "/" + order_number
             window.location(link);
         }
     </script>
