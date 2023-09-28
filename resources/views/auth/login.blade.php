@@ -48,14 +48,15 @@
                                             <button class="gl-s-api__btn gl-s-api__btn--fb" type="button"><i
                                                     class="fab fa-facebook-f"></i>
 
-                                                <span>Signin with Facebook</span></button>
+                                                <span> Signin with Facebook</span></button>
                                         </div>
                                         <div class="u-s-m-b-15">
 
                                             <button class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i
                                                     class="fab fa-google"></i>
 
-                                                <span>Signin with Google</span></button>
+                                                <span><a href="{{ route('google.redirect') }}" style="color: white">Signin with
+                                                        Google</a></span></button>
                                         </div>
                                     </div>
                                     <form class="l-f-o__form" method="POST" action="{{ route('login') }}">

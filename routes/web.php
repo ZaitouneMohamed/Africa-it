@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategorieController;
 use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\Profile\ProfileController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\HomeController;
@@ -71,7 +72,13 @@ Route::prefix("auth")->group(function () {
         });
         Route::get("logout", "logout")->name("logout")->middleware("auth");
     });
+    // Google login & register
+    Route::get('/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 });
+
+
+
 
 // User Profile Routes
 

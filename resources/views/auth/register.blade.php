@@ -31,18 +31,15 @@
                                     <h1 class="gl-h1">PERSONAL INFORMATION</h1>
                                     <div class="gl-s-api">
                                         <div class="u-s-m-b-15">
-
                                             <button class="gl-s-api__btn gl-s-api__btn--fb" type="button"><i
                                                     class="fab fa-facebook-f"></i>
-
                                                 <span>Signup with Facebook</span></button>
                                         </div>
                                         <div class="u-s-m-b-30">
-
                                             <button class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i
                                                     class="fab fa-google"></i>
-
-                                                <span>Signup with Google</span></button>
+                                                    <span><a href="{{ route('google.redirect') }}" style="color: white">Signin with
+                                                        Google</a></span></button>
                                         </div>
                                     </div>
                                     <form class="l-f-o__form" action="{{ route('register') }}" method="POST">
