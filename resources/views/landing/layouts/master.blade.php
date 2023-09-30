@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--====== Vendor Css ======-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -501,7 +502,7 @@
                                             <span class="mini-product__price">$` + item.price + `</span>
                                         </div>
                                     </div>
-                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
+                                    <a class="mini-product__delete-link far fa-trash-alt" onclick="DeleteProductFromCard(` + item.id + `)"></a>
                                 </div>
                                 `
                             cart +=
