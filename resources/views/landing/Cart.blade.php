@@ -287,7 +287,3 @@
 @endsection
 
 @section('title', 'checkout')
-
-@section('styles')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
