@@ -23,7 +23,7 @@ class CategorieController extends Controller
     }
     public function index()
     {
-        $categories = Categorie::latest()->withCount(["products","subcategories"])->paginate(7);
+        $categories = Categorie::latest()->withCount(["products", "subcategories"])->paginate(7);
         return view('admin.content.categories.index', compact("categories"));
     }
 
@@ -51,7 +51,6 @@ class CategorieController extends Controller
 
         $categorie = Categorie::create([
             "name" => $request->name,
-            "image" => $image
         ]);
         $new_image = new Image(["url" => $image]);
 
@@ -94,34 +93,45 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $categorie = Categorie::findOrFail($id);
-        // if ($request->has("image")) {
-            //     $image = $categorie->image;
-            //     $image_path = public_path('images/categories/' . $image);
-            //     if (file_exists($image_path)) {
-                //         unlink($image_path);
-                //     }
-                //     $new_image = $request->image;
-        //     $image_name = time() . '_' . $new_image->getClientOriginalName();
-        //     $new_image->move(public_path('images/categories'), $image_name);
-        //     $categorie->update([
-            //         "image" => $image_name
-            //     ]);
-            // }
-            // $data = $request->validated();
-            // $categorie->update([
-                //     "name" => $request->name
-                // ]);
-                // return redirect()->route('admin.categories.index')->with([
-                    //     "success" => "categorie updated successfly"
-                    // ]);
-                }
+        $categorie = Categorie::findOrFail($id);
 
-                /**
-                 * Remove the specified resource from storage.
-                 *
-                 * @param  int  $id
-                 * @return \Illuminate\Http\Response
+        // Validate the request data
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'image', // Ensure 'image' is a valid image file (optional)
+        ]);
+
+        // Handle image update if a new image is provided
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            try {
+                $this->imagesServices->deleteImageFromDirectory($categorie->image->url, 'categories');
+            } catch (\Exception $e) {
+                // Handle any exceptions that may occur during image deletion
+                // You can log the error or perform other error handling here
+            }
+
+            // Upload and save the new image
+            $newImage = $this->imagesServices->uploadImage($request->file('image'), 'categories');
+            $categorie->image->update(['url' => $newImage]);
+        }
+
+        // Update the category's name
+        $categorie->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.categories.index')->with([
+            'success' => 'Category updated successfully',
+        ]);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
