@@ -99,9 +99,38 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+{
+    // Find the product by its ID
+    $product = Product::findOrFail($id);
+
+    // Update the product's fields
+    $product->update([
+        "title" => $request->title,
+        "description" => $request->description,
+        "slug" => Str::slug($request->title),
+        "price" => $request->price,
+        "old_price" => $request->old_price,
+        "sub_categorie_id" => $request->sub_categorie,
+    ]);
+
+    // Handle image updates
+    if ($request->has('images')) {
+        // Delete existing images associated with the product
+        $product->images()->delete();
+
+        // Upload and save the new images
+        foreach ($request->file('images') as $picture) {
+            $image = $this->imagesservices->uploadImage($picture, "products");
+            $newImage = new Image(["url" => $image]);
+            $product->images()->save($newImage);
+        }
     }
+
+    return redirect()->route('admin.product.index')->with([
+        "success" => "Product updated successfully",
+    ]);
+}
+
 
     /**
      * Remove the specified resource from storage.
