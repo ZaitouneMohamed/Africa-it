@@ -17,8 +17,8 @@ class HomeController extends Controller
         $prenium_product = Product::Prenium()->with(["SubCategorie", "Images", "Reviews"])->get();
         $last_product = Product::latest()->with(["SubCategorie", "Images", "Reviews"])->get();
         $random_products = Product::inRandomOrder()
-        ->limit(5)
-        ->get();
+            ->limit(5)
+            ->get();
         $subCategories = SubCategorie::latest()->get();
         return view('landing.home')->with([
             "lastCategories" => $last_categories,
@@ -28,22 +28,47 @@ class HomeController extends Controller
             "subCategories" => $subCategories
         ]);
     }
-    function AllProducts()
+    public function AllProducts(Request $request)
     {
-        $products = Product::with("SubCategorie")->paginate(20);
+        $query = Product::query();
+
+        if ($request->min) {
+            $query->where('price', '>=', $request->min);
+        }
+
+        if ($request->max) {
+            $query->where('price', '<=', $request->max);
+        }
+
+        $products = $query->with("SubCategorie")->paginate(10);
+
         return view('landing.ProductsIndex', compact("products"));
     }
+
     function OneProduct($id)
     {
         $product = Product::with(['Reviews', 'SubCategorie', 'Images'])->findOrFail($id);
         return view('landing.ProductDetail', compact("product"));
     }
-    function ProductOfCategorie($id)
+    function ProductOfCategorie(Request $request, $id)
     {
         // Retrieve the category and its subcategories with their products
         $categorie = Categorie::find($id);
-        $products = $categorie->products()->paginate(20);
-        return view('landing.ProductsIndex', compact('products'));
+        // Start with all products related to the category
+        $query = $categorie->products();
+
+        if ($request->min) {
+            $query->where('price', '>=', $request->min);
+        }
+
+        if ($request->max) {
+            $query->where('price', '<=', $request->max);
+        }
+
+        // Paginate the results
+        $products = $query->with('subcategorie')->paginate(20);
+
+        return view('landing.ProductsIndex', compact('products','id'));
     }
     function SwitchPreniumModeForProduct($id)
     {
