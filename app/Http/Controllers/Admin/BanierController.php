@@ -130,13 +130,14 @@ class BanierController extends Controller
      */
     public function destroy($id)
     {
-        $categorie = Banier::findOrFail($id);
+        $banier = Banier::findOrFail($id);
 
         // Delete the associated image from storage
-        $this->imagesServices->deleteImageFromDirectory($categorie->image->url, 'baniers');
+        $this->imagesServices->deleteImageFromDirectory($banier->image->url, 'baniers');
 
         // Delete the Banier record from the database
-        $categorie->delete();
+        $banier->Image->delete();
+        $banier->delete();
 
         return redirect()->route('admin.banier.index')->with([
             'success' => 'banier deleted successfully',
