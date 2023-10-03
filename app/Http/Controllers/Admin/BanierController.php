@@ -46,7 +46,7 @@ class BanierController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             "categorie" => "required",
             "Image" => "required|image|mimes:jpeg,png,jpg",
         ]);
@@ -83,7 +83,9 @@ class BanierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Categorie::all();
+        $banier = Banier::findOrFail($id);
+        return view('admin.content.baniers.edit', compact(["banier", "categories"]));
     }
 
     /**
@@ -95,7 +97,29 @@ class BanierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categorie = Banier::findOrFail($id);
+
+        // Validate the request data
+        $this->validate($request, [
+            'categorie' => 'required',
+            'image' => 'image',
+        ]);
+
+        if ($request->hasFile('image')) {
+            try {
+                $this->imagesServices->deleteImageFromDirectory($categorie->image->url, 'baniers');
+            } catch (\Exception $e) {
+            }
+            $newImage = $this->imagesServices->uploadImage($request->file('image'), 'baniers');
+            $categorie->image->update(['url' => $newImage]);
+        }
+        $categorie->update([
+            'categorie_id' => $request->categorie,
+        ]);
+
+        return redirect()->route('admin.banier.index')->with([
+            'success' => 'banier updated successfully',
+        ]);
     }
 
     /**
@@ -106,6 +130,16 @@ class BanierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categorie = Banier::findOrFail($id);
+
+        // Delete the associated image from storage
+        $this->imagesServices->deleteImageFromDirectory($categorie->image->url, 'baniers');
+
+        // Delete the Banier record from the database
+        $categorie->delete();
+
+        return redirect()->route('admin.banier.index')->with([
+            'success' => 'banier deleted successfully',
+        ]);
     }
 }

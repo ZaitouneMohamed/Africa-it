@@ -29,16 +29,18 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>
+                                        <a href="{{ route('admin.banier.edit', $item->id) }}" class="dropdown-item"
+                                            href=""><i class="bx bx-edit-alt me-1"></i>
                                             Edit</a>
-                                        {{-- <a class="dropdown-item"
+                                        <a class="dropdown-item"
                                             onclick="document.getElementById({{ $item->id }}).submit();"><i
                                                 class="bx bx-trash me-1"></i>
                                             Delete</a>
-                                        <form id="{{ $item->id }}" method="post">
+                                        <form id="{{ $item->id }}"
+                                            action="{{ route('admin.banier.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                        </form> --}}
+                                        </form>
                                     </div>
                                 </div>
                             </td>
