@@ -17,57 +17,22 @@
                     <!--====== Primary Slider ======-->
                     <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-black">
                         <div class="owl-carousel primary-style-2" id="hero-slider">
-                            <div class="hero-slide hero-slide--4">
-                                <div class="primary-style-2-container">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="slider-content slider-content--animation">
-                                                <span class="content-span-1 u-c-white">Find Top Brands</span>
-                                                <span class="content-span-2 u-c-white">10% Off On Intimates</span>
-                                                <span class="content-span-3 u-c-white">Find Intimates on best prices</span>
-                                                <span class="content-span-4 u-c-white">Starting At
-                                                    <span class="u-c-brand">$100.00</span></span>
-                                                <a class="shop-now-link btn--e-brand" href="#">SHOP
-                                                    NOW</a>
+                            @forelse ($baniers as $item)
+                                    <div class="hero-slide hero-slide--4" style="background-image: url('{{ $item->BanierImage }}')" >
+                                    <div class="primary-style-2-container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="slider-content slider-content--animation">
+                                                    <span class="content-span-2 u-c-white">{{ $item->categorie->name }}</span><br><br><br><br>
+                                                    <a class="shop-now-link btn--e-brand" href="#">SHOP
+                                                        NOW</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="hero-slide hero-slide--4">
-                                <div class="primary-style-2-container">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="slider-content slider-content--animation">
-                                                <span class="content-span-1 u-c-white">Find Top Brands</span>
-                                                <span class="content-span-2 u-c-white">10% Off On Intimates</span>
-                                                <span class="content-span-3 u-c-white">Find Intimates on best prices</span>
-                                                <span class="content-span-4 u-c-white">Starting At
-                                                    <span class="u-c-brand">$100.00</span></span>
-                                                <a class="shop-now-link btn--e-brand" href="#">SHOP
-                                                    NOW</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hero-slide hero-slide--4">
-                                <div class="primary-style-2-container">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="slider-content slider-content--animation">
-                                                <span class="content-span-1 u-c-white">Find Top Brands</span>
-                                                <span class="content-span-2 u-c-white">10% Off On Intimates</span>
-                                                <span class="content-span-3 u-c-white">Find Intimates on best prices</span>
-                                                <span class="content-span-4 u-c-white">Starting At
-                                                    <span class="u-c-brand">$100.00</span></span>
-                                                <a class="shop-now-link btn--e-brand" href="#">SHOP
-                                                    NOW</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                            @endforelse
                         </div>
                     </div>
                     <!--====== End - Primary Slider ======-->

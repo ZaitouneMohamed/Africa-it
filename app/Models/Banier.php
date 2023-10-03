@@ -10,15 +10,19 @@ class Banier extends Model
     use HasFactory;
 
     protected $fillable = [
-        "text", "subcategorie_id"
+        "categorie_id"
     ];
-    public function SubCategorie()
+    public function Categorie()
     {
-        return $this->belongsTo(SubCategorie::class);
+        return $this->belongsTo(Categorie::class);
     }
 
     public function Image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+    public function getBanierImageAttribute()
+    {
+        return asset("images/baniers/" . $this->Image->url);
     }
 }
