@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banier;
 use App\Models\Categorie;
 use App\Models\Product;
 use App\Models\Review;
@@ -19,13 +20,15 @@ class HomeController extends Controller
         $random_products = Product::inRandomOrder()
             ->limit(5)
             ->get();
+        $baniers = Banier::with("Categorie")->get();
         $subCategories = SubCategorie::latest()->get();
         return view('landing.home')->with([
             "lastCategories" => $last_categories,
             "prenium_product" => $prenium_product,
             "last_products" => $last_product,
             "random_products" => $random_products,
-            "subCategories" => $subCategories
+            "subCategories" => $subCategories,
+            "baniers" => $baniers
         ]);
     }
     public function AllProducts(Request $request)
@@ -68,7 +71,7 @@ class HomeController extends Controller
         // Paginate the results
         $products = $query->with('subcategorie')->paginate(20);
 
-        return view('landing.ProductsIndex', compact('products','id'));
+        return view('landing.ProductsIndex', compact('products', 'id'));
     }
     function SwitchPreniumModeForProduct($id)
     {
