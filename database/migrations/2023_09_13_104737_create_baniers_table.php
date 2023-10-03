@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('baniers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('categorie_id')->unsigned();
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
