@@ -14,32 +14,22 @@
                 <!--====== End - Main Logo ======-->
                 <!--====== Search Form ======-->
                 <form class="main-form">
-
                     <label for="main-search"></label>
-
                     <input class="input-text input-text--border-radius input-text--style-2" type="text"
                         id="main-search" placeholder="Search">
-
                     <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
                 </form>
                 <!--====== End - Search Form ======-->
-
-
                 <!--====== Dropdown Main plugin ======-->
                 <div class="menu-init" id="navigation">
-
                     <button class="btn btn--icon toggle-button toggle-button--white fas fa-cogs"
                         type="button"></button>
-
                     <!--====== Menu ======-->
                     <div class="ah-lg-mode">
-
                         <span class="ah-close">✕ Close</span>
-
                         <!--====== List ======-->
                         <ul class="ah-list ah-list--design1 ah-list--link-color-white">
                             {{-- <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Settings">
-
                                 <a><i class="fas fa-user-cog" style="color: rgb(0, 0, 0)"></i></a>
 
                                 <!--====== Dropdown ======-->

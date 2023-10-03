@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BanierController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\ParameterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategorieController;
 use App\Http\Controllers\Admin\TimeSlotController;
@@ -107,6 +108,10 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::resource("TimeSlot", TimeSlotController::class);
         Route::resource("banier", BanierController::class);
         Route::resource("SubCategorie", SubCategorieController::class);
+    });
+    // parameter
+    Route::controller(ParameterController::class)->name("parameter.")->group(function(){
+        Route::get('parameter',"ParameterIndex")->name("show");
     });
     // orders
     Route::controller(AdminOrderController::class)->group(function() {

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Categorie;
 use App\Models\Order;
+use App\Models\Parameter;
 use App\Models\Product;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
@@ -29,15 +30,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrap() ;
+        Paginator::useBootstrap();
 
         View::composer("landing.layouts.navbar", function ($view) {
-                $view->with('categories', Categorie::latest()->with("subcategories")->get());
+            $categories = Categorie::latest()->with("subcategories")->get();
+            $parameter = Parameter::take(1);
+
+            $view->with([
+                'categories' => $categories,
+                'otherVariable' => $parameter,
+            ]);
         });
         View::composer("profile.dash", function ($view) {
-                $view->with('orders_count', Auth::user()->Orders->unique('order_number')->count());
-                // $view->with('categories', Categorie::latest()->with("subcategories")->get());
-                // $view->with('categories', Categorie::latest()->with("subcategories")->get());
+            $view->with('orders_count', Auth::user()->Orders->unique('order_number')->count());
+        });
+        View::composer("admin.content.parameters", function ($view) {
+            $view->with('parameter', Parameter::take(1) );
         });
     }
 }
