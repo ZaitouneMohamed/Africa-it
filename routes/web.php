@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BanierController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -104,6 +105,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::resource("categories", CategorieController::class);
         Route::resource("branch", BranchController::class);
         Route::resource("TimeSlot", TimeSlotController::class);
+        Route::resource("banier", BanierController::class);
         Route::resource("SubCategorie", SubCategorieController::class);
     });
     // orders

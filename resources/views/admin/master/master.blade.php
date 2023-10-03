@@ -187,6 +187,10 @@
                     <i class="menu-icon tf-icons bx bx-table"></i>
                     <div data-i18n="Tables">Branch</div>
                 </a>
+                <a href="{{ route('admin.banier.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-table"></i>
+                    <div data-i18n="Tables">baniers</div>
+                </a>
                 </li>
                 <!-- Misc -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
