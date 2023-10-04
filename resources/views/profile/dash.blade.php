@@ -20,7 +20,7 @@
             </li>
             <li>
 
-                <a href="#">My Payment Options</a>
+                <a href="{{route('user.profile.WishList')}}">My Wish List</a>
             </li>
             <li>
 

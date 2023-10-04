@@ -22,4 +22,9 @@ class ProfileController extends Controller
         $orders = Auth::user()->Orders;
         return view('profile.orders.index', compact('orders'));
     }
+    function WishList()
+    {
+        $products = Auth::user()->favorites;
+        return view('profile.wishlist', compact("products"));
+    }
 }

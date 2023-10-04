@@ -89,6 +89,7 @@ Route::middleware(['auth'])->prefix("user")->name("user.profile.")->group(functi
         Route::get('/', "index")->name("index");
         Route::get('/profile', "profile")->name("profile");
         Route::get('/myOrders', "MyOrders")->name("MyOrders");
+        Route::get('/WishList', "WishList")->name("WishList");
     });
     Route::resource("adresse",UserAdresse::class)->only(['index','create','store']);
 });
