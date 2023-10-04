@@ -42,7 +42,7 @@ class AuthController extends Controller
         ])->assignRole("user");
         Auth::login($user);
         // $user->notify(new WelcomeEmail());
-        return redirect()->intended('/auth/profile')->with([
+        return redirect()->intended('/user/profile')->with([
             "success" => __("Registration successful. You can now log-in.")
         ]);
     }
