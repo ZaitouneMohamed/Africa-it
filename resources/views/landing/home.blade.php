@@ -3,7 +3,7 @@
 @section('title', 'SHOP')
 
 @section('content')
-<input type="hidden" name="" id="qty" value="1">
+    <input type="hidden" name="" id="qty" value="1">
     <!--====== App Content ======-->
     <div class="app-content">
 
@@ -18,12 +18,14 @@
                     <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-black">
                         <div class="owl-carousel primary-style-2" id="hero-slider">
                             @forelse ($baniers as $item)
-                                    <div class="hero-slide hero-slide--4" style="background-image: url('{{ $item->BanierImage }}')" >
+                                <div class="hero-slide hero-slide--4"
+                                    style="background-image: url('{{ $item->BanierImage }}')">
                                     <div class="primary-style-2-container">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="slider-content slider-content--animation">
-                                                    <span class="content-span-2 u-c-white">{{ $item->categorie->name }}</span><br><br><br><br>
+                                                    <span
+                                                        class="content-span-2 u-c-white">{{ $item->categorie->name }}</span><br><br><br><br>
                                                     <a class="shop-now-link btn--e-brand" href="#">SHOP
                                                         NOW</a>
                                                 </div>
@@ -68,13 +70,12 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
                                         <div class="category-o">
                                             <div class="aspect aspect--bg-grey aspect--square category-o__img-wrap">
-                                                <img class="aspect__img category-o__img"
-                                                    src="{{ $item->CategorieImage }}"
+                                                <img class="aspect__img category-o__img" src="{{ $item->CategorieImage }}"
                                                     alt="">
                                             </div>
                                             <div class="category-o__info">
                                                 <a class="category-o__shop-now btn--e-white-brand"
-                                                    href="{{route('ProductOfCategorie',$item->id)}}">{{ $item->name }}</a>
+                                                    href="{{ route('ProductOfCategorie', $item->id) }}">{{ $item->name }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -126,24 +127,29 @@
                                                             <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
                                                                     <li>
-                                                                        <a data-modal="modal" data-modal-id="#quick-look" onclick="GetProduct({{$item->id}})"
-                                                                            data-tooltip="tooltip" data-placement="top"
-                                                                            title="Quick View"><i
+                                                                        <a data-modal="modal" data-modal-id="#quick-look"
+                                                                            onclick="GetProduct({{ $item->id }})"
+                                                                            style="color: white" data-tooltip="tooltip"
+                                                                            data-placement="top" title="Quick View"><i
                                                                                 class="fas fa-search-plus"></i></a>
                                                                     </li>
                                                                     <li>
                                                                         <a data-modal="modal" data-modal-id="#add-to-cart"
                                                                             data-tooltip="tooltip" data-placement="top"
+                                                                            style="color: white"
                                                                             onclick="AddToCart({{ $item->id }})"
-                                                                            title="Add to Cart"><i
+                                                                            title="Add to Cartt"><i
                                                                                 class="fas fa-plus-circle"></i></a>
                                                                     </li>
-                                                                    <li>
-                                                                        <a href="#" data-tooltip="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Add to Wishlist"><i
-                                                                                class="fas fa-heart"></i></a>
-                                                                    </li>
+                                                                    @auth
+                                                                        <li>
+                                                                            <a data-tooltip="tooltip" data-placement="top"
+                                                                                style="color: white"
+                                                                                onclick="ToogleFavorites({{ $item->id }},{{ Auth::user()->id }})"
+                                                                                title="Add to Wishlistttt"><i
+                                                                                    class="fas fa-heart"></i></a>
+                                                                        </li>
+                                                                    @endauth
                                                                     <li>
                                                                         <a href="#" data-tooltip="tooltip"
                                                                             data-placement="top"
@@ -162,7 +168,8 @@
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                                 class="fas fa-star"></i>
-                                                            <span class="product-o__review">({{$item->OverallReviews}})</span>
+                                                            <span
+                                                                class="product-o__review">({{ $item->OverallReviews }})</span>
                                                         </div>
                                                         <span class="product-o__price">${{ $item->price }}
                                                             <span
@@ -210,59 +217,58 @@
                                     <div class="slider-fouc">
                                         <div class="owl-carousel tab-slider" data-item="4">
                                             @foreach ($prenium_product as $item)
-                                            <div class="u-s-m-b-30">
-                                                <div class="product-o product-o--hover-on">
-                                                    <div class="product-o__wrap">
-                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                            href="{{ route('oneProduct', $item->id) }}">
-                                                            <img class="aspect__img" src="{{ $item->FirstImage }}"
-                                                                alt=""></a>
-                                                        <div class="product-o__action-wrap">
-                                                            <ul class="product-o__action-list">
-                                                                <li>
-                                                                    <a data-modal="modal" data-modal-id="#quick-look" onclick="GetProduct({{$item->id}})"
-                                                                        data-tooltip="tooltip" data-placement="top"
-                                                                        title="Quick View"><i
-                                                                            class="fas fa-search-plus"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                        data-tooltip="tooltip" data-placement="top"
-                                                                        onclick="AddToCart({{ $item->id }})"
-                                                                        title="Add to Cart"><i
-                                                                            class="fas fa-plus-circle"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" data-tooltip="tooltip"
-                                                                        data-placement="top"
-                                                                        title="Add to Wishlist"><i
-                                                                            class="fas fa-heart"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" data-tooltip="tooltip"
-                                                                        data-placement="top"
-                                                                        title="Email me When the price drops"><i
-                                                                            class="fas fa-envelope"></i></a>
-                                                                </li>
-                                                            </ul>
+                                                <div class="u-s-m-b-30">
+                                                    <div class="product-o product-o--hover-on">
+                                                        <div class="product-o__wrap">
+                                                            <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                                href="{{ route('oneProduct', $item->id) }}">
+                                                                <img class="aspect__img" src="{{ $item->FirstImage }}"
+                                                                    alt=""></a>
+                                                            <div class="product-o__action-wrap">
+                                                                <ul class="product-o__action-list">
+                                                                    <li>
+                                                                        <a data-modal="modal" data-modal-id="#quick-look"
+                                                                            onclick="GetProduct({{ $item->id }})"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            title="Quick View"><i
+                                                                                class="fas fa-search-plus"></i></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-modal="modal" data-modal-id="#add-to-cart"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            onclick="AddToCart({{ $item->id }})"
+                                                                            title="Add to Cart"><i
+                                                                                class="fas fa-plus-circle"></i></a>
+                                                                    </li>
+                                                                    @auth
+                                                                        <li>
+                                                                            <a data-tooltip="tooltip" data-placement="top"
+                                                                                style="color: white"
+                                                                                onclick="ToogleFavorites({{ $item->id }},{{ Auth::user()->id }})"
+                                                                                title="Add to Wishlistttt"><i
+                                                                                    class="fas fa-heart"></i></a>
+                                                                        </li>
+                                                                    @endauth
+                                                                </ul>
+                                                            </div>
                                                         </div>
+                                                        <span class="product-o__category">
+                                                            <a href="#">{{ $item->subcategorie->name }}</a></span>
+                                                        <span class="product-o__name">
+                                                            <a
+                                                                href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>
+                                                        <div class="product-o__rating gl-rating-style"><i
+                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                                class="fas fa-star"></i>
+                                                            <span
+                                                                class="product-o__review">({{ $item->OverallReviews }})</span>
+                                                        </div>
+                                                        <span class="product-o__price">${{ $item->price }}
+                                                            <span
+                                                                class="product-o__discount">${{ $item->old_price }}</span></span>
                                                     </div>
-                                                    <span class="product-o__category">
-                                                        <a href="#">{{ $item->subcategorie->name }}</a></span>
-                                                    <span class="product-o__name">
-                                                        <a
-                                                            href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>
-                                                    <div class="product-o__rating gl-rating-style"><i
-                                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                            class="fas fa-star"></i>
-                                                        <span class="product-o__review">({{$item->OverallReviews}})</span>
-                                                    </div>
-                                                    <span class="product-o__price">${{ $item->price }}
-                                                        <span
-                                                            class="product-o__discount">${{ $item->old_price }}</span></span>
                                                 </div>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -301,59 +307,64 @@
                                     <div class="slider-fouc">
                                         <div class="owl-carousel tab-slider" data-item="4">
                                             @foreach ($random_products as $item)
-                                            <div class="u-s-m-b-30">
-                                                <div class="product-o product-o--hover-on">
-                                                    <div class="product-o__wrap">
-                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                            href="{{ route('oneProduct', $item->id) }}">
-                                                            <img class="aspect__img" src="{{ $item->FirstImage }}"
-                                                                alt=""></a>
-                                                        <div class="product-o__action-wrap">
-                                                            <ul class="product-o__action-list">
-                                                                <li>
-                                                                    <a data-modal="modal" data-modal-id="#quick-look" onclick="GetProduct({{$item->id}})"
-                                                                        data-tooltip="tooltip" data-placement="top"
-                                                                        title="Quick View"><i
-                                                                            class="fas fa-search-plus"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                        data-tooltip="tooltip" data-placement="top"
-                                                                        onclick="AddToCart({{ $item->id }})"
-                                                                        title="Add to Cart"><i
-                                                                            class="fas fa-plus-circle"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" data-tooltip="tooltip"
-                                                                        data-placement="top"
-                                                                        title="Add to Wishlist"><i
-                                                                            class="fas fa-heart"></i></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" data-tooltip="tooltip"
-                                                                        data-placement="top"
-                                                                        title="Email me When the price drops"><i
-                                                                            class="fas fa-envelope"></i></a>
-                                                                </li>
-                                                            </ul>
+                                                <div class="u-s-m-b-30">
+                                                    <div class="product-o product-o--hover-on">
+                                                        <div class="product-o__wrap">
+                                                            <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                                href="{{ route('oneProduct', $item->id) }}">
+                                                                <img class="aspect__img" src="{{ $item->FirstImage }}"
+                                                                    alt=""></a>
+                                                            <div class="product-o__action-wrap">
+                                                                <ul class="product-o__action-list">
+                                                                    <li>
+                                                                        <a data-modal="modal" data-modal-id="#quick-look"
+                                                                            onclick="GetProduct({{ $item->id }})"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            title="Quick View"><i
+                                                                                class="fas fa-search-plus"></i></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a data-modal="modal" data-modal-id="#add-to-cart"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            onclick="AddToCart({{ $item->id }})"
+                                                                            title="Add to Cart"><i
+                                                                                class="fas fa-plus-circle"></i></a>
+                                                                    </li>
+                                                                    @auth
+                                                                        <li>
+                                                                            <a data-tooltip="tooltip" data-placement="top"
+                                                                                style="color: white"
+                                                                                onclick="ToogleFavorites({{ $item->id }},{{ Auth::user()->id }})"
+                                                                                title="Add to Wishlistttt"><i
+                                                                                    class="fas fa-heart"></i></a>
+                                                                        </li>
+                                                                    @endauth
+                                                                    <li>
+                                                                        <a href="#" data-tooltip="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Email me When the price drops"><i
+                                                                                class="fas fa-envelope"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
+                                                        <span class="product-o__category">
+                                                            <a href="#">{{ $item->subcategorie->name }}</a></span>
+                                                        <span class="product-o__name">
+                                                            <a
+                                                                href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>
+                                                        <div class="product-o__rating gl-rating-style"><i
+                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                                class="fas fa-star"></i>
+                                                            <span
+                                                                class="product-o__review">({{ $item->OverallReviews }})</span>
+                                                        </div>
+                                                        <span class="product-o__price">${{ $item->price }}
+                                                            <span
+                                                                class="product-o__discount">${{ $item->old_price }}</span></span>
                                                     </div>
-                                                    <span class="product-o__category">
-                                                        <a href="#">{{ $item->subcategorie->name }}</a></span>
-                                                    <span class="product-o__name">
-                                                        <a
-                                                            href="{{ route('oneProduct', $item->id) }}">{{ $item->title }}</a></span>
-                                                    <div class="product-o__rating gl-rating-style"><i
-                                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                            class="fas fa-star"></i>
-                                                        <span class="product-o__review">({{$item->OverallReviews}})</span>
-                                                    </div>
-                                                    <span class="product-o__price">${{ $item->price }}
-                                                        <span
-                                                            class="product-o__discount">${{ $item->old_price }}</span></span>
                                                 </div>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
@@ -368,7 +379,7 @@
                 <!--====== End - Section 2 ======-->
 
                 <!--====== Section 11 ======-->
-                @include("pages.FeedBack")
+                @include('pages.FeedBack')
                 <!--====== End - Section 11 ======-->
 
                 <!--====== Section 10 ======-->
@@ -430,8 +441,7 @@
         <ul class="nav" id="init-scrollspy">
             <li>
 
-                <a class="nav-link" href="#top" data-click-scroll="#top"><i
-                        class="fas fa-tv"></i></a>
+                <a class="nav-link" href="#top" data-click-scroll="#top"><i class="fas fa-tv"></i></a>
             </li>
             <li>
 
