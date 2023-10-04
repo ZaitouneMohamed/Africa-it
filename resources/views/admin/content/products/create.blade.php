@@ -30,8 +30,8 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">image</label>
-                    <input type="file" class="form-control" id="exampleInputEmail1" accept="image/*" multiple name="images[]"
-                        placeholder="Enter image">
+                    <input type="file" class="form-control" id="exampleInputEmail1" accept="image/*" multiple
+                        name="images[]" placeholder="Enter image">
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -62,14 +62,16 @@
     <script>
         document.getElementById('categorie').addEventListener('change', function() {
             var selectedCategorie = this.value;
+            var selectedCategorie = this.value;
+            var url = "{{ route('getSubCategories', ':id') }}";
+            url = url.replace(':id', selectedCategorie);
             $.ajax({
-                url: 'http://africait.electroniqueclasse.com/api/GetSubCategories/' + selectedCategorie,
-                type: 'GET',
-                dataType: 'json',
+                url: url,
                 success: function(response) {
                     var subCategoriesHtml = '';
                     response.forEach(function(categorie) {
-                        subCategoriesHtml += '<option value="' + categorie.id + '">' + categorie.name +
+                        subCategoriesHtml += '<option value="' + categorie.id + '">' + categorie
+                            .name +
                             '</option>';
                     });
                     document.getElementById('subcategorie').innerHTML = subCategoriesHtml;
