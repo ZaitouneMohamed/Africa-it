@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="images/favicon.png" rel="shortcut icon">
     <title>AFRICA IT INNOVATION - @yield('title')</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/ludus/images/logo/africa-it-logo.jpeg') }}" />
@@ -147,7 +148,8 @@
                                 <div class="pd-detail">
                                     <div>
 
-                                        <span class="pd-detail__name" id="product_name_model">Nikon Camera 4k Lens Zoom
+                                        <span class="pd-detail__name" id="product_name_model">Nikon Camera 4k Lens
+                                            Zoom
                                             Pro</span>
                                     </div>
                                     <div>
@@ -458,6 +460,39 @@
             })
         }
 
+        function ToogleFavorites(product_id, user_id) {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('AddToFavorite') }}",
+                data:{
+                    user_id: user_id,
+                    product_id: product_id
+                },
+                success: function(response) {
+                    title = response.success
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: true,
+                        timer: 4000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: title
+                    })
+                    MyFunctions();
+                },
+                error: function() {
+                    alert('An error occurred .');
+                }
+            })
+        }
+
         function getcartCount() {
             $.ajax({
                 type: 'GET',
@@ -499,10 +534,12 @@
                                                 <a href="#">` + item.title + `</a>
                                             </span>
                                             <span class="mini-product__quantity">` + item.quantity + ` x</span>
-                                            <span class="mini-product__price">$` + item.price + `</span>
+                                            <span class="mini-product__price">$` + item.price +
+                                `</span>
                                         </div>
                                     </div>
-                                    <a class="mini-product__delete-link far fa-trash-alt" onclick="DeleteProductFromCard(` + item.id + `)"></a>
+                                    <a class="mini-product__delete-link far fa-trash-alt" onclick="DeleteProductFromCard(` +
+                                item.id + `)"></a>
                                 </div>
                                 `
                             cart +=
@@ -624,7 +661,9 @@
     <script src="{{ asset('assets/ludus/js/jquery.shopnav.js') }} "></script>
 
     <!--====== App ======-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
     <script src="{{ asset('assets/ludus/js/app.js') }} "></script>
 </body>
 
