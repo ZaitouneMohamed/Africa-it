@@ -119,7 +119,7 @@ class HomeController extends Controller
     function deleteImage($id)
     {
         $image = Image::find($id);
-        $this->imagesServices->DeleteImageFromDirectory($image, "products");
+        $this->imagesServices->DeleteImageFromDirectory($image->url, "products");
         $image->delete();
         return redirect()->back()->with([
             "success" => "image deleted successfully"
