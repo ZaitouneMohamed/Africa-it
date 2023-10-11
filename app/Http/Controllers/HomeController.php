@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Banier;
 use App\Models\Categorie;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\SubCategorie;
+use App\Services\ImagesServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    protected $imagesServices;
+    public function __construct(ImagesServices $imagesServices)
+    {
+        $this->imagesServices = $imagesServices;
+    }
     function index()
     {
         $last_categories = Categorie::latest()->with('Image')->take(4)->get();
@@ -108,5 +115,14 @@ class HomeController extends Controller
     function about()
     {
         return view('landing.about');
+    }
+    function deleteImage($id)
+    {
+        $image = Image::find($id);
+        $this->imagesServices->DeleteImageFromDirectory($image, "products");
+        $image->delete();
+        return redirect()->back()->with([
+            "success" => "image deleted successfully"
+        ]);
     }
 }
