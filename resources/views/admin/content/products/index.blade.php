@@ -43,9 +43,11 @@
                                 <td>{{ $item->SubCategorie->name }}</td>
                                 <td>
                                     @if ($item->prenium == 1)
-                                        <a class="btn btn-success" href="{{route('SwitchPreniumModeForProduct',$item->id)}}">prenium</a>
+                                        <a class="btn btn-success"
+                                            href="{{ route('SwitchPreniumModeForProduct', $item->id) }}">prenium</a>
                                     @else
-                                        <a class="btn btn-danger" href="{{route('SwitchPreniumModeForProduct',$item->id)}}">not
+                                        <a class="btn btn-danger"
+                                            href="{{ route('SwitchPreniumModeForProduct', $item->id) }}">not
                                             prenium</a>
                                     @endif
                                 </td>
@@ -59,10 +61,30 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></button>
-                                    {{-- @if ($item->subcategories->count() == 0)
-                                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
-                                    @endif --}}
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item"
+                                                href="{{ route('admin.product.edit', $item->id) }}"><i
+                                                    class="bx bx-edit-alt me-1"></i>
+                                                Edit</a>
+                                            @if ($item->SubCategorie->count() == 0)
+                                                <a class="dropdown-item"
+                                                    onclick="document.getElementById({{ $item->id }}).submit();"><i
+                                                        class="bx bx-trash me-1"></i>
+                                                    Delete</a>
+                                                <form id="{{ $item->id }}"
+                                                    action="{{ route('admin.categories.destroy', $item->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                </form>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

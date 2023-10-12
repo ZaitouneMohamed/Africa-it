@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\products\CreateProductRequest;
+use App\Http\Requests\Admin\products\UpdateProductRequest;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Support\Str;
@@ -26,7 +27,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with("SubCategorie")->paginate(20);
-        return view('admin.content.products.index',compact("products"));
+        return view('admin.content.products.index', compact("products"));
     }
 
     /**
@@ -77,7 +78,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('landing.ProductDetail',compact("product"));
+        return view('landing.ProductDetail', compact("product"));
     }
 
     /**
@@ -88,7 +89,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.content.products.edit', compact('product'));
     }
 
     /**
@@ -98,38 +100,30 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-{
-    // Find the product by its ID
-    $product = Product::findOrFail($id);
-
-    // Update the product's fields
-    $product->update([
-        "title" => $request->title,
-        "description" => $request->description,
-        "slug" => Str::slug($request->title),
-        "price" => $request->price,
-        "old_price" => $request->old_price,
-        "sub_categorie_id" => $request->sub_categorie,
-    ]);
-
-    // Handle image updates
-    if ($request->has('images')) {
-        // Delete existing images associated with the product
-        $product->images()->delete();
-
-        // Upload and save the new images
-        foreach ($request->file('images') as $picture) {
-            $image = $this->imagesservices->uploadImage($picture, "products");
-            $newImage = new Image(["url" => $image]);
-            $product->images()->save($newImage);
+    public function update(UpdateProductRequest $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $picture) {
+                $image = $this->imagesservices->uploadImage($picture, "products");
+                $newImage = new Image(["url" => $image]);
+                $product->images()->save($newImage);
+            }
         }
-    }
+        $product->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "slug" => Str::slug($request->title),
+            "price" => $request->price,
+            "old_price" => $request->old_price,
+            "sub_categorie_id" => $request->sub_categorie,
+        ]);
+        // Handle image updates
 
-    return redirect()->route('admin.product.index')->with([
-        "success" => "Product updated successfully",
-    ]);
-}
+        return redirect()->route('admin.product.index')->with([
+            "success" => "Product updated successfully",
+        ]);
+    }
 
 
     /**
