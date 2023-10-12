@@ -57,8 +57,8 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
 
 // Orders controller
 
-Route::controller(OrderController::class)->name("order.")->group(function() {
-    Route::post('placeOrder',"PlaceOrder")->name("place");
+Route::controller(OrderController::class)->name("order.")->group(function () {
+    Route::post('placeOrder', "PlaceOrder")->name("place");
 });
 
 
@@ -85,45 +85,45 @@ Route::prefix("auth")->group(function () {
 // User Profile Routes
 
 Route::middleware(['auth'])->prefix("user")->name("user.profile.")->group(function () {
-    Route::controller(ProfileController::class)->group(function() {
+    Route::controller(ProfileController::class)->group(function () {
         Route::get('/', "index")->name("index");
         Route::get('/profile', "profile")->name("profile");
         Route::get('/myOrders', "MyOrders")->name("MyOrders");
         Route::get('/WishList', "WishList")->name("WishList");
     });
-    Route::resource("adresse",UserAdresse::class)->only(['index','create','store']);
+    Route::resource("adresse", UserAdresse::class)->only(['index', 'create', 'store']);
 });
 
 
 
 
 // Admin Routes
-Route::prefix("admin")->name("admin.")->group(function () {
-    Route::middleware(['web', 'AdminRedirection', 'role:admin'])->group(function () {
-        Route::get('/', function () {
-            return view('admin.index');
-        });
-        Route::resource("product", ProductController::class);
-        Route::resource("categories", CategorieController::class);
-        Route::resource("branch", BranchController::class);
-        Route::resource("TimeSlot", TimeSlotController::class);
-        Route::resource("banier", BanierController::class);
-        Route::resource("SubCategorie", SubCategorieController::class);
+Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->name("admin.")->group(function () {
+    Route::get('/', function () {
+        return view('admin.index');
     });
-    // parameter
-    Route::controller(ParameterController::class)->name("parameter.")->group(function(){
-        Route::get('parameter',"ParameterIndex")->name("show");
+    Route::resource("product", ProductController::class);
+    Route::resource("categories", CategorieController::class);
+    Route::resource("branch", BranchController::class);
+    Route::resource("TimeSlot", TimeSlotController::class);
+    Route::resource("banier", BanierController::class);
+    Route::resource("SubCategorie", SubCategorieController::class);
+    Route::controller(ParameterController::class)->name("parameter.")->group(function () {
+        Route::get('parameter', "ParameterIndex")->name("show");
     });
     // orders
-    Route::controller(AdminOrderController::class)->group(function() {
+    Route::controller(AdminOrderController::class)->group(function () {
         Route::get('/orders', 'OrdersList')->name("orders.all");
         Route::get('/orders/confirmed', 'ConfirmedOrders')->name("orders.ConfirmedOrders");
         Route::get('/orders/annuller', 'AnnuledOrders')->name("orders.AnnuledOrders");
         Route::get('/order/{order_number}', 'ViewOrder')->name("order.view");
         Route::get('/ChangeStatue/{statue}-{order_number}', 'ChangeStatue')->name("order.ChangeStatue");
     });
-    // home
-    Route::get('/login', function () {
-        return view('admin.auth.login');
-    })->name("login")->middleware("guest");
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/deleteImage/{id}', 'deleteImage')->name("deleteimage");
+    });
 });
+
+Route::get('/admin/login', function () {
+    return view('admin.auth.login');
+})->name("admin.login")->middleware("guest");
