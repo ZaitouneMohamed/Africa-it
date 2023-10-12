@@ -37,10 +37,11 @@
                                 </button>
                             </li>
                         </ul>
-                        <form action="{{ route('admin.product.update', $product->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <div class="tab-content">
+                        <form action="{{ route('admin.product.update', $product->id) }}" method="post"
+                            enctype="multipart/form-data">
+                        <div class="tab-content">
+                                @csrf
+                                @method('PUT')
                                 <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
                                     <div class="row">
                                         <div class="col-6">
@@ -134,18 +135,18 @@
                                     <hr class="m-0">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">upload new images</label>
-                                        <input type="file" class="form-control"
-                                            accept="image/*" multiple name="images[]" placeholder="Enter image">
+                                        <input type="file" class="form-control" accept="image/*" multiple
+                                            name="images[]" placeholder="Enter image">
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                        <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
-                            @forelse ($product->Reviews as $item)
-                                {{ $item }}
-                            @empty
-                                <h5 class="text text-center">No Review Found For {{ $product->title }}</h5>
-                            @endforelse
+                                <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
+                                    @forelse ($product->Reviews as $item)
+                                    {{ $item }}
+                                    @empty
+                                    <h5 class="text text-center">No Review Found For {{ $product->title }}</h5>
+                                    @endforelse
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
