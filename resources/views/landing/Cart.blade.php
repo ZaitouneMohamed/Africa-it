@@ -230,11 +230,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-6 u-s-m-b-30">
-                                            <div class="f-cart__pad-box">
+                                            <div class="f-cart__pad-box" x-data="{ selectedOption: null }">
                                                 <h1 class="gl-h1">Payement Method</h1>
                                                 <!--====== Radio Box ======-->
                                                 <div class="radio-box">
-                                                    <input type="radio" id="CashOnDelivery" name="payement_methode"
+                                                    <input type="radio" id="CashOnDelivery" name="payement_methode" x-model="selectedOption"
                                                         checked value="on delivery">
                                                     <div class="radio-box__state radio-box__state--primary">
                                                         <label class="radio-box__label" for="CashOnDelivery">Cash On
@@ -242,12 +242,15 @@
                                                     </div>
                                                 </div><br>
                                                 <div class="radio-box">
-                                                    <input type="radio" id="CashOnDelivery" name="payement_methode"
+                                                    <input type="radio" id="CashOnDelivery" name="payement_methode" x-model="selectedOption"
                                                         value="card">
                                                     <div class="radio-box__state radio-box__state--primary">
                                                         <label class="radio-box__label" for="CashOnDelivery">By
                                                             Card</label>
                                                     </div>
+                                                </div>
+                                                <div x-show="selectedOption === 'card'">
+                                                    Card inputs
                                                 </div>
                                                 <!--====== End - Radio Box ======-->
                                             </div>
@@ -287,3 +290,7 @@
 @endsection
 
 @section('title', 'checkout')
+
+@section('styles')
+    <script src="//unpkg.com/alpinejs" defer></script>
+@endsection
