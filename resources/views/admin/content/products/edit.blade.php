@@ -39,7 +39,7 @@
                         </ul>
                         <form action="{{ route('admin.product.update', $product->id) }}" method="post"
                             enctype="multipart/form-data">
-                        <div class="tab-content">
+                            <div class="tab-content">
                                 @csrf
                                 @method('PUT')
                                 <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
@@ -122,12 +122,18 @@
                                     <button type="submit" class="btn btn-success">update</button>
                                 </div>
                                 <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
-                                    <h1 class="text text-center">click on any image to delete</h1>
+                                    @if ($product->Images->count() > 1)
+                                        <h1 class="text text-center">click on any image to delete</h1>
+                                    @endif
                                     @forelse ($product->Images as $item)
-                                        <a href="{{ route('admin.deleteimage', $item->id) }}">
-                                            <img src="{{ asset('images/products') }}/{{ $item->url }}" width="150px"
-                                                alt="">
-                                        </a>
+                                        @if ($product->Images->count() > 1)
+                                            <a href="{{ route('admin.deleteimage', $item->id) }}">
+                                        @endif
+                                        <img src="{{ asset('images/products') }}/{{ $item->url }}" width="150px"
+                                            alt="">
+                                        @if ($product->Images->count() > 1)
+                                            </a>
+                                        @endif
                                     @empty
                                         <h5 class="text text-center">No Image Found For {{ $product->title }}</h5>
                                     @endforelse
@@ -141,18 +147,18 @@
                                 </div>
                                 <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
                                     @forelse ($product->Reviews as $item)
-                                    {{ $item }}
+                                        {{ $item }}
                                     @empty
-                                    <h5 class="text text-center">No Review Found For {{ $product->title }}</h5>
+                                        <h5 class="text text-center">No Review Found For {{ $product->title }}</h5>
                                     @endforelse
                                 </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Pills -->
+    </div>
+    <!-- Pills -->
     </div>
     <!-- / Content -->
     </div>

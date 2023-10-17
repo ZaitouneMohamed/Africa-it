@@ -89,6 +89,15 @@ class HomeController extends Controller
             "success" => "product updated sucessfly"
         ]);
     }
+    function SwitchActiveModeForProduct($id)
+    {
+        $product = Product::find($id);
+        $product->active = !$product->active;
+        $product->save();
+        return redirect()->back()->with([
+            "success" => "product updated sucessfly"
+        ]);
+    }
     function AddReview($id, Request $request)
     {
         // dd($request->all());

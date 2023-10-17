@@ -37,7 +37,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
     Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
-    Route::get('/SwitchPreniumModeForProduct/{id} ', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct");
+    Route::get('/SwitchPreniumModeForProduct/{id} ', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
+    Route::get('/SwitchActiveModeForProduct/{id} ', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
     Route::post('/AddReview/{id} ', 'AddReview')->name("AddReview");
 });
 

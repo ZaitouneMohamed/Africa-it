@@ -53,11 +53,11 @@
                                 </td>
                                 <td>
                                     @if ($item->active == 1)
-                                        <button class="btn btn-success"
-                                            wire:click="activeToogle({{ $item->id }})">Active</button>
+                                        <a class="btn btn-success"
+                                            href="{{ route('SwitchActiveModeForProduct', $item->id) }}">Active</a>
                                     @else
-                                        <button class="btn btn-danger" wire:click="activeToogle({{ $item->id }})">not
-                                            active</button>
+                                        <a class="btn btn-danger"
+                                            href="{{ route('SwitchActiveModeForProduct', $item->id) }}">Not Active</a>
                                     @endif
                                 </td>
                                 <td>
@@ -67,8 +67,7 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                                href="{{ route('admin.product.edit', $item->id) }}"><i
+                                            <a class="dropdown-item" href="{{ route('admin.product.edit', $item->id) }}"><i
                                                     class="bx bx-edit-alt me-1"></i>
                                                 Edit</a>
                                             @if ($item->SubCategorie->count() == 0)
