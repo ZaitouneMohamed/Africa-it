@@ -74,8 +74,8 @@ Route::prefix("auth")->group(function () {
         Route::middleware("guest")->group(function () {
             Route::get("login", "LoginForm")->name("login");
             Route::get("register", "RegisterForm")->name("register");
-            Route::post("login", "Login")->name("login");
-            Route::post("register", "Register")->name("register");
+            Route::post("login", "Login")->name("login.function");
+            Route::post("register", "Register")->name("register.function");
         });
         Route::get("logout", "logout")->name("logout")->middleware("auth");
     });

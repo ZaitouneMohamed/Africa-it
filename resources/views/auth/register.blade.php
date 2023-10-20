@@ -42,7 +42,7 @@
                                                         Google</a></span></button>
                                         </div>
                                     </div>
-                                    <form class="l-f-o__form" action="{{ route('register') }}" method="POST">
+                                    <form class="l-f-o__form" action="{{ route('register.function') }}" method="POST">
                                         @csrf
                                         @method('post')
                                         <div class="u-s-m-b-30">
