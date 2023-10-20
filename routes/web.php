@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ParameterController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategorieController;
+use App\Http\Controllers\Admin\SwitchController;
 use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -37,10 +38,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
     Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
-    Route::get('/SwitchPreniumModeForProduct/{id} ', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
-    Route::get('/SwitchActiveModeForProduct/{id} ', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
+    // Route::get('/SwitchPreniumModeForProduct/{id} ', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
+    // Route::get('/SwitchActiveModeForProduct/{id} ', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
     Route::post('/AddReview/{id} ', 'AddReview')->name("AddReview");
 });
+
 
 Route::controller(CartController::class)->name("cart.")->group(function () {
     Route::middleware("auth")->group(function () {
@@ -120,6 +122,14 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
         Route::get('/order/{order_number}', 'ViewOrder')->name("order.view");
         Route::get('/ChangeStatue/{statue}-{order_number}', 'ChangeStatue')->name("order.ChangeStatue");
     });
+    // SWITCH CONTROLLER
+    Route::controller(SwitchController::class)->group(function () {
+        Route::get('SwitchProductActive/{id}', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct");
+        Route::get('SwitchPreniumModeForProduct/{id}', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct");
+        Route::get('SwitchStatueOfTimeSlot/{id}', 'SwitchStatueOfTimeSlot')->name("SwitchStatueOfTimeSlot");
+    });
+
+    //
     Route::controller(HomeController::class)->group(function () {
         Route::get('/deleteImage/{id}', 'deleteImage')->name("deleteimage");
     });
