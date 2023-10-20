@@ -90,7 +90,7 @@ class BranchController extends Controller
     {
         $branch = Branch::findOrFail($id);
         $this->validate($request, [
-            "name" => "required|unique:branches,name",
+            "name" => "required",
             "attitude" => "required",
             "longtitude" => "required",
             "distance" => "required",
