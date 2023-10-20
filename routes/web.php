@@ -64,7 +64,7 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
 //     Route::post('placeOrder', "PlaceOrder")->name("place");
 // });
 
-Route::post('placeOrder',OrderController::class)->name("order.place");
+Route::post('placeOrder', OrderController::class)->name("order.place");
 
 
 // Auth Controller
@@ -95,6 +95,7 @@ Route::middleware(['auth'])->prefix("user")->name("user.profile.")->group(functi
         Route::get('/profile', "profile")->name("profile");
         Route::get('/myOrders', "MyOrders")->name("MyOrders");
         Route::get('/WishList', "WishList")->name("WishList");
+        Route::get('/OrderDetails/{order_number}', "OrderDetails")->name("OrderDetails");
     });
     Route::resource("adresse", UserAdresse::class)->only(['index', 'create', 'store']);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,5 +27,9 @@ class ProfileController extends Controller
     {
         $products = Auth::user()->favorites;
         return view('profile.wishlist', compact("products"));
+    }
+    function OrderDetails($order_number) {
+        $order = Order::where('order_number',$order_number)->get();
+        return view('profile.orders.details',compact('order'));
     }
 }

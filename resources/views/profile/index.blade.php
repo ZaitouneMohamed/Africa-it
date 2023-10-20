@@ -132,13 +132,13 @@
                                                                 <span>${{ $item->total }}</span>
                                                                 <div class="dash__link dash__link--brand">
 
-                                                                    <a href="dash-manage-order.html">MANAGE</a>
+                                                                    <a href="{{route('user.profile.OrderDetails',$item->order_number)}}">MANAGE</a>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 @empty
-                                                    go shoop
+                                                    <h1>No Order Found</h1>
                                                 @endforelse
                                             </tbody>
                                         </table>
