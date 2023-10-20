@@ -139,25 +139,29 @@
                 <span class="menu-header-text">Pages</span>
                 </li>
                 {{-- categorie --}}
+                <div class="menu-item">
+                    <a href="{{ route('admin.banier.index') }}" class="menu-link">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAehJREFUSEuVlj1OJDEQhb9KNyRFQlohBILDEPCTwiFIuAFcBSRCLrHZJgRICCTiyZDICrVdbVfZ7gY6gBnP1N97z69GKI8gKJre22sBNP2xb9nrb45qzimTe3ycP7eatU4XFCumRq25XGDc6THCDcrBahM+Ntd5ErhSeJxTl/Fr5XT0jrA9tdKcl4YqpBFB4AVhN8e2T53WA99lcNS10HkarcAYfCsg4jN0/Pa8V/gVpuiikWaYWKDjyZDqIVDLmNDpIapg6Fyhy7EM2PSJgyhy0GKuWV2+iTDvpcCHwv1w8qyNEKyminmqNYgOgX/AJ7AHsnGKco1K4CCQU3oPE6SO/mhOPhWZDu5RzusUsshBkFflvqjoFDgC/gIXDSwnwEM+WyngFFfJyjBuAc/2v8inMiIb0D1g0xhXUFHADtRIThPcAWfFBMdeNJF93k3gugjYDSBqPG/grD+HKGls+R50uYN8g9z9RZudXwzkN2CnmO2qpXZX8dXEsHQPUkeTXd+isr/imiNn/Q9cIzyuXDSPwdJ2834Rt6HfgAEiF+Jmjnb4263nNhoF8xWvN3uyK5Wl1himn2b+MFvxMegtwv4cNcvB63MwQbHl5qdBCRvczKiKbhXYQUf+wMbDeGN8I+HddutWXFxEX6WQ4x5hB9QtAAAAAElFTkSuQmCC"/>
+                        <div data-i18n="Tables">banner</div>
+                    </a>
+                </div>
                 <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    {{-- <i class="menu-icon tf-icons bx bx-dock-top"></i> --}}
-                    {{-- <box-icon name='category'></box-icon> --}}
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAiRJREFUSEuNlj9uVEEMxn/uuACwAgUkTpCSKsoWKeAMKSiQ4AaIC9BxAKREFJyAHimLROo0tCkSlgIQHAGjmeeZsWdmFbZYvef12J//fN+sUD8CaHtNT96Un6PPYLKfvT09x0CWooWaJN51yOyCGhbJGCeoB+iD2w5cDW2ppsN3BhxOc8IGWFv5n1EOWiEB0AZ0vcQIFaQX1TKFHY0Rs7dh+b77gYYK2lR8fD+baM/bUA/5IWY/AekPlNxmT0ADSKus2tv5WOpg77fo/xLnNakT8I3J6yPorIIMRW33XWKzL/FKZUOLLGdXgeQTDkxNEDjmtqqsdel15F4MViF5/k7X1BJ8AjkypDf4cVR2wBFtQq5hBSdaMLC34+0uSRjSTYgx50oecm1dGKagZyoc1p7FCBuQtVugFegJ8NgwnwPPQX75JXNDzm6FB0FZGw/rUqyAC4FVp7/fgH2BP0V4wxZlqVhQh8RpNx0DE4oPIMegH4HXVsFbhCco74CXZRIj0SyBZ0/jh/FA+I5yD7gL/DTZeIRwiXINPKwJXPm+RUEqXL/K1m2B+8AesF1UUx8oXKV3gb1piwakrYye4e9ReWYtegXcAt4AT4HTZdiDXE+G3JVnWpFmcBv4CtzxvVZhi7IP/C5SsAyzfd3IZKeyaQZlTf8CX4AXID+aT7lwJpfGCL6/5yb/CQaXIHZjgGCZKEkV7HANRsdeli1mpHDXxqnPPBn8A/ig9iLaeke1AAAAAElFTkSuQmCC"/>
-                    <div data-i18n="Account Settings">Categorie</div>
-                </a>
-                <ul class="menu-sub">
-                    <li class="menu-item">
-                    <a href="{{ route('admin.categories.index') }}" class="menu-link">
-                        <div data-i18n="Account">Categorie</div>
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAiRJREFUSEuNlj9uVEEMxn/uuACwAgUkTpCSKsoWKeAMKSiQ4AaIC9BxAKREFJyAHimLROo0tCkSlgIQHAGjmeeZsWdmFbZYvef12J//fN+sUD8CaHtNT96Un6PPYLKfvT09x0CWooWaJN51yOyCGhbJGCeoB+iD2w5cDW2ppsN3BhxOc8IGWFv5n1EOWiEB0AZ0vcQIFaQX1TKFHY0Rs7dh+b77gYYK2lR8fD+baM/bUA/5IWY/AekPlNxmT0ADSKus2tv5WOpg77fo/xLnNakT8I3J6yPorIIMRW33XWKzL/FKZUOLLGdXgeQTDkxNEDjmtqqsdel15F4MViF5/k7X1BJ8AjkypDf4cVR2wBFtQq5hBSdaMLC34+0uSRjSTYgx50oecm1dGKagZyoc1p7FCBuQtVugFegJ8NgwnwPPQX75JXNDzm6FB0FZGw/rUqyAC4FVp7/fgH2BP0V4wxZlqVhQh8RpNx0DE4oPIMegH4HXVsFbhCco74CXZRIj0SyBZ0/jh/FA+I5yD7gL/DTZeIRwiXINPKwJXPm+RUEqXL/K1m2B+8AesF1UUx8oXKV3gb1piwakrYye4e9ReWYtegXcAt4AT4HTZdiDXE+G3JVnWpFmcBv4CtzxvVZhi7IP/C5SsAyzfd3IZKeyaQZlTf8CX4AXID+aT7lwJpfGCL6/5yb/CQaXIHZjgGCZKEkV7HANRsdeli1mpHDXxqnPPBn8A/ig9iLaeke1AAAAAElFTkSuQmCC"/>
+                        <div data-i18n="Account Settings">Categorie</div>
                     </a>
-                    </li>
-                    <li class="menu-item">
-                    <a href="{{ route('admin.SubCategorie.index') }}" class="menu-link">
-                        <div data-i18n="Connections">Sub Categorie</div>
-                    </a>
-                    </li>
-                </ul>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{ route('admin.categories.index') }}" class="menu-link">
+                                <div data-i18n="Account">Categorie</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ route('admin.SubCategorie.index') }}" class="menu-link">
+                                <div data-i18n="Connections">Sub Categorie</div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -166,16 +170,19 @@
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
-                    <a href="{{ route('admin.product.index') }}" class="menu-link">
-                        <div data-i18n="Account">List</div>
-                    </a>
+                        <a href="{{ route('admin.product.index') }}" class="menu-link">
+                            <div data-i18n="Account">List</div>
+                        </a>
                     </li>
                     <li class="menu-item">
-                    <a href="{{ route('admin.product.create') }}" class="menu-link">
-                        <div data-i18n="Connections">Add New</div>
-                    </a>
+                        <a href="{{ route('admin.product.create') }}" class="menu-link">
+                            <div data-i18n="Connections">Add New</div>
+                        </a>
                     </li>
                 </ul>
+            </li>
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">BUSINESS SECTION</span>
                 </li>
                 <!-- Tables -->
                 <li class="menu-item">
@@ -189,9 +196,10 @@
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAs9JREFUSEuF1UvoVVUUBvDfKoqEIovoX9qDGkTiwEYRjYSSyIggIiFC6DFwXEEEDqJB4sBGDRKkIJOMRoH0IAknUU2KSJyFj6zUIpuUSNCKfe6+9+xz7vnbmZx99lmPvdb6vm+H8gSyWw3X0xvVsJpW3zbEwqCGa78nnZcMlqJNnLBJPPRfsu02bsI+3FeNv8Tz+G2q7HGIRVtWKbME/w7l3cSLn8h78MelWhB90BBSdhuDVPvxND7CK/X3Hulh7MWOicENzjLZoibFz1gnrEjn6tzvlPEjeQq3jytYbtFEjU1lZ8gV4VYZpyvcbsNJnMHNpYKu+kEHZ8gscf4POQfwVG3Ry8FVyevYGryT4dnS0j7BcrLJGTWbd+ErXD8yPFtRdWKyRQOYtoOdgFKwLnkBL9Zgu/EGzs1IOu00atGwNKwRHpBxqKF51nU02H5UxuGQF+YI7NE4mkE93dV4rRLpCqwNLlbncYI1+BMX8Zbwqoy/+wPNE/T9ujf5EAUl5TlKh/fT9bs9ZNkqdh8TG2vQ43gi+LY3LGazBAXPhbHX4fvgpeTwaIDzbrctKr4PBXsybJSdfGwSfh3D9AM8iUPEY+S/A2WYfbRQH8w3uDzDJ9KW4O3kufnZ53FKG9bPCFVbsiTFcaTm2LwKezcQx0Keyo7hodGirrQbhPUyfmkHVeWhwHFzpeeRRS39z7K6hU4Ei6SsdBU0CD6IbSjMfQb/DC6iCRkYqcCVGd6XHsd+YfuM4c2Qgx+Sa4ivySIPxy+l5c3h7sZBYZOM8yE3JGdnGtUnKKtH8B6xliwDLRB8N+Q3GU7OUZFchjtwP7YTD9bW/S5tC75YwG2C6TdiZ7AjKURrngnVnP29ELyZ7CLOL2R0qKZLd+W1RTHpYLc1u/tgoDkngs+Sz/Fp8FdDkoVpI9dDTPaVrXKRDu6ACd8GFIvlKlfmmFBDhI4JMYLefyukFi1Pjb/fAAAAAElFTkSuQmCC"/>
                     <div data-i18n="Tables">Branch</div>
                 </a>
-                <a href="{{ route('admin.banier.index') }}" class="menu-link">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAehJREFUSEuVlj1OJDEQhb9KNyRFQlohBILDEPCTwiFIuAFcBSRCLrHZJgRICCTiyZDICrVdbVfZ7gY6gBnP1N97z69GKI8gKJre22sBNP2xb9nrb45qzimTe3ycP7eatU4XFCumRq25XGDc6THCDcrBahM+Ntd5ErhSeJxTl/Fr5XT0jrA9tdKcl4YqpBFB4AVhN8e2T53WA99lcNS10HkarcAYfCsg4jN0/Pa8V/gVpuiikWaYWKDjyZDqIVDLmNDpIapg6Fyhy7EM2PSJgyhy0GKuWV2+iTDvpcCHwv1w8qyNEKyminmqNYgOgX/AJ7AHsnGKco1K4CCQU3oPE6SO/mhOPhWZDu5RzusUsshBkFflvqjoFDgC/gIXDSwnwEM+WyngFFfJyjBuAc/2v8inMiIb0D1g0xhXUFHADtRIThPcAWfFBMdeNJF93k3gugjYDSBqPG/grD+HKGls+R50uYN8g9z9RZudXwzkN2CnmO2qpXZX8dXEsHQPUkeTXd+isr/imiNn/Q9cIzyuXDSPwdJ2834Rt6HfgAEiF+Jmjnb4263nNhoF8xWvN3uyK5Wl1himn2b+MFvxMegtwv4cNcvB63MwQbHl5qdBCRvczKiKbhXYQUf+wMbDeGN8I+HddutWXFxEX6WQ4x5hB9QtAAAAAElFTkSuQmCC"/>
-                    <div data-i18n="Tables">baniers</div>
+                </li>
+                <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAk1JREFUSEuNljtoFUEUhr+DVytBC1+lEERsYmMjKIhiJCpYmHSiKFiksxPUVrG0SpVGxZSCBgmCCpJgZZGkiVYhZXIbQdRC45HZmd0989iNC5c7O/fMefznP/9cIX0E0LBZrcNGWAsatmLDat/6qu17/WXRYw+Z0ywAOP/N0yZczG4A8k7QvwpjwJ/tq08ClA80wa4Bz4ONW79IUrO4es9aqqAysxU055ZRRsPbCnA8CxC3q+qfWFh6MD0LvE8qPAN89LkIXWejHvSU/Aa4mAR4DVzxe10B3P72z1GB1RrOFjxR0BGEtZifKdPa93PAJeCA+wgcVL/eD+yoM7VDIuiWwhBkE3QD2ATct6v4g6+sJel30N39Jcftt3NouSGwoXCoCmCMpgSmo2mMiZeAWWCat3AubgJPq+4kk3xLhRk02w8wx04zFYCfIBOg831zMAnMAoP/oaCXqopFQxXGUJbiNqcs8gfGQV8BO4sky9CRr4JeUGE9ZVQEUTLE08BUOX4rA6Fnp4HFUjKeRQVJFfSTwslIVCIZjxjwAHhYQ9qIUKpFJoMB8AthEN8NIVwuDy57V0WWraWp8S+nBF2oG9gOVzqlzSWzBewBfrRjVVDTNgG5C/o4h44nweZOQR6uAi9LiJd6MwdcNjR1WnQd+BzadQJkFvSImfwZhdvlCvKhHAL7gN9V8+BRWFuYdwncU+E+iuvZOnA4zjbWIqvpb4G9wA3gS3EW6nYKx1B5BvoN4XzzJ6EmWSZYln2FHzsVKMXG+OlKsONI141a5to/uaHjIUvCDTcAAAAASUVORK5CYII="/>                    <div data-i18n="Tables">Products Review</div>
                 </a>
                 </li>
             </ul>
@@ -246,21 +254,6 @@
                         <a class="dropdown-item" href="{{ route('admin.profile') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
-                        </a>
-                        </li>
-                        <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                        </li>
-                        <li>
-                        <a class="dropdown-item" href="#">
-                            <span class="d-flex align-items-center align-middle">
-                            <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                            <span class="flex-grow-1 align-middle">Billing</span>
-                            <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                            </span>
                         </a>
                         </li>
                         <li>
