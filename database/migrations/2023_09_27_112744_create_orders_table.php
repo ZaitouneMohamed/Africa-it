@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreignId('adresse_id')->unsigned();
+            $table->foreignId('adresse_id')->unsigned()->nullable();
             $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
             $table->date("delivery_date");
             $table->string("delivery_time");
