@@ -106,6 +106,10 @@ class SubCategorieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SubCategorie::findOrFail($id)->delete();
+        return redirect()->route('admin.SubCategorie.index')->with([
+            "success" => "sub categorie update with success"
+        ]);
+
     }
 }

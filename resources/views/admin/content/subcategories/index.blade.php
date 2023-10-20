@@ -25,10 +25,14 @@
                                 <td> {{ Str::limit($item->name, 10, '...') }}</td>
                                 <td>{{ $item->categorie->name }}</td>
                                 <td>{{ $item->products->count() }}</td>
-                                <td>
+                                <td class="d-flex">
                                     <a href="{{route('admin.SubCategorie.edit',$item->id)}}" class="btn btn-warning"><i class="nav-icon fas fa-edit"></i></a>
+                                    <form action="{{route('admin.SubCategorie.destroy',$item->id)}}" method="post">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button class="btn btn-danger" style="margin-left: 5px"><i class="nav-icon fas fa-trash"></i></button>
+                                    </form>
                                     {{-- @if ($item->subcategories->count() == 0)
-                                        <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
                                     @endif --}}
                                 </td>
                             </tr>
