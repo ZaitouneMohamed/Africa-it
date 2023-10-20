@@ -44,20 +44,20 @@
                                 <td>
                                     @if ($item->prenium == 1)
                                         <a class="btn btn-success"
-                                            href="{{ route('SwitchPreniumModeForProduct', $item->id) }}">prenium</a>
+                                            href="{{ route('admin.SwitchPreniumModeForProduct', $item->id) }}">prenium</a>
                                     @else
                                         <a class="btn btn-danger"
-                                            href="{{ route('SwitchPreniumModeForProduct', $item->id) }}">not
+                                            href="{{ route('admin.SwitchPreniumModeForProduct', $item->id) }}">not
                                             prenium</a>
                                     @endif
                                 </td>
                                 <td>
                                     @if ($item->active == 1)
                                         <a class="btn btn-success"
-                                            href="{{ route('SwitchActiveModeForProduct', $item->id) }}">Active</a>
+                                            href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Active</a>
                                     @else
                                         <a class="btn btn-danger"
-                                            href="{{ route('SwitchActiveModeForProduct', $item->id) }}">Not Active</a>
+                                            href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Not Active</a>
                                     @endif
                                 </td>
                                 <td>
