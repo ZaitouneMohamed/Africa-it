@@ -53,6 +53,7 @@ class ProductController extends Controller
             "description" => $request->description,
             "slug" => Str::slug($request->title),
             "price" => $request->price,
+            "active" => 1,
             "old_price" => $request->old_price,
             "sub_categorie_id" => $request->sub_categorie,
         ]);
