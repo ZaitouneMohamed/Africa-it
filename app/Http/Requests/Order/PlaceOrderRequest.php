@@ -24,7 +24,7 @@ class PlaceOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            "adresse_id" => "required",
+            // "adresse_id" => "required",
         ];
     }
 }
