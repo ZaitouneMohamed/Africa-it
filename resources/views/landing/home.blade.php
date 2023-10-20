@@ -26,7 +26,7 @@
                                                 <div class="slider-content slider-content--animation">
                                                     <span
                                                         class="content-span-2 u-c-white">{{ $item->categorie->name }}</span><br><br><br><br>
-                                                    <a class="shop-now-link btn--e-brand" href="#">SHOP
+                                                    <a class="shop-now-link btn--e-brand" href="{{ route('ProductOfCategorie', $item->categorie->id) }}">SHOP
                                                         NOW</a>
                                                 </div>
                                             </div>
