@@ -9,7 +9,7 @@
             </div>
         @endif
         <div class="card-header">
-            {{-- <a href="{{route('admin.Products.create')}}" class="card-title">add new Pro</a> --}}
+            <a href="{{ route('admin.product.create') }}" class="btn btn-success">add new Product</a>
         </div>
         <!-- /.card-header -->
         <div class="table-responsive text-nowrap">
@@ -18,7 +18,6 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Title</th>
-                        <th>Slug</th>
                         <th>Description</th>
                         <th>Price</th>
                         <th>old price</th>
@@ -35,7 +34,6 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ Str::limit($item->title, 10, '...') }}</td>
-                                <td>{{ Str::limit($item->slug, 10, '...') }}</td>
                                 <td> {{ Str::limit($item->description, 10, '...') }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->old_price }}</td>
@@ -57,7 +55,8 @@
                                             href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Active</a>
                                     @else
                                         <a class="btn btn-danger"
-                                            href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Not Active</a>
+                                            href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Not
+                                            Active</a>
                                     @endif
                                 </td>
                                 <td>
