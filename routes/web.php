@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BanierController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ParameterController;
 use App\Http\Controllers\Admin\ProductController;
@@ -131,10 +132,12 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
         Route::get('SwitchPreniumModeForProduct/{id}', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct");
         Route::get('SwitchStatueOfTimeSlot/{id}', 'SwitchStatueOfTimeSlot')->name("SwitchStatueOfTimeSlot");
     });
-
     //
-    Route::controller(HomeController::class)->group(function () {
+    Route::controller(AdminHomeController::class)->group(function() {
         Route::get('/deleteImage/{id}', 'deleteImage')->name("deleteimage");
+        Route::get('/profile', 'profile')->name("profile");
+        Route::post('/SetProfile', 'SetProfile')->name("SetProfile");
+        Route::post('/updatePassword', 'updatePassword')->name("updatePassword");
     });
 });
 

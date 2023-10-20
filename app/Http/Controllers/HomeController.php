@@ -108,13 +108,5 @@ class HomeController extends Controller
     {
         return view('landing.about');
     }
-    function deleteImage($id)
-    {
-        $image = Image::find($id);
-        $this->imagesServices->DeleteImageFromDirectory($image->url, "products");
-        $image->delete();
-        return redirect()->back()->with([
-            "success" => "image deleted successfully"
-        ]);
-    }
+
 }
