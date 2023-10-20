@@ -25,7 +25,7 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             "title" => "required|max:200|min:2",
-            "description" => "required|max:249",
+            "description" => "required|max:60049",
             "price" => "required",
             "old_price" => "required",
             "sub_categorie" => "required"
