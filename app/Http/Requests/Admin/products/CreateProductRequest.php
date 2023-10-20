@@ -25,7 +25,7 @@ class CreateProductRequest extends FormRequest
     {
         return [
             "title" => "required|max:200|min:2|unique:products,title",
-            "description" => "required|max:249",
+            "description" => "required|max:60049",
             "price" => "required",
             "images" => "required|max:2048",
             "old_price" => "required",
