@@ -69,8 +69,9 @@ class SubCategorieController extends Controller
      */
     public function edit($id)
     {
-        $item = SubCategorie::find($id)->with("categorie")->get();
-        dd($item);
+        $Scategorie = SubCategorie::findOrFail($id);
+        $categories = Categorie::all();
+        return view('admin.content.subcategories.edit',compact('Scategorie','categories'));
     }
 
     /**
@@ -82,7 +83,19 @@ class SubCategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Scategorie = SubCategorie::findOrFail($id);
+        $this->validate($request,[
+            "name" => "required"
+        ]);
+        if ($Scategorie) {
+            $Scategorie->update([
+                "name" => $request->name,
+                "categorie_id" => $request->categorie
+            ]);
+        }
+        return redirect()->route('admin.SubCategorie.index')->with([
+            "success" => "sub categorie update with success"
+        ]);
     }
 
     /**
