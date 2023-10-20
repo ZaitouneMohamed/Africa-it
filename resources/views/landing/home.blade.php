@@ -26,7 +26,8 @@
                                                 <div class="slider-content slider-content--animation">
                                                     <span
                                                         class="content-span-2 u-c-white">{{ $item->categorie->name }}</span><br><br><br><br>
-                                                    <a class="shop-now-link btn--e-brand" href="{{ route('ProductOfCategorie', $item->categorie->id) }}">SHOP
+                                                    <a class="shop-now-link btn--e-brand"
+                                                        href="{{ route('ProductOfCategorie', $item->categorie->id) }}">SHOP
                                                         NOW</a>
                                                 </div>
                                             </div>
@@ -397,8 +398,8 @@
 
                                             <span class="service__info-text-1">Free Shipping</span>
 
-                                            <span class="service__info-text-2">Free shipping on all US order or order
-                                                above $200</span>
+                                            <span class="service__info-text-2">Free shipping on all US order or order above
+                                                1000DH</span>
                                         </div>
                                     </div>
                                 </div>

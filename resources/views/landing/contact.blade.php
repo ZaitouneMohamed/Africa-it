@@ -62,9 +62,8 @@
 
                                             <span class="contact-o__info-text-1">LET'S HAVE A CALL</span>
 
-                                            <span class="contact-o__info-text-2">(+0) 900 901 904</span>
-
-                                            <span class="contact-o__info-text-2">(+0) 900 901 902</span>
+                                            <span class="contact-o__info-text-2">+212 (0)6 61 86 97 13</span>
+                                            <span class="contact-o__info-text-2">+212 (0)6 60 59 89 17</span>
                                         </div>
                                     </div>
                                 </div>
@@ -75,22 +74,20 @@
 
                                             <span class="contact-o__info-text-1">OUR LOCATION</span>
 
-                                            <span class="contact-o__info-text-2">4247 Ashford Drive VA-20006</span>
+                                            <span class="contact-o__info-text-2">61-AV LALLA YACOUT MUSTAPHA
+                                                EL MAANI RIAD N° 85 – 2éme étage</span>
 
-                                            <span class="contact-o__info-text-2">Virginia US</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6 u-s-m-b-30">
                                     <div class="contact-o u-h-100">
                                         <div class="contact-o__wrap">
-                                            <div class="contact-o__icon"><i class="far fa-clock"></i></div>
+                                            <div class="contact-o__icon"><i class="fa fa-envelope-open" aria-hidden="true"></i></div>
 
-                                            <span class="contact-o__info-text-1">WORK TIME</span>
+                                            <span class="contact-o__info-text-1">EMAIL</span>
 
-                                            <span class="contact-o__info-text-2">5 Days a Week</span>
-
-                                            <span class="contact-o__info-text-2">From 9 AM to 7 PM</span>
+                                            <span class="contact-o__info-text-2">sadraoui.med@africaitinnovation.com</span>
                                         </div>
                                     </div>
                                 </div>
@@ -151,4 +148,8 @@
                 <!--====== End - Section 4 ======-->
             </div>
             <!--====== End - App Content ======-->
+@endsection
+
+@section("title")
+contact
 @endsection

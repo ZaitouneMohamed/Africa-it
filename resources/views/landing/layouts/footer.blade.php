@@ -9,15 +9,17 @@
                         <span class="outer-footer__content-title">Contact Us</span>
                         <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
 
-                            <span>4247 Ashford Drive Virginia VA-20006 USA</span>
+                            <span>61-AV LALLA YACOUT MUSTAPHA
+                                EL MAANI RIAD N° 85 – 2éme étage</span>
                         </div>
                         <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
 
-                            <span>(+0) 900 901 904</span>
+                            <span>+212 (0)6 61 86 97 13</span><br>
+                            <span style="margin-left: 22px">+212 (0)6 60 59 89 17</span>
                         </div>
                         <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
 
-                            <span>contact@domain.com</span>
+                            <span>sadraoui.med@africaitinnovation.com</span>
                         </div>
                         <div class="outer-footer__social">
                             <ul>
@@ -51,29 +53,29 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="outer-footer__content u-s-m-b-40">
 
-                                <span class="outer-footer__content-title">Information</span>
+                                <span class="outer-footer__content-title">Accueil</span>
                                 <div class="outer-footer__list-wrap">
                                     <ul>
                                         <li>
 
-                                            <a href="cart.html">Cart</a>
+                                            <a href="{{ route('about') }}">Qui sommes nous</a>
+                                        </li>
+                                        {{-- <li>
+
+                                            <a href="#">Account</a>
                                         </li>
                                         <li>
 
-                                            <a href="dashboard.html">Account</a>
+                                            <a href="#">Manufacturer</a>
                                         </li>
                                         <li>
 
-                                            <a href="shop-side-version-2.html">Manufacturer</a>
+                                            <a href="#">Finance</a>
                                         </li>
                                         <li>
 
-                                            <a href="dash-payment-option.html">Finance</a>
-                                        </li>
-                                        <li>
-
-                                            <a href="shop-side-version-2.html">Shop</a>
-                                        </li>
+                                            <a href="#">Shop</a>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -86,23 +88,13 @@
                                     <ul>
                                         <li>
 
-                                            <a href="about.html">About us</a>
+                                            <a href="{{ route('about') }}">About us</a>
                                         </li>
                                         <li>
-
-                                            <a href="contact.html">Contact Us</a>
+                                            <a href="{{ route('contact') }}">Contact Us</a>
                                         </li>
                                         <li>
-
-                                            <a href="index-2.html">Sitemap</a>
-                                        </li>
-                                        <li>
-
-                                            <a href="dash-my-order.html">Delivery</a>
-                                        </li>
-                                        <li>
-
-                                            <a href="shop-side-version-2.html">Store</a>
+                                            <a href="{{ route('allProducts') }}">Store</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -119,10 +111,8 @@
                 <div class="col-lg-12">
                     <div class="lower-footer__content">
                         <div class="lower-footer__copyright">
+                            <span>Africa IT INNOVATION © 2022.</span>
 
-                            <span>Copyright © 2018</span>
-
-                            <a href="index-2.html">Reshop</a>
 
                             <span>All Right Reserved</span>
                         </div>

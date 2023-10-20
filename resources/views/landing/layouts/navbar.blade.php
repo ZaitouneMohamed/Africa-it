@@ -243,6 +243,9 @@
                             <li>
                                 <a href="{{ route('contact') }}">Contact</a>
                             </li>
+                            <li>
+                                <a href="#">Promotions</a>
+                            </li>
                         </ul>
                         <!--====== End - List ======-->
                     </div>
