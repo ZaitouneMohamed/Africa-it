@@ -22,9 +22,10 @@ class HomeController extends Controller
     function index()
     {
         $last_categories = Categorie::latest()->with('Image')->take(4)->get();
-        $prenium_product = Product::Prenium()->with(["SubCategorie", "Images", "Reviews"])->get();
-        $last_product = Product::latest()->with(["SubCategorie", "Images", "Reviews"])->get();
+        $prenium_product = Product::Prenium()->Active()->with(["SubCategorie", "Images", "Reviews"])->get();
+        $last_product = Product::latest()->Active()->with(["SubCategorie", "Images", "Reviews"])->get();
         $random_products = Product::inRandomOrder()
+            ->Active()
             ->limit(5)
             ->get();
         $baniers = Banier::with("Categorie")->get();

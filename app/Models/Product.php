@@ -35,6 +35,10 @@ class Product extends Model
     {
         return $query->where("prenium", 1);
     }
+    public function scopeActive($query)
+    {
+        return $query->where("active", 1);
+    }
 
     // reviews relation
     public function Reviews()

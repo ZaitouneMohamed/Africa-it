@@ -66,7 +66,7 @@
                     <div class="section__content">
                         <div class="container">
                             <div class="row">
-                                @foreach ($lastCategories as $item)
+                                @forelse ($lastCategories as $item)
                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
                                         <div class="category-o">
                                             <div class="aspect aspect--bg-grey aspect--square category-o__img-wrap">
@@ -79,7 +79,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -116,7 +117,7 @@
                                 <div class="tab-pane fade show active" id="e-b-s">
                                     <div class="slider-fouc">
                                         <div class="owl-carousel tab-slider" data-item="4">
-                                            @foreach ($last_products as $item)
+                                            @forelse ($last_products as $item)
                                                 <div class="u-s-m-b-30">
                                                     <div class="product-o product-o--hover-on">
                                                         <div class="product-o__wrap">
@@ -176,7 +177,8 @@
                                                                 class="product-o__discount">${{ $item->old_price }}</span></span>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @empty
+                                            @endforelse
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +218,7 @@
                                 <div class="tab-pane fade show active" id="e-b-s">
                                     <div class="slider-fouc">
                                         <div class="owl-carousel tab-slider" data-item="4">
-                                            @foreach ($prenium_product as $item)
+                                            @forelse ($prenium_product as $item)
                                                 <div class="u-s-m-b-30">
                                                     <div class="product-o product-o--hover-on">
                                                         <div class="product-o__wrap">
@@ -269,7 +271,8 @@
                                                                 class="product-o__discount">${{ $item->old_price }}</span></span>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @empty
+                                            @endforelse
                                         </div>
                                     </div>
                                 </div>
@@ -288,7 +291,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="block">
-
                                         <span class="block__title">Products You might like</span>
                                     </div>
                                 </div>
@@ -296,8 +298,6 @@
                         </div>
                     </div>
                     <!--====== End - Section Intro ======-->
-
-
                     <!--====== Section Content ======-->
                     <div class="section__content">
                         <div class="container">
@@ -306,7 +306,7 @@
                                 <div class="tab-pane fade show active" id="e-b-s">
                                     <div class="slider-fouc">
                                         <div class="owl-carousel tab-slider" data-item="4">
-                                            @foreach ($random_products as $item)
+                                            @forelse ($random_products as $item)
                                                 <div class="u-s-m-b-30">
                                                     <div class="product-o product-o--hover-on">
                                                         <div class="product-o__wrap">
@@ -365,7 +365,8 @@
                                                                 class="product-o__discount">${{ $item->old_price }}</span></span>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @empty
+                                            @endforelse
                                         </div>
                                     </div>
                                 </div>
