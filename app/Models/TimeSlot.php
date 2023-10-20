@@ -15,10 +15,9 @@ class TimeSlot extends Model
     public function getStatueAttribute($value)
     {
         if ($this->active) {
-            // return '<span class="badge badge-center rounded-pill bg-success"></span>active';
-            return '<span class="legend-indicator bg-success"></span>active';
+            return '<span class="badge bg-label-success me-1">active</span>';
         } else {
-            return '<span class=""></span>disabled';
+            return '<span class="badge bg-label-danger me-1">disabled</span>';
         }
     }
     public function getFullTimeAttribute()

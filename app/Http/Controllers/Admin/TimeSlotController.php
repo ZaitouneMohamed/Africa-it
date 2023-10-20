@@ -69,7 +69,8 @@ class TimeSlotController extends Controller
      */
     public function edit($id)
     {
-        //
+        $time = TimeSlot::findOrFail($id);
+        return view('admin.content.timeslot.edit', compact('time'));
     }
 
     /**
@@ -81,7 +82,18 @@ class TimeSlotController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $time = TimeSlot::findOrFail($id);
+        $this->validate($request, [
+            "start_time" => "required",
+            "end_time" => "required"
+        ]);
+        $time->update([
+            "begin" => $request->start_time,
+            "end" => $request->end_time
+        ]);
+        return redirect()->route("admin.TimeSlot.index")->with([
+            "success" => "time update with success"
+        ]);
     }
 
     /**
@@ -92,6 +104,9 @@ class TimeSlotController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TimeSlot::findOrFail($id)->delete();
+        return redirect()->route("admin.TimeSlot.index")->with([
+            "success" => "time delete with success"
+        ]);
     }
 }
