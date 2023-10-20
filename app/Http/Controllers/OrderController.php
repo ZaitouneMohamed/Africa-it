@@ -10,17 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    function GenerateOrderNumber()
-    {
-        $order_number = DB::table('orders')->latest()->first();
-        if ($order_number) {
-            $order_number = $order_number->order_number + 1;
-        } else {
-            $order_number = 10000;
-        }
-        return $order_number;
-    }
-    function PlaceOrder(PlaceOrderRequest $request)
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(PlaceOrderRequest $request)
     {
         $ordernumber = $this->GenerateOrderNumber();
         foreach (session("cart") as $item) {
@@ -40,5 +36,15 @@ class OrderController extends Controller
         }
         session()->forget('cart');
         return redirect()->route('user.profile.index');
+    }
+    function GenerateOrderNumber()
+    {
+        $order_number = DB::table('orders')->latest()->first();
+        if ($order_number) {
+            $order_number = $order_number->order_number + 1;
+        } else {
+            $order_number = 10000;
+        }
+        return $order_number;
     }
 }

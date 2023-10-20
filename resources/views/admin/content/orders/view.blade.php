@@ -35,7 +35,11 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Delivery Adresse</h5>
-                    <h5 class="card-title">{{ $order->first()->adresse->adresse }}</h5>
+                    @if ($order->first()->adresse_id)
+                    <h5 class="card-title">{{ $order->first()->adresse_id ?? $order->first()->adresse->adresse || "no adresse found" }}</h5>
+                    @else
+                    <h5 class="card-title">no adresse found</h5>
+                    @endif
                     {!! $order->first()->statue !!}
                     <div class="mb-3">
                         <label for="defaultSelect" class="form-label">Change statue</label>

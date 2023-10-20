@@ -60,9 +60,11 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
 
 // Orders controller
 
-Route::controller(OrderController::class)->name("order.")->group(function () {
-    Route::post('placeOrder', "PlaceOrder")->name("place");
-});
+// Route::controller(OrderController::class)->name("order.")->group(function () {
+//     Route::post('placeOrder', "PlaceOrder")->name("place");
+// });
+
+Route::post('placeOrder',OrderController::class)->name("order.place");
 
 
 // Auth Controller
