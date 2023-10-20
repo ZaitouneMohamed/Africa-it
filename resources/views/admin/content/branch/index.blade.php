@@ -36,13 +36,15 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href=""><i class="bx bx-edit-alt me-1"></i>
+                                            <a class="dropdown-item" href="{{ route('admin.branch.edit', $item->id) }}"><i
+                                                    class="bx bx-edit-alt me-1"></i>
                                                 Edit</a>
                                             <a class="dropdown-item"
                                                 onclick="document.getElementById({{ $item->id }}).submit();"><i
                                                     class="bx bx-trash me-1"></i>
                                                 Delete</a>
-                                            <form id="{{ $item->id }}" method="post">
+                                            <form id="{{ $item->id }}" method="post"
+                                                action="{{ route('admin.branch.destroy', $item->id) }}">
                                                 @csrf
                                                 @method('delete')
                                             </form>

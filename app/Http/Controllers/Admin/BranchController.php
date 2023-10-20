@@ -75,7 +75,8 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $branch = Branch::findOrFail($id);
+        return view("admin.content.branch.edit",compact('branch'));
     }
 
     /**
@@ -87,7 +88,24 @@ class BranchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $branch = Branch::findOrFail($id);
+        $this->validate($request, [
+            "name" => "required|unique:branches,name",
+            "attitude" => "required",
+            "longtitude" => "required",
+            "distance" => "required",
+            "charge_delivery" => "required"
+        ]);
+        $branch->update([
+            "name" => $request->name,
+            "attitude" => $request->attitude,
+            "longtitude" =>$request->longtitude,
+            "distance" => $request->distance,
+            "charge_delivery" => $request->charge_delivery
+        ]);
+        return redirect()->route('admin.branch.index')->with([
+            "success" => "branch update successfully"
+        ]);
     }
 
     /**
@@ -98,6 +116,9 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Branch::findOrFail($id)->delete();
+        return redirect()->route('admin.branch.index')->with([
+            "success" => "branch delete with success"
+        ]);
     }
 }
