@@ -22,11 +22,8 @@
                                                     data-toggle="collapse"></span>
                                             </div>
                                             <div class="shop-w__wrap collapse show" id="s-price">
-                                                <form class="shop-w__form-p"
-                                                    {{-- @if (Route::currentRouteName() == 'allProducts') action="{{ route('allProducts') }}" --}}
-                                                        {{-- @else --}}
-                                                        {{-- action="{{ route('ProductOfCategorie', $id) }}" @endif --}}
-                                                    method="POST" action="#">
+                                                <form class="shop-w__form-p" {{-- @if (Route::currentRouteName() == 'allProducts') action="{{ route('allProducts') }}" --}} {{-- @else --}}
+                                                    {{-- action="{{ route('ProductOfCategorie', $id) }}" @endif --}} method="POST" action="#">
 
                                                     @csrf
                                                     @method('get')
@@ -108,25 +105,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{ $products->links() }}
                                     @empty
                                         <div class="empty">
                                             <div class="empty__wrap">
-
                                                 <span class="empty__big-text">SORRY</span>
-
                                                 <span class="empty__text-1">Your search, did not match any products. A
                                                     partial match of your keywords is listed below.</span>
-
                                                 <form class="empty__search-form" action="{{ route('Search') }}"
                                                     method="POST">
                                                     @csrf
-
                                                     <label for="search-label"></label>
-
                                                     <input class="input-text input-text--primary-style" type="text"
                                                         id="search-label" placeholder="Search Keywords" name="word">
-
                                                     <button class="btn btn--icon fas fa-search" type="submit"></button>
                                                 </form>
                                             </div>
@@ -134,6 +124,7 @@
                                     @endforelse
                                 </div>
                             </div>
+                            {{ $products->links() }}
                         </div>
                     </div>
                 </div>
