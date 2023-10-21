@@ -18,7 +18,6 @@
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>Title</th>
-                        <th>Description</th>
                         <th>Price</th>
                         <th>old price</th>
                         <th>Image</th>
@@ -34,7 +33,6 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ Str::limit($item->title, 10, '...') }}</td>
-                                <td> {{ Str::limit($item->description, 10, '...') }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->old_price }}</td>
                                 <td> {{ $item->images->count() }}</td>

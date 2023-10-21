@@ -15,8 +15,9 @@ class CartController extends Controller
         // dd($cart);
         return view('landing.Cart', compact("cart"));
     }
-    public function addToCart($id, Request $request)
+    public function addToCart(Request $request)
     {
+        $id = (int)$request->id;
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {

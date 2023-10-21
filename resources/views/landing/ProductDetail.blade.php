@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
-                                <span class="pd-detail__preview-desc">{{ $product->description }}</span>
+                                <span class="pd-detail__preview-desc">{!! html_entity_decode($product->description) !!}</span>
                             </div>
                             <div class="u-s-m-b-15">
                                 <div class="pd-detail__inline">
@@ -108,7 +108,7 @@
                                             <span class="input-counter__minus fas fa-minus"></span>
 
                                             <input class="input-counter__text input-counter--text-primary-style"
-                                                id="qty" type="text" value="1" data-min="1" data-max="1000">
+                                                id="qty{{ $product->id }}" type="text" value="1" data-min="1" data-max="1000">
 
                                             <span class="input-counter__plus fas fa-plus"></span>
                                         </div>
@@ -162,6 +162,10 @@
                                         <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
                                             <span>({{ $product->reviews->count() }})</span></a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="view-review" data-toggle="tab" href="#fiche">Fiche
+                                            Technique</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="tab-content">
@@ -170,9 +174,7 @@
                                 <div class="tab-pane fade show active" id="pd-desc">
                                     <div class="pd-tab__desc">
                                         <div class="u-s-m-b-15">
-                                            <p>
-                                                {{ $product->description }}
-                                            </p>
+                                            {!! html_entity_decode($product->description) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -496,6 +498,15 @@
                                     </div>
                                 </div>
                                 <!--====== End - Tab 3 ======-->
+                                <div class="tab-pane" id="fiche">
+                                    <div class="pd-tab__desc">
+                                        <div class="u-s-m-b-15">
+                                            <button class="btn btn--e-brand-b-2"
+                                                style="padding: 1rem 3rem ; border-radius: 0.375rem ">Check Fiche
+                                                Technique</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

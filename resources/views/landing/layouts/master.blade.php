@@ -431,11 +431,18 @@
         }
 
         function AddToCart(id) {
-            qty = document.getElementById('qty').value ?? 1
-            console.log(qty);
+            let qty_element = document.getElementById('qty' +id)
+            qty = 1;
+            if (qty_element !== null) {
+                qty = qty_element.value ?? 1;
+            }
             $.ajax({
                 type: 'GET',
-                url: "AddToCart/" + id,
+                url: "{{ route('cart.addProdustToCart') }}", // Enclose the URL in quotes
+                data: {
+                    id: id,
+                    qty: qty // Include the quantity in the data object
+                }, // Add a comma here
                 success: function(response) {
                     const Toast = Swal.mixin({
                         toast: true,
@@ -444,27 +451,29 @@
                         timer: 3000,
                         timerProgressBar: true,
                         didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            toast.addEventListener('mouseenter', Swal.stopTimer);
+                            toast.addEventListener('mouseleave', Swal.resumeTimer);
                         }
-                    })
+                    });
                     Toast.fire({
                         icon: 'success',
                         title: 'product added successfully'
-                    })
+                    });
+                    // Make sure 'MyFunctions' is defined and serves your intended purpose
                     MyFunctions();
                 },
                 error: function() {
-                    alert('An error occurred .');
+                    alert('An error occurred.');
                 }
-            })
+            });
         }
+
 
         function ToogleFavorites(product_id, user_id) {
             $.ajax({
                 type: 'POST',
                 url: "{{ route('AddToFavorite') }}",
-                data:{
+                data: {
                     user_id: user_id,
                     product_id: product_id
                 },
