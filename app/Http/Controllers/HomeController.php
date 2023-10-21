@@ -108,5 +108,10 @@ class HomeController extends Controller
     {
         return view('landing.about');
     }
+    public function Search(Request $request)
+    {
+        $products = Product::where('title', 'LIKE', '%' . $request->word . '%')->paginate(15);
+        return view('landing.ProductsIndex', compact("products"));
+    }
 
 }

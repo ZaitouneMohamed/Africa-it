@@ -13,7 +13,9 @@
                 </a>
                 <!--====== End - Main Logo ======-->
                 <!--====== Search Form ======-->
-                <form class="main-form">
+                <form class="main-form" action="{{ route('Search') }}" method="POST">
+                    @csrf
+                    @method("GET")
                     <label for="main-search"></label>
                     <input class="input-text input-text--border-radius input-text--style-2" type="text"
                         id="main-search" placeholder="Search">
@@ -238,7 +240,7 @@
                                 <a href="{{ route('allProducts') }}">Products</a>
                             </li>
                             <li>
-                                <a href="{{route('about')}}">About</a>
+                                <a href="{{ route('about') }}">About</a>
                             </li>
                             <li>
                                 <a href="{{ route('contact') }}">Contact</a>

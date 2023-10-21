@@ -70,7 +70,7 @@
                                                             data-placement="top" title="Quick Look"></a>
                                                     </div>
                                                     <div class="product-m__add-cart">
-                                                        <a class="btn--e-brand" data-modal="modal"
+                                                        <a class="btn--e-brand" onclick="AddToCart({{ $item->id }})"
                                                             data-modal-id="#add-to-cart">Add to Cart</a>
                                                     </div>
                                                 </div>
@@ -90,10 +90,10 @@
                                                         <span
                                                             class="product-m__review">({{ $item->reviews->count() }})</span>
                                                     </div>
-                                                    <div class="product-m__price">${{ $item->price }}</div>
+                                                    <div class="product-m__price">DH{{ $item->price }}</div>
                                                     <div class="product-m__hover">
                                                         <div class="product-m__preview-description">
-                                                            <span>{{ $item->description }}</span>
+                                                            <span>{!! html_entity_decode($item->description) !!}</span>
                                                         </div>
                                                         <div class="product-m__wishlist">
                                                             <a class="far fa-heart" href="#" data-tooltip="tooltip"
@@ -104,6 +104,27 @@
                                             </div>
                                         </div>
                                     @empty
+                                        <div class="empty">
+                                            <div class="empty__wrap">
+
+                                                <span class="empty__big-text">SORRY</span>
+
+                                                <span class="empty__text-1">Your search, did not match any products. A
+                                                    partial match of your keywords is listed below.</span>
+
+                                                <form class="empty__search-form" action="{{ route('Search') }}"
+                                                    method="POST">
+                                                    @csrf
+
+                                                    <label for="search-label"></label>
+
+                                                    <input class="input-text input-text--primary-style" type="text"
+                                                        id="search-label" placeholder="Search Keywords" name="word">
+
+                                                    <button class="btn btn--icon fas fa-search" type="submit"></button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     @endforelse
                                 </div>
                                 {{ $products->links() }}

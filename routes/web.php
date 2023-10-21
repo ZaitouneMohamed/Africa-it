@@ -37,10 +37,9 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/about', 'about')->name("about");
     // All Products
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
+    Route::get('/Search', "Search")->name("Search");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
     Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
-    // Route::get('/SwitchPreniumModeForProduct/{id} ', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
-    // Route::get('/SwitchActiveModeForProduct/{id} ', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct")->middleware(['web', 'AdminRedirection', 'role:admin']);
     Route::post('/AddReview/{id} ', 'AddReview')->name("AddReview");
 });
 
@@ -133,11 +132,12 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
         Route::get('SwitchStatueOfTimeSlot/{id}', 'SwitchStatueOfTimeSlot')->name("SwitchStatueOfTimeSlot");
     });
     //
-    Route::controller(AdminHomeController::class)->group(function() {
+    Route::controller(AdminHomeController::class)->group(function () {
         Route::get('/deleteImage/{id}', 'deleteImage')->name("deleteimage");
         Route::get('/profile', 'profile')->name("profile");
         Route::post('/SetProfile', 'SetProfile')->name("SetProfile");
         Route::post('/updatePassword', 'updatePassword')->name("updatePassword");
+        Route::get('/ReviewsList', 'ReviewsList')->name("ReviewsList");
     });
 });
 

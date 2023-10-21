@@ -16,4 +16,9 @@ class Review extends Model
         'review',
         'stars',
     ];
+
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

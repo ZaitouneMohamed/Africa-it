@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProfileRequest;
 use App\Models\Image;
+use App\Models\Review;
 use App\Models\User;
 use App\Services\ImagesServices;
 use Illuminate\Http\Request;
@@ -68,5 +69,11 @@ class HomeController extends Controller
         $user->password =  Hash::make($request->new_password);
         $user->save();
         return back()->with('success', "Password Changed Successfully");
+    }
+
+    public function ReviewsList()
+    {
+        $reviews = Review::with("Product")->paginate(10);
+        return view('admin.content.reviews.index', compact('reviews'));
     }
 }
