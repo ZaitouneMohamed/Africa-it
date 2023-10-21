@@ -15,7 +15,7 @@
                 <!--====== Search Form ======-->
                 <form class="main-form" action="{{ route('Search') }}" method="POST">
                     @csrf
-                    @method("GET")
+                    @method('GET')
                     <label for="main-search"></label>
                     <input class="input-text input-text--border-radius input-text--style-2" type="text"
                         id="main-search" placeholder="Search">
@@ -246,7 +246,7 @@
                                 <a href="{{ route('contact') }}">Contact</a>
                             </li>
                             <li>
-                                <a href="#">Promotions</a>
+                                <a href="{{ route('offer') }}">Promotions</a>
                             </li>
                         </ul>
                         <!--====== End - List ======-->

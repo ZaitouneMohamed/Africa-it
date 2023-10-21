@@ -13,7 +13,7 @@ class Product extends Model
     // Fillables
     protected $fillable = [
         "title", "slug", "description",
-        "price", "old_price",
+        "price", "old_price", "offer",
         "prenium", "active", "sub_categorie_id", "categorie_id"
     ];
 
@@ -35,6 +35,11 @@ class Product extends Model
     {
         return $query->where("prenium", 1);
     }
+    // get offer products
+    public function scopeOffer($query)
+    {
+        return $query->where("offer", 1);
+    }
     public function scopeActive($query)
     {
         return $query->where("active", 1);
@@ -53,7 +58,8 @@ class Product extends Model
     }
 
     // categorie relation
-    public function categorie() {
+    public function categorie()
+    {
         // return $this->
     }
 

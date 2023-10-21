@@ -108,6 +108,22 @@ class HomeController extends Controller
     {
         return view('landing.about');
     }
+    function offer(Request $request)
+    {
+        $query = Product::query();
+
+        if ($request->min) {
+            $query->where('price', '>=', $request->min);
+        }
+
+        if ($request->max) {
+            $query->where('price', '<=', $request->max);
+        }
+
+        $products = $query->with("SubCategorie")->offer()->paginate(10);
+
+        return view('landing.ProductsIndex', compact("products"));
+    }
     public function Search(Request $request)
     {
         $products = Product::where('title', 'LIKE', '%' . $request->word . '%')->paginate(15);

@@ -40,6 +40,7 @@ Route::controller(HomeController::class)->group(function () {
     // All Products
     Route::get('/AllProducts', 'AllProducts')->name("allProducts");
     Route::get('/Search', "Search")->name("Search");
+    Route::get('/offer', "offer")->name("offer");
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
     Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
     Route::post('/AddReview/{id} ', 'AddReview')->name("AddReview");
@@ -134,6 +135,7 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
         Route::get('SwitchProductActive/{id}', 'SwitchActiveModeForProduct')->name("SwitchActiveModeForProduct");
         Route::get('SwitchPreniumModeForProduct/{id}', 'SwitchPreniumModeForProduct')->name("SwitchPreniumModeForProduct");
         Route::get('SwitchStatueOfTimeSlot/{id}', 'SwitchStatueOfTimeSlot')->name("SwitchStatueOfTimeSlot");
+        Route::get('SwitchOffreModeForProduct/{id}', 'SwitchOffreModeForProduct')->name("SwitchOffreModeForProduct");
     });
     //
     Route::controller(AdminHomeController::class)->group(function () {

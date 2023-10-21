@@ -36,4 +36,11 @@ class SwitchController extends Controller
             "success" => "product Active Mode Update sucessfly"
         ]);
     }
+    function SwitchOffreModeForProduct($id)
+    {
+        $product = Product::find($id);
+        $product->offer = !$product->offer;
+        $product->save();
+        return redirect()->back()->with(["success" => "product Offre Mode Update sucessfly"]);
+    }
 }

@@ -24,6 +24,7 @@
                         <th>Sub categorie</th>
                         <th>Prenium</th>
                         <th>active</th>
+                        <th>offre</th>
                         <th style="width: 40px">Action</th>
                     </tr>
                 </thead>
@@ -55,6 +56,15 @@
                                         <a class="btn btn-danger"
                                             href="{{ route('admin.SwitchActiveModeForProduct', $item->id) }}">Not
                                             Active</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->offer == 1)
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.SwitchOffreModeForProduct', $item->id) }}">Offre</a>
+                                    @else
+                                        <a class="btn btn-danger"
+                                            href="{{ route('admin.SwitchOffreModeForProduct', $item->id) }}">Not Offer</a>
                                     @endif
                                 </td>
                                 <td>

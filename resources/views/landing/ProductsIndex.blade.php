@@ -10,46 +10,51 @@
                     <div class="col-lg-3 col-md-12">
                         <div class="shop-w-master">
                             <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
-                                <span>FILTERS</span>
+                                <span>FILTERS (Not Working)</span>
                             </h1>
-                            <div class="shop-w-master__sidebar sidebar--bg-snow">
-                                <div class="u-s-m-b-30">
-                                    <div class="shop-w">
-                                        <div class="shop-w__intro-wrap">
-                                            <h1 class="shop-w__h">PRICE</h1>
-                                            <span class="fas fa-minus shop-w__toggle" data-target="#s-price"
-                                                data-toggle="collapse"></span>
-                                        </div>
-                                        <div class="shop-w__wrap collapse show" id="s-price">
-                                            <form class="shop-w__form-p"
-                                                @if (Route::currentRouteName() == 'allProducts') action="{{ route('allProducts') }}"
-                                                        @else
-                                                        action="{{ route('ProductOfCategorie', $id) }}" @endif
-                                                method="POST">
-                                                @csrf
-                                                @method('get')
-                                                <div class="shop-w__form-p-wrap">
-                                                    <div>
-                                                        <label for="price-min"></label>
-                                                        <input class="input-text input-text--primary-style" type="number"
-                                                            name="min" min="0" id="price-min" placeholder="Min">
+                            @if ($products)
+                                <div class="shop-w-master__sidebar sidebar--bg-snow">
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">PRICE</h1>
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-price"
+                                                    data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-price">
+                                                <form class="shop-w__form-p"
+                                                    {{-- @if (Route::currentRouteName() == 'allProducts') action="{{ route('allProducts') }}" --}}
+                                                        {{-- @else --}}
+                                                        {{-- action="{{ route('ProductOfCategorie', $id) }}" @endif --}}
+                                                    method="POST" action="#">
+
+                                                    @csrf
+                                                    @method('get')
+                                                    <div class="shop-w__form-p-wrap">
+                                                        <div>
+                                                            <label for="price-min"></label>
+                                                            <input class="input-text input-text--primary-style"
+                                                                type="number" name="min" min="0" id="price-min"
+                                                                placeholder="Min">
+                                                        </div>
+                                                        <div>
+                                                            <label for="price-max"></label>
+                                                            <input class="input-text input-text--primary-style"
+                                                                type="number" name="max" min="0" id="price-max"
+                                                                placeholder="Max">
+                                                        </div>
+                                                        <div>
+                                                            <button
+                                                                class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2"
+                                                                type="submit"></button>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <label for="price-max"></label>
-                                                        <input class="input-text input-text--primary-style" type="number"
-                                                            name="max" min="0" id="price-max" placeholder="Max">
-                                                    </div>
-                                                    <div>
-                                                        <button
-                                                            class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2"
-                                                            type="submit"></button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-12">
@@ -103,6 +108,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        {{ $products->links() }}
                                     @empty
                                         <div class="empty">
                                             <div class="empty__wrap">
@@ -127,7 +133,6 @@
                                         </div>
                                     @endforelse
                                 </div>
-                                {{ $products->links() }}
                             </div>
                         </div>
                     </div>
