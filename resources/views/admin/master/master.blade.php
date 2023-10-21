@@ -203,6 +203,12 @@
                     <div data-i18n="Tables">Products Review</div>
                 </a>
                 </li>
+                <li class="menu-item">
+                <a href="{{ route('admin.livreur.index') }}" class="menu-link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAk1JREFUSEuNljtoFUEUhr+DVytBC1+lEERsYmMjKIhiJCpYmHSiKFiksxPUVrG0SpVGxZSCBgmCCpJgZZGkiVYhZXIbQdRC45HZmd0989iNC5c7O/fMefznP/9cIX0E0LBZrcNGWAsatmLDat/6qu17/WXRYw+Z0ywAOP/N0yZczG4A8k7QvwpjwJ/tq08ClA80wa4Bz4ONW79IUrO4es9aqqAysxU055ZRRsPbCnA8CxC3q+qfWFh6MD0LvE8qPAN89LkIXWejHvSU/Aa4mAR4DVzxe10B3P72z1GB1RrOFjxR0BGEtZifKdPa93PAJeCA+wgcVL/eD+yoM7VDIuiWwhBkE3QD2ATct6v4g6+sJel30N39Jcftt3NouSGwoXCoCmCMpgSmo2mMiZeAWWCat3AubgJPq+4kk3xLhRk02w8wx04zFYCfIBOg831zMAnMAoP/oaCXqopFQxXGUJbiNqcs8gfGQV8BO4sky9CRr4JeUGE9ZVQEUTLE08BUOX4rA6Fnp4HFUjKeRQVJFfSTwslIVCIZjxjwAHhYQ9qIUKpFJoMB8AthEN8NIVwuDy57V0WWraWp8S+nBF2oG9gOVzqlzSWzBewBfrRjVVDTNgG5C/o4h44nweZOQR6uAi9LiJd6MwdcNjR1WnQd+BzadQJkFvSImfwZhdvlCvKhHAL7gN9V8+BRWFuYdwncU+E+iuvZOnA4zjbWIqvpb4G9wA3gS3EW6nYKx1B5BvoN4XzzJ6EmWSZYln2FHzsVKMXG+OlKsONI141a5to/uaHjIUvCDTcAAAAASUVORK5CYII="/>
+                    <div data-i18n="Tables">Livreur</div>
+                </a>
+                </li>
             </ul>
             </aside>
             <!-- / Menu -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProfileRequest;
 use App\Models\Image;
+use App\Models\Order;
 use App\Models\Review;
 use App\Models\User;
 use App\Services\ImagesServices;
@@ -75,5 +76,13 @@ class HomeController extends Controller
     {
         $reviews = Review::with("Product")->paginate(10);
         return view('admin.content.reviews.index', compact('reviews'));
+    }
+
+    public function AssignLivreurToOrder($order_number , $livreur_id)
+    {
+        Order::where('order_number',$order_number)->update(['livreur_id'=>$livreur_id]);
+        return redirect()->back()->with([
+            "success" => "livreur assign with success"
+        ]);
     }
 }
