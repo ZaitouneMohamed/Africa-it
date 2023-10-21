@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BanierController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\LivreurController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -115,6 +116,7 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
     Route::resource("TimeSlot", TimeSlotController::class);
     Route::resource("banier", BanierController::class);
     Route::resource("livreur", LivreurController::class);
+    Route::resource("coupon", CouponController::class);
     Route::resource("SubCategorie", SubCategorieController::class);
     Route::controller(ParameterController::class)->name("parameter.")->group(function () {
         Route::get('parameter', "ParameterIndex")->name("show");
