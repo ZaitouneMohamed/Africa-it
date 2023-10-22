@@ -80,26 +80,8 @@
                                                             <div>
                                                                 <div class="dash__link dash__link--brand">
 
-                                                                    <a href="#">MANAGE</a>
+                                                                    <a href="{{ route('user.profile.OrderDetails', $item->order_number) }}">MANAGE</a>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="manage-o__description">
-                                                        <div class="description__info-wrap">
-                                                            <div>
-                                                                <span
-                                                                    class="manage-o__badge badge--processing">{!! $item->Statue !!}</span>
-                                                            </div>
-                                                            {{-- <div>
-                                                                <span class="manage-o__text-2 u-c-silver">Quantity:
-                                                                    <span
-                                                                        class="manage-o__text-2 u-c-secondary">1</span></span>
-                                                            </div> --}}
-                                                            <div>
-                                                                <span class="manage-o__text-2 u-c-silver">Total:
-                                                                    <span
-                                                                        class="manage-o__text-2 u-c-secondary">${{ $item->total }}</span></span>
                                                             </div>
                                                         </div>
                                                     </div>
