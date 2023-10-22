@@ -50,11 +50,6 @@
                                             value="{{ Auth::user()->last_name }}" />
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="firstName" class="form-label">Email</label>
-                                        <input class="form-control" type="text" id="firstName" name="email"
-                                            value="{{ Auth::user()->email }}" autofocus />
-                                    </div>
-                                    <div class="mb-3 col-md-6">
                                         <label for="lastName" class="form-label">Phone Number</label>
                                         <input class="form-control" type="text" name="phone" id="lastName"
                                             value="{{ Auth::user()->phone }}" />

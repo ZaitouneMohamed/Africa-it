@@ -15,11 +15,11 @@
                             <ul class="breadcrumb__list">
                                 <li class="has-separator">
 
-                                    <a href="index.html">Home</a>
+                                    <a href="{{ route('home') }}">Home</a>
                                 </li>
                                 <li class="is-marked">
 
-                                    <a href="dashboard.html">My Account</a>
+                                    <a href="{{ route('user.profile.index') }}">My Account</a>
                                 </li>
                             </ul>
                         </div>
@@ -57,18 +57,12 @@
                                                 <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
                                                     <div class="dash__pad-3">
                                                         <h2 class="dash__h2 u-s-m-b-8">PERSONAL PROFILE</h2>
-                                                        <div class="dash__link dash__link--secondary u-s-m-b-8">
 
-                                                            <a href="dash-edit-profile.html">Edit</a>
-                                                        </div>
-
-                                                        <span class="dash__text">{{ Auth::user()->name }}</span>
+                                                        <span class="dash__text">{{ Auth::user()->full_name }}</span>
 
                                                         <span class="dash__text">{{ Auth::user()->email }}</span>
                                                         <div class="dash__link dash__link--secondary u-s-m-t-8">
-
-                                                            <a data-modal="modal" data-modal-id="#dash-newsletter">Subscribe
-                                                                Newsletter</a>
+                                                            <a href="{{ route('user.profile.profile.edit') }}">Edit</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,32 +70,12 @@
                                             <div class="col-lg-4 u-s-m-b-30">
                                                 <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
                                                     <div class="dash__pad-3">
-                                                        <h2 class="dash__h2 u-s-m-b-8">ADDRESS BOOK</h2>
+                                                        <h2 class="dash__h2 u-s-m-b-8"><i class="fa fa-phone" aria-hidden="true"></i></h2>
+                                                        <span class="dash__text">{{ Auth::user()->phone }}</span>
 
-                                                        <span class="dash__text-2 u-s-m-b-8">Default Shipping Address</span>
-                                                        <div class="dash__link dash__link--secondary u-s-m-b-8">
-
-                                                            <a href="dash-address-book.html">Edit</a>
+                                                        <div class="dash__link dash__link--secondary u-s-m-t-8">
+                                                            <a href="{{ route('user.profile.profile.edit') }}">Edit</a>
                                                         </div>
-
-                                                        <span class="dash__text">4247 Ashford Drive Virginia - VA-20006 -
-                                                            USA</span>
-
-                                                        <span class="dash__text">(+0) 900901904</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 u-s-m-b-30">
-                                                <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
-                                                    <div class="dash__pad-3">
-                                                        <h2 class="dash__h2 u-s-m-b-8">BILLING ADDRESS</h2>
-
-                                                        <span class="dash__text-2 u-s-m-b-8">Default Billing Address</span>
-
-                                                        <span class="dash__text">4247 Ashford Drive Virginia - VA-20006 -
-                                                            USA</span>
-
-                                                        <span class="dash__text">(+0) 900901904</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,13 +106,13 @@
                                                                 <span>${{ $item->total }}</span>
                                                                 <div class="dash__link dash__link--brand">
 
-                                                                    <a href="{{route('user.profile.OrderDetails',$item->order_number)}}">MANAGE</a>
+                                                                    <a
+                                                                        href="{{ route('user.profile.OrderDetails', $item->order_number) }}">MANAGE</a>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 @empty
-                                                    <h1>No Order Found</h1>
                                                 @endforelse
                                             </tbody>
                                         </table>

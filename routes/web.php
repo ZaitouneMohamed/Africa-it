@@ -96,6 +96,8 @@ Route::middleware(['auth'])->prefix("user")->name("user.profile.")->group(functi
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/', "index")->name("index");
         Route::get('/profile', "profile")->name("profile");
+        Route::get('/EditProfile', "EditProfile")->name("profile.edit");
+        Route::put('/updateprofile', "UpdateProfile")->name("UpdateProfile");
         Route::get('/myOrders', "MyOrders")->name("MyOrders");
         Route::get('/WishList', "WishList")->name("WishList");
         Route::get('/OrderDetails/{order_number}', "OrderDetails")->name("OrderDetails");

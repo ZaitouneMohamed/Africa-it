@@ -26,7 +26,6 @@ class ProfileRequest extends FormRequest
         return [
             "first_name" => "required|max:200",
             "last_name" => "required|max:200",
-            "email" => "required|max:200",
             "phone" => "required|max:200"
         ];
     }
