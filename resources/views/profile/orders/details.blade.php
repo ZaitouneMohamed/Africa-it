@@ -1,6 +1,10 @@
 @extends('landing.layouts.master')
 
 @section('content')
+    @php
+        $total = 0;
+        $shipping_free = $order->first()->Branche->charge_delivery;
+    @endphp
     <!--====== App Content ======-->
     <div class="app-content">
 
@@ -55,12 +59,6 @@
                                                 <div class="manage-o__text u-c-silver">Placed on
                                                     {{ $order->first()->created_at }}</div>
                                             </div>
-                                            <div>
-                                                <div class="manage-o__text-2 u-c-silver">Total:
-
-                                                    <span class="manage-o__text-2 u-c-secondary">$16.00</span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -74,6 +72,9 @@
                                                 </div>
                                             </div>
                                             @foreach ($order as $item)
+                                                @php
+                                                    $total += $item->qty * $item->product->price;
+                                                @endphp
                                                 <div class="manage-o__description">
                                                     <div class="description__container">
                                                         <div class="description__img-wrap">
@@ -90,8 +91,8 @@
                                                         </div>
                                                         <div>
                                                             <span class="manage-o__text-2 u-c-silver">Total:
-                                                                <span
-                                                                    class="manage-o__text-2 u-c-secondary">${{ $item->qty * $item->product->price }}</span></span>
+                                                                <span class="manage-o__text-2 u-c-secondary">DH
+                                                                    {{ $item->qty * $item->product->price }}</span></span>
                                                         </div>
                                                     </div>
                                                 </div><br>
@@ -106,8 +107,7 @@
                                                 <h2 class="dash__h2 u-s-m-b-8">Shipping Address</h2>
                                                 @if ($order->first()->adresse_id)
                                                     <h2 class="dash__h2 u-s-m-b-8">John Doe</h2>
-                                                    <span
-                                                        class="dash__text-2">{{ $order->first()->adresse }}</span>
+                                                    <span class="dash__text-2">{{ $order->first()->adresse }}</span>
                                                     <span class="dash__text-2">(+0) 900901904</span>
                                                 @else
                                                     <h5 class="card-title">no adresse found</h5>
@@ -121,17 +121,17 @@
                                                 <h2 class="dash__h2 u-s-m-b-8">Total Summary</h2>
                                                 <div class="dash-l-r u-s-m-b-8">
                                                     <div class="manage-o__text-2 u-c-secondary">Subtotal</div>
-                                                    <div class="manage-o__text-2 u-c-secondary">$16.00</div>
+                                                    <div class="manage-o__text-2 u-c-secondary">DH {{ $total }}</div>
                                                 </div>
                                                 <div class="dash-l-r u-s-m-b-8">
                                                     <div class="manage-o__text-2 u-c-secondary">Shipping Fee</div>
-                                                    <div class="manage-o__text-2 u-c-secondary">$16.00</div>
+                                                    <div class="manage-o__text-2 u-c-secondary">DH {{ $shipping_free }}
+                                                    </div>
                                                 </div>
                                                 <div class="dash-l-r u-s-m-b-8">
                                                     <div class="manage-o__text-2 u-c-secondary">Total</div>
-                                                    <div class="manage-o__text-2 u-c-secondary">$30.00</div>
+                                                    <div class="manage-o__text-2 u-c-secondary">DH {{ $total + $shipping_free  }}</div>
                                                 </div>
-
                                                 <span class="dash__text-2">Paid by Cash on Delivery</span>
                                             </div>
                                         </div>

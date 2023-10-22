@@ -10,7 +10,7 @@
                         Livreur {{ $order->first()->Livreur->full_name }}
                     @else
                         <div class="mb-3">
-                            <label for="defaultSelect" class="form-label">Change statue</label>
+                            <label for="defaultSelect" class="form-label">Add Livreur</label>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -47,7 +47,7 @@
         <div class="col-md-6 col-lg-4">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">frais de livraison : 30 MAD</h5>
+                    <h5 class="card-title">frais de livraison : {{ $order->first()->Branche->charge_delivery }} DH</h5>
                     @php
                         $total = 0;
                     @endphp
@@ -56,8 +56,8 @@
                             $total += $item->qty * $item->product->price;
                         @endphp
                     @endforeach
-                    <h5 class="card-title">Total : @php echo $total + 30; @endphp </h5>
-                    {{-- <h5 class="card-title">Total : {{ $order->total }} </h5> --}}
+                    <h5 class="card-title">Total : @php echo $total @endphp </h5>
+                    <h5 class="card-title">Grand Total : @php echo $total + $order->first()->Branche->charge_delivery; @endphp </h5>
                     <h5 class="cart-text">Payement Method : {{ $order->first()->payement_methode }} </h5>
                 </div>
             </div>

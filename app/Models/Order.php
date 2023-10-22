@@ -17,7 +17,7 @@ class Order extends Model
         "adresse_id",
         "coupon_id",
         "delivery_date",
-        "branch",
+        "branche_id",
         "payement_methode",
         "delivery_time",
         "statue",
@@ -46,7 +46,7 @@ class Order extends Model
     {
         return $this->belongsTo(Adresse::class);
     }
-    public function Branch()
+    public function Branche()
     {
         return $this->belongsTo(Branch::class);
     }

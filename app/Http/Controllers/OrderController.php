@@ -27,7 +27,7 @@ class OrderController extends Controller
                 "qty" => $item["quantity"],
                 "adresse_id" => $request->adresse_id,
                 "delivery_date" => $request->delivery_date,
-                "branch" => $request->branch,
+                "branch_id" => $request->branch,
                 "payement_methode" => $request->payement_methode,
                 "delivery_time" => $request->delivery_time,
                 "total" => $item["quantity"] * $item["price"],
