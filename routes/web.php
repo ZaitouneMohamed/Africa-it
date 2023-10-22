@@ -56,7 +56,7 @@ Route::controller(CartController::class)->name("cart.")->group(function () {
     Route::post('cart/remove', 'removeCart')->name('remove.item');
     Route::get('AddToCart', 'addToCart')->name('addProdustToCart');
     Route::delete('deleteProduct',  'deleteProduct')->name('deleteProduct');
-    Route::patch('updateCart',  'updateCart')->name('updateCart');
+    Route::put('updateCart',  'updateCart')->name('updateCart');
     Route::get('getCartCount',  'getCartCount')->name('getCartCount');
     Route::get('getCartContent',  'getCartContent')->name('getCartContent');
 });

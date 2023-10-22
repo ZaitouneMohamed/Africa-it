@@ -431,7 +431,7 @@
         }
 
         function AddToCart(id) {
-            let qty_element = document.getElementById('qty' +id)
+            let qty_element = document.getElementById('qty' + id)
             qty = 1;
             if (qty_element !== null) {
                 qty = qty_element.value ?? 1;
@@ -507,8 +507,10 @@
                 type: 'GET',
                 url: "{{ route('cart.getCartCount') }}",
                 success: function(response) {
-                    console.log("cart count" + response.count);
                     document.getElementById('CartCount').innerHTML = response.count
+                    document.getElementById('total_content').innerHTML = response.total + " DH"
+                    document.getElementById('cart_total').innerHTML = response.total + " DH"
+                    document.getElementById('cart_subtotal').innerHTML = response.subtotal + " DH"
                 },
                 error: function() {
                     console.log('An error occurred .');
@@ -579,15 +581,18 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <span class="table-p__price">` + item.price + `</span>
+                                                        <span class="table-p__price">` + item.price +
+                                `</span>
                                                     </td>
                                                     <td>
                                                         <div class="table-p__input-counter-wrap">
                                                             <div class="input-counter">
                                                                 <span class="input-counter__minus fas fa-minus"></span>
                                                                 <input
-                                                                    class="input-counter__text input-counter--text-primary-style"
-                                                                    type="text" value="` + item.quantity + `"
+                                                                    class="input-counter__text input-counter--text-primary-style" id="item` +
+                                item.id + `"
+                                                                    type="text" value="` + item.quantity +
+                                `" onchange=edit(` + item.id + `)
                                                                     data-min="1" data-max="1000">
                                                                 <span class="input-counter__plus fas fa-plus"></span>
                                                             </div>
@@ -652,13 +657,56 @@
             });
         }
 
+        function edit(id) {
+            var quantity = document.getElementById("item" + id).value;
+            if (quantity <= 0) {
+                quantity = 1; // Fix the assignment operator
+            }
+            $.ajax({
+                type: 'PUT',
+                url: "{{ route('cart.updateCart') }}",
+                data: {
+                    id: id,
+                    quantity: quantity
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    MyFunctions();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer);
+                            toast.addEventListener('mouseleave', Swal.resumeTimer);
+                        }
+                    });
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'product updated successfully'
+                    });
+                },
+                error: function() {
+                    console.log('An error occurred.');
+                }
+            });
+        }
+
 
         function MyFunctions() {
             getCartContent();
             getcartCount()
         }
+
+
         MyFunctions()
     </script>
+
+    @yield('script')
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="

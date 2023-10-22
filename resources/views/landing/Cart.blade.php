@@ -187,16 +187,16 @@
                                                     <table class="f-cart__table">
                                                         <tbody>
                                                             <tr>
-                                                                <td>TAX</td>
-                                                                <td></td>
+                                                                <td>SUBTOTAL</td>
+                                                                <td id="cart_total"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>SUBTOTAL</td>
-                                                                <td>$379.00</td>
+                                                                <td>TAX</td>
+                                                                <td>30DH</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>GRAND TOTAL</td>
-                                                                <td>$379.00</td>
+                                                                <td id="cart_subtotal"></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
