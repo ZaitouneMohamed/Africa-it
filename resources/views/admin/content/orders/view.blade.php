@@ -47,7 +47,7 @@
         <div class="col-md-6 col-lg-4">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">frais de livraison : {{ $order->first()->Branche->charge_delivery }} DH</h5>
+                    <h5 class="card-title">frais de livraison : {{ $order->first()->charge_delivery }} DH</h5>
                     @php
                         $total = 0;
                     @endphp
