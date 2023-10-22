@@ -57,7 +57,7 @@
                         @endphp
                     @endforeach
                     <h5 class="card-title">Total : @php echo $total @endphp </h5>
-                    <h5 class="card-title">Grand Total : @php echo $total + \App\Models\Branch::find($order->first()->branche_id)->charge_delivery; @endphp </h5>
+                    <h5 class="card-title">Grand Total : @php echo $total + 30; @endphp </h5>
                     <h5 class="cart-text">Payement Method : {{ $order->first()->payement_methode }} </h5>
                 </div>
             </div>

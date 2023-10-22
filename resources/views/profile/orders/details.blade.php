@@ -3,7 +3,7 @@
 @section('content')
     @php
         $total = 0;
-        $shipping_free = \App\Models\Branch::find($order->first()->branche_id)->charge_delivery;
+        $shipping_free = 0;
     @endphp
     <!--====== App Content ======-->
     <div class="app-content">
