@@ -34,7 +34,7 @@
                             <td>{{ $item->delivery_date }}</td>
                             <td>{{ $item->delivery_time }}</td>
                             <td>{{ $item->user->full_name }}</td>
-                            <td>{{ $item->Total }} $</td>
+                            <td>{{ $item->Total }} DH</td>
                             <td>{!! $item->statue !!}</td>
                             <td>
                                 <div class="dropdown">
