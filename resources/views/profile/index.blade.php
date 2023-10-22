@@ -103,7 +103,7 @@
                                                         <td>
                                                             <div class="dash__table-total">
 
-                                                                <span>${{ $item->total }}</span>
+                                                                <span>DH{{ $item->total }}</span>
                                                                 <div class="dash__link dash__link--brand">
 
                                                                     <a
