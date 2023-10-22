@@ -111,6 +111,11 @@ class ProductController extends Controller
                 $product->images()->save($newImage);
             }
         }
+        if ($request->has('fiche_technique')) {
+            $fichetechnique = $request->fiche_technique;
+            $file = $this->imagesservices->uploadImage($fichetechnique, "fiches_technique");
+            $product->update(['fiche_technique' => $file]);
+        }
         $product->update([
             "title" => $request->title,
             "description" => $request->description,

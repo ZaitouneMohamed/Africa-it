@@ -108,7 +108,8 @@
                                             <span class="input-counter__minus fas fa-minus"></span>
 
                                             <input class="input-counter__text input-counter--text-primary-style"
-                                                id="qty{{ $product->id }}" type="text" value="1" data-min="1" data-max="1000">
+                                                id="qty{{ $product->id }}" type="text" value="1" data-min="1"
+                                                data-max="1000">
 
                                             <span class="input-counter__plus fas fa-plus"></span>
                                         </div>
@@ -501,9 +502,14 @@
                                 <div class="tab-pane" id="fiche">
                                     <div class="pd-tab__desc">
                                         <div class="u-s-m-b-15">
-                                            <button class="btn btn--e-brand-b-2"
-                                                style="padding: 1rem 3rem ; border-radius: 0.375rem ">Check Fiche
-                                                Technique</button>
+                                            @if ($product->fiche_technique)
+                                                <a href="{{ asset('images/fiches_technique') }}/{{ $product->fiche_technique }}"
+                                                    target="_blank" class="btn btn--e-brand-b-2"
+                                                    style="padding: 1rem 3rem ; border-radius: 0.375rem ">check fiche
+                                                    technique</a>
+                                            @else
+                                                no fiche technique found
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

@@ -31,9 +31,7 @@
                                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                                     data-bs-target="#navs-pills-justified-messages"
                                     aria-controls="navs-pills-justified-messages" aria-selected="false">
-                                    <i class="tf-icons bx bx-message-square"></i> REVIEWS
-                                    <span
-                                        class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">{{ $product->Reviews->count() }}</span>
+                                    <i class="tf-icons bx bx-message-square"></i> Fiche Technique
                                 </button>
                             </li>
                         </ul>
@@ -60,8 +58,7 @@
                                             <div>
                                                 <label for="exampleFormControlTextarea1"
                                                     class="form-label">description</label>
-                                                <textarea class="form-control @error('description') invalid @enderror" id="content"
-                                                    name="description" rows="3">{{ $product->description }}</textarea>
+                                                <textarea class="form-control @error('description') invalid @enderror" id="content" name="description" rows="3">{{ $product->description }}</textarea>
                                                 @error('description')
                                                     <span class="text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -146,11 +143,15 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
-                                    @forelse ($product->Reviews as $item)
-                                        {{ $item }}
-                                    @empty
-                                        <h5 class="text text-center">No Review Found For {{ $product->title }}</h5>
-                                    @endforelse
+                                    @if ($product->fiche_technique)
+                                        <a href="{{ asset('images/fiches_technique') }}/{{ $product->fiche_technique }}" target="_blank"
+                                            class="btn btn-success">check fiche technique</a>
+                                    @endif
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">upload new Fiche technique</label>
+                                        <input type="file" class="form-control" accept="pdf" name="fiche_technique"
+                                            placeholder="Enter fiche technique">
+                                    </div>
                                 </div>
                         </form>
                     </div>

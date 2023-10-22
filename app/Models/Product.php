@@ -14,7 +14,7 @@ class Product extends Model
     protected $fillable = [
         "title", "slug", "description",
         "price", "old_price", "offer",
-        "prenium", "active", "sub_categorie_id", "categorie_id"
+        "prenium", "active", "sub_categorie_id", "categorie_id","fiche_technique"
     ];
 
     // set slug attribut
