@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Order\PlaceOrderRequest;
+use App\Models\Branch;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class OrderController extends Controller
     public function __invoke(PlaceOrderRequest $request)
     {
         $ordernumber = $this->GenerateOrderNumber();
+        $branch = Branch::find($request->branch);
         foreach (session("cart") as $item) {
             $order = Order::create([
                 "order_number" => $ordernumber,
@@ -27,7 +29,8 @@ class OrderController extends Controller
                 "qty" => $item["quantity"],
                 "adresse_id" => $request->adresse_id,
                 "delivery_date" => $request->delivery_date,
-                "branch_id" => $request->branch,
+                "branch" => $branch->name,
+                "charge_delivery" => $branch->charge_delivery,
                 "payement_methode" => $request->payement_methode,
                 "delivery_time" => $request->delivery_time,
                 "total" => $item["quantity"] * $item["price"],
