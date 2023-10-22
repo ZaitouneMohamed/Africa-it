@@ -122,6 +122,35 @@
                 <!--====== Section Content ======-->
                 <div class="section__content">
                     <div class="container">
+                        <div class="msg">
+
+                            <span class="msg__text">Have a coupon?
+
+                                <a class="gl-link" href="#have-coupon" data-toggle="collapse">Click Here to enter your
+                                    code</a></span>
+                            <div class="collapse" id="have-coupon" data-parent="#checkout-msg-group">
+                                <div class="c-f u-s-m-b-16">
+
+                                    <span class="gl-text u-s-m-b-16">Enter your coupon code if you have one.</span>
+                                    <form class="c-f__form">
+                                        <div class="u-s-m-b-16">
+                                            <div class="u-s-m-b-15">
+
+                                                <label for="coupon"></label>
+
+                                                <input class="input-text input-text--primary-style" type="text"
+                                                    id="coupon" placeholder="Coupon Code">
+                                            </div>
+                                            <div class="u-s-m-b-15">
+
+                                                <button class="btn btn--e-transparent-brand-b-2"
+                                                    type="submit">APPLY</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
                                 <form class="f-cart" action="{{ route('order.place') }}" method="POST">
