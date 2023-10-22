@@ -106,9 +106,9 @@
                                             <div class="dash__pad-3">
                                                 <h2 class="dash__h2 u-s-m-b-8">Shipping Address</h2>
                                                 @if ($order->first()->adresse_id)
-                                                    <h2 class="dash__h2 u-s-m-b-8">John Doe</h2>
-                                                    <span class="dash__text-2">{{ $order->first()->adresse }}</span>
-                                                    <span class="dash__text-2">(+0) 900901904</span>
+                                                    <h2 class="dash__h2 u-s-m-b-8">{{ $order->first()->adresse->name }}</h2>
+                                                    <span class="dash__text-2">{{ $order->first()->adresse->adresse }}</span>
+                                                    <span class="dash__text-2">{{ $order->first()->adresse->phone_number }}</span>
                                                 @else
                                                     <h5 class="card-title">no adresse found</h5>
                                                 @endif
