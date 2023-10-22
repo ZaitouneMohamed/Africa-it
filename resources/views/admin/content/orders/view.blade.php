@@ -101,6 +101,16 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Client <i class="fa fa-info" aria-hidden="true"></i></h5>
+                    <h5 class="card-title">name :{{ $order->first()->User->FullName }}</h5>
+                    <h5 class="card-title"><i class="fa fa-envelope-open" aria-hidden="true"></i>{{ $order->first()->User->email }}</h5>
+                    <h5 class="card-title"><i class="fa fa-phone" aria-hidden="true"></i>{{ $order->first()->User->phone }}</h5>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="card">
         @if (session()->has('success'))
