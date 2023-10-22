@@ -187,12 +187,8 @@
                                                     <table class="f-cart__table">
                                                         <tbody>
                                                             <tr>
-                                                                <td>SHIPPING</td>
-                                                                <td>$4.00</td>
-                                                            </tr>
-                                                            <tr>
                                                                 <td>TAX</td>
-                                                                <td>$0.00</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>SUBTOTAL</td>

@@ -22,7 +22,9 @@ class GoogleController extends Controller
         $user = User::where('email', $googleUser->email)->first();
         if (!$user) {
             $user = User::create([
-                'name' => $googleUser->name,
+                'first_name' => $googleUser->name,
+                'last_name' => $googleUser->name,
+                'phone' => $googleUser->phone_number,
                 'email' => $googleUser->email,
                 'password' => \Hash::make(rand(100000, 999999)),
             ])->assignRole('user');

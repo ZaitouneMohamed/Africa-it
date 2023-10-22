@@ -46,48 +46,21 @@
                                         @csrf
                                         @method('post')
                                         <div class="u-s-m-b-30">
-                                            <label class="gl-label" for="reg-fname">NAME *</label>
+                                            <label class="gl-label" for="reg-fname">FIRST NAME *</label>
                                             <input class="input-text input-text--primary-style" type="text"
-                                                name="name" id="reg-fname" placeholder="First Name">
-                                            @error('name')
+                                                name="first_name" id="reg-fname" placeholder="First Name">
+                                            @error('first_name')
                                                 <span style="color: red">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        {{-- <div class="gl-inline">
                                         <div class="u-s-m-b-30">
-
-                                            <!--====== Date of Birth Select-Box ======-->
-
-                                            <span class="gl-label">BIRTHDAY</span>
-                                            <div class="gl-dob"><select class="select-box select-box--primary-style">
-                                                    <option selected>Month</option>
-                                                    <option value="male">January</option>
-                                                    <option value="male">February</option>
-                                                    <option value="male">March</option>
-                                                    <option value="male">April</option>
-                                                </select><select class="select-box select-box--primary-style">
-                                                    <option selected>Day</option>
-                                                    <option value="01">01</option>
-                                                    <option value="02">02</option>
-                                                    <option value="03">03</option>
-                                                    <option value="04">04</option>
-                                                </select><select class="select-box select-box--primary-style">
-                                                    <option selected>Year</option>
-                                                    <option value="1991">1991</option>
-                                                    <option value="1992">1992</option>
-                                                    <option value="1993">1993</option>
-                                                    <option value="1994">1994</option>
-                                                </select></div>
-                                            <!--====== End - Date of Birth Select-Box ======-->
+                                            <label class="gl-label" for="reg-fname">LAST NAME *</label>
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                name="last_name" id="reg-fname" placeholder="Last Name">
+                                            @error('last_name')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="u-s-m-b-30">
-
-                                            <label class="gl-label" for="gender">GENDER</label><select class="select-box select-box--primary-style u-w-100" id="gender">
-                                                <option selected>Select</option>
-                                                <option value="male">Male</option>
-                                                <option value="male">Female</option>
-                                            </select></div>
-                                    </div> --}}
                                         <div class="u-s-m-b-30">
 
                                             <label class="gl-label" for="reg-email">E-MAIL *</label>
@@ -95,6 +68,16 @@
                                             <input class="input-text input-text--primary-style" type="email"
                                                 name="email" id="reg-email" placeholder="Enter E-mail">
                                             @error('email')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="u-s-m-b-30">
+
+                                            <label class="gl-label" for="reg-email">PHONE *</label>
+
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                name="phone" id="reg-email" placeholder="Enter PHONE NUMBER">
+                                            @error('phone')
                                                 <span style="color: red">{{ $message }}</span>
                                             @enderror
                                         </div>

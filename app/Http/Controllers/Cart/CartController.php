@@ -12,7 +12,6 @@ class CartController extends Controller
     public function cartlist()
     {
         $cart = session()->get('cart', []);
-        // dd($cart);
         return view('landing.Cart', compact("cart"));
     }
     public function addToCart(Request $request)
@@ -53,9 +52,14 @@ class CartController extends Controller
                 $count++;
             };
         }
+        if ($total > 100) {
+            $subtotal = $total + 30;
+        }else {
+            $subtotal = $total;
+        }
         return response()->json([
             "total" => $total,
-            "subtotal" => $total + 30,
+            "subtotal" => $subtotal,
             "count" => $count
         ]);
     }
