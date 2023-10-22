@@ -439,7 +439,7 @@
         <!--====== End - Anti Flash White Background ======-->
     </div>
     <!--====== End - App Content ======-->
-    <div class="fixed-list">
+    {{-- <div class="fixed-list">
         <ul class="nav" id="init-scrollspy">
             <li>
 
@@ -447,12 +447,16 @@
             </li>
             <li>
 
-                <a class="nav-link" href="#latest" data-click-scroll="#latest"><i class="fas fa-female"></i></a>
+                <a class="nav-link" href="#latest" data-click-scroll="#latest"><i class="fa fa-toggle-up" aria-hidden="true"></i></a>
             </li>
             <li>
 
                 <a class="nav-link" href="#male-03" data-click-scroll="#male-03"><i class="fas fa-male"></i></a>
             </li>
         </ul>
-    </div>
+    </div> --}}
+@endsection
+
+@section("styles")
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
