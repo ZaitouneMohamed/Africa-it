@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
+use App\Notifications\WelcomeMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,7 +44,7 @@ class AuthController extends Controller
             "password" => Hash::make($request->password)
         ])->assignRole("user");
         Auth::login($user);
-        // $user->notify(new WelcomeEmail());
+        $user->notify(new WelcomeMail());
         return redirect()->intended('/user/profile')->with([
             "success" => __("Registration successful. You can now log-in.")
         ]);
