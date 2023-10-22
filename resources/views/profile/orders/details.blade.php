@@ -3,7 +3,7 @@
 @section('content')
     @php
         $total = 0;
-        $shipping_free = 0;
+        $shipping_free = $branch->charge_delivery;
     @endphp
     <!--====== App Content ======-->
     <div class="app-content">

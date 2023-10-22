@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProfileRequest;
+use App\Models\Branch;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -50,6 +51,9 @@ class ProfileController extends Controller
     function OrderDetails($order_number)
     {
         $order = Order::where('order_number', $order_number)->get();
-        return view('profile.orders.details', compact('order'));
+        $branch_id = Order::where('order_number', $order_number)->first()->branche_id;
+        $branch = Branch::find($branch_id);
+
+        return view('profile.orders.details', compact('order',"branch"));
     }
 }
