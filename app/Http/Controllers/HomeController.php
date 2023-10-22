@@ -63,21 +63,33 @@ class HomeController extends Controller
     }
     function ProductOfCategorie(Request $request, $id)
     {
-        // Retrieve the category and its subcategories with their products
-        $categorie = Categorie::find($id);
-        // Start with all products related to the category
-        $query = $categorie->products();
+        if ($request->subcategorie) {
+            $subcategorie = SubCategorie::find($id);
+            $query = $subcategorie->products();
 
-        if ($request->min) {
-            $query->where('price', '>=', $request->min);
+            if ($request->min) {
+                $query->where('price', '>=', $request->min);
+            }
+
+            if ($request->max) {
+                $query->where('price', '<=', $request->max);
+            }
+
+            $products = $query->with('subcategorie')->paginate(20);
+        } else {
+            $categorie = Categorie::find($id);
+            $query = $categorie->products();
+
+            if ($request->min) {
+                $query->where('price', '>=', $request->min);
+            }
+
+            if ($request->max) {
+                $query->where('price', '<=', $request->max);
+            }
+
+            $products = $query->with('subcategorie')->paginate(20);
         }
-
-        if ($request->max) {
-            $query->where('price', '<=', $request->max);
-        }
-
-        // Paginate the results
-        $products = $query->with('subcategorie')->paginate(20);
 
         return view('landing.ProductsIndex', compact('products', 'id'));
     }
@@ -129,5 +141,4 @@ class HomeController extends Controller
         $products = Product::where('title', 'LIKE', '%' . $request->word . '%')->paginate(15);
         return view('landing.ProductsIndex', compact("products"));
     }
-
 }

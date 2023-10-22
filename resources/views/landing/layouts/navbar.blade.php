@@ -169,7 +169,13 @@
                                                             <div class="col-lg-3">
                                                                 <ul>
                                                                     <li class="mega-list-title">
-                                                                        <a href="#">{{ $item->name }}</a>
+                                                                        <form action="{{route('ProductOfCategorie',$item->id)}}" method="post">
+                                                                            @csrf
+                                                                            @method("GET")
+                                                                            <input type="hidden" name="subcategorie"
+                                                                                value="{{ $item->id }}">
+                                                                            <button style="border: none;background-color: white">{{ $item->name }}</button>
+                                                                        </form>
                                                                     </li>
                                                                     @if ($item->products->count() != 0)
                                                                         @foreach ($item->products->take(4) as $item)
