@@ -18,4 +18,8 @@ class Coupon extends Model
         'discount',
         'statue',
     ];
+    public function Orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

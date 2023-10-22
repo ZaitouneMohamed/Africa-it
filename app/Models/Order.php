@@ -15,6 +15,7 @@ class Order extends Model
         "product_id",
         "qty",
         "adresse_id",
+        "coupon_id",
         "delivery_date",
         "branch",
         "payement_methode",
@@ -22,6 +23,11 @@ class Order extends Model
         "statue",
         "total"
     ];
+
+    public function Coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
 
     public function Livreur()
     {
