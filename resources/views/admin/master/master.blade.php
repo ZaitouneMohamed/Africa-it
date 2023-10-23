@@ -116,9 +116,9 @@
                 </li>
                 <li class="menu-item">
                     <a href="{{ route('admin.orders.ConfirmedOrders') }}" class="menu-link">
-                        <div data-i18n="Account">comfirmed
+                        <div data-i18n="Account">confirmed
                             <span class="badge bg-label-success me-1">
-                                {{ \App\Models\Order::groupBy('order_number')->Confirmed()->count() }}
+                                {{ \App\Models\Order::confirmed()->distinct('order_number')->count('order_number') }}
                             </span>
                         </div>
                     </a>
@@ -127,7 +127,34 @@
                         <a href="{{ route('admin.orders.AnnuledOrders') }}" class="menu-link">
                             <div data-i18n="Account">annuller
                                 <span class="badge bg-label-success me-1">
-                                {{ \App\Models\Order::groupBy('order_number')->Annuller()->count() }}
+                                {{ \App\Models\Order::annuller()->distinct('order_number')->count('order_number') }}
+                            </span>
+                        </div>
+                        </a>
+                    </li>
+                <li class="menu-item">
+                        <a href="{{ route('admin.orders.returnedOrders') }}" class="menu-link">
+                            <div data-i18n="Account">returned
+                                <span class="badge bg-label-success me-1">
+                                    {{ \App\Models\Order::returned()->distinct('order_number')->count('order_number') }}
+                            </span>
+                        </div>
+                        </a>
+                    </li>
+                <li class="menu-item">
+                        <a href="{{ route('admin.orders.OnDeliveryOrders') }}" class="menu-link">
+                            <div data-i18n="Account">on Delivery
+                                <span class="badge bg-label-success me-1">
+                                {{ \App\Models\Order::groupBy('order_number')->OnDelivery()->count() }}
+                            </span>
+                        </div>
+                        </a>
+                    </li>
+                <li class="menu-item">
+                        <a href="{{ route('admin.orders.DelivredOrders') }}" class="menu-link">
+                            <div data-i18n="Account">Delivred
+                                <span class="badge bg-label-success me-1">
+                                {{ \App\Models\Order::groupBy('order_number')->delivred()->count() }}
                             </span>
                         </div>
                         </a>

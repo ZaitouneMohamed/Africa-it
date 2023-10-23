@@ -91,4 +91,16 @@ class Order extends Model
     {
         return $query->where("statue", 1);
     }
+    public function scopeReturned($query)
+    {
+        return $query->where("statue", 4);
+    }
+    public function scopeOnDelivery($query)
+    {
+        return $query->where("statue", 3);
+    }
+    public function scopeDelivred($query)
+    {
+        return $query->where("statue", 5);
+    }
 }

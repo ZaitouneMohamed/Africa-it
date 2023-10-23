@@ -44,4 +44,19 @@ class OrderController extends Controller
         $orders = Order::Annuller()->get();
         return view('admin.content.orders.orders', compact('orders'));
     }
+    function returnedOrders()
+    {
+        $orders = Order::Returned()->get();
+        return view('admin.content.orders.orders', compact('orders'));
+    }
+    function OnDeliveryOrders()
+    {
+        $orders = Order::OnDelivery()->get();
+        return view('admin.content.orders.orders', compact('orders'));
+    }
+    function DelivredOrders()
+    {
+        $orders = Order::Delivred()->get();
+        return view('admin.content.orders.orders', compact('orders'));
+    }
 }

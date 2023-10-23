@@ -88,6 +88,15 @@
                                 <li><a class="dropdown-item"
                                         href="{{ route('admin.order.ChangeStatue', [2, $order->first()->order_number]) }}">annuller</a>
                                 </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('admin.order.ChangeStatue', [3, $order->first()->order_number]) }}">On delivery</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('admin.order.ChangeStatue', [4, $order->first()->order_number]) }}">returned</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('admin.order.ChangeStatue', [5, $order->first()->order_number]) }}">delivred</a>
+                                </li>
                             </ul>
                         </div>
                         {{-- <select id="defaultSelect" onchange="f1()" class="form-select">

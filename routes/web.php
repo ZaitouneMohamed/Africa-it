@@ -134,6 +134,9 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
         Route::get('/orders', 'OrdersList')->name("orders.all");
         Route::get('/orders/confirmed', 'ConfirmedOrders')->name("orders.ConfirmedOrders");
         Route::get('/orders/annuller', 'AnnuledOrders')->name("orders.AnnuledOrders");
+        Route::get('/orders/returnedOrders', 'returnedOrders')->name("orders.returnedOrders");
+        Route::get('/orders/OnDeliveryOrders', 'OnDeliveryOrders')->name("orders.OnDeliveryOrders");
+        Route::get('/orders/DelivredOrders', 'DelivredOrders')->name("orders.DelivredOrders");
         Route::get('/order/{order_number}', 'ViewOrder')->name("order.view");
         Route::get('/ChangeStatue/{statue}-{order_number}', 'ChangeStatue')->name("order.ChangeStatue");
     });
