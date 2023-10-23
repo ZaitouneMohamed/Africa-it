@@ -32,14 +32,22 @@ class HomeController extends Controller
     }
     public function home()
     {
-        $result = DB::select(DB::raw("SELECT c.name AS category, COUNT(o.id) AS order_count FROM categories c JOIN sub_categories s ON c.id = s.categorie_id JOIN products p ON s.id = p.sub_categorie_id JOIN orders o ON p.id = o.product_id GROUP BY c.name;"));
+        $count = 0;
+        $result = DB::select(DB::raw("SELECT c.name AS category, COUNT(o.id) AS order_count ,SUM(o.total) AS total FROM categories c JOIN sub_categories s ON c.id = s.categorie_id JOIN products p ON s.id = p.sub_categorie_id JOIN orders o ON p.id = o.product_id GROUP BY c.name;"));
         $labels = array();
         $series = array();
+        $ordersCount = Order::select('order_number', DB::raw('count(*) as count'))
+            ->groupBy('order_number')
+            ->get();
+        foreach ($ordersCount as $item) {
+            $count += 1;
+        }
+
         foreach ($result as $item) {
-            array_push($labels,$item->category);
-            array_push($series,$item->order_count);
+            array_push($labels, $item->category);
+            array_push($series, $item->order_count);
         };
-        return view('admin.index', compact("labels","series"));
+        return view('admin.index', compact("labels", "series", "result", "count"));
     }
     public function profile()
     {
