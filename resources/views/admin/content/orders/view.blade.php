@@ -143,7 +143,7 @@
                             <td>{{ $item->product->title }}</td>
                             <td>{{ $item->product->price }}</td>
                             <td>{{ $item->qty }}</td>
-                            <td>{{ $item->qty * $item->product->price }} $</td>
+                            <td>{{ $item->qty * $item->product->price }} DH</td>
                         </tr>
                     @endforeach
                 </tbody>
