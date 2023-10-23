@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Services\ImagesServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -28,6 +29,19 @@ class HomeController extends Controller
         return redirect()->back()->with([
             "success" => "image deleted successfully"
         ]);
+    }
+    public function home()
+    {
+        $result = DB::select(DB::raw("SELECT c.name AS category, COUNT(o.id) AS order_count FROM categories c JOIN sub_categories s ON c.id = s.categorie_id JOIN products p ON s.id = p.sub_categorie_id JOIN orders o ON p.id = o.product_id GROUP BY c.name;"));
+        $labels = '';
+        $series = '';
+        foreach ($result as $item) {
+            $labels .= "['" . $item->category . "']";
+            $series .= "[" . $item->order_count . "]";
+        };
+        $labels_arr["labels_arr"] = rtrim($labels, ",");
+        $series_arr["series_arr"] = rtrim($labels, ",");
+        return view('admin.index', compact("labels","series"));
     }
     public function profile()
     {
@@ -78,9 +92,9 @@ class HomeController extends Controller
         return view('admin.content.reviews.index', compact('reviews'));
     }
 
-    public function AssignLivreurToOrder($order_number , $livreur_id)
+    public function AssignLivreurToOrder($order_number, $livreur_id)
     {
-        Order::where('order_number',$order_number)->update(['livreur_id'=>$livreur_id]);
+        Order::where('order_number', $order_number)->update(['livreur_id' => $livreur_id]);
         return redirect()->back()->with([
             "success" => "livreur assign with success"
         ]);

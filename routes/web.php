@@ -118,9 +118,6 @@ Route::middleware(['auth'])->prefix("user")->name("user.profile.")->group(functi
 
 // Admin Routes
 Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->name("admin.")->group(function () {
-    Route::get('/', function () {
-        return view('admin.index');
-    });
     Route::resource("product", ProductController::class);
     Route::resource("categories", CategorieController::class);
     Route::resource("branch", BranchController::class);
@@ -149,6 +146,7 @@ Route::prefix("admin")->middleware(['web', 'AdminRedirection', 'role:admin'])->n
     });
     //
     Route::controller(AdminHomeController::class)->group(function () {
+        Route::get('/',"home")->name("home");
         Route::get('/deleteImage/{id}', 'deleteImage')->name("deleteimage");
         Route::get('/profile', 'profile')->name("profile");
         Route::post('/SetProfile', 'SetProfile')->name("SetProfile");

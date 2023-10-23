@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <!-- </div>
-                                <div class="row"> -->
+                                    <div class="row"> -->
                 </div>
             </div>
             <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                     <!-- </div>
-                                <div class="row"> -->
+                                    <div class="row"> -->
                 </div>
             </div>
         </div>
@@ -281,8 +281,8 @@
                         width: 130,
                         type: 'donut'
                     },
-                    labels: ['Electronic', 'Sports', 'Decor', 'Fashion'],
-                    series: [85, 15, 50, 50],
+                    labels: <?php echo $labels; ?>,
+                    series: <?php echo $series; ?>,
                     colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success],
                     stroke: {
                         width: 5,
