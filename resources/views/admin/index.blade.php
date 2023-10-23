@@ -330,7 +330,7 @@
                                         color: axisColor,
                                         label: 'Weekly',
                                         formatter: function(w) {
-                                            return '38%';
+                                            return '100%';
                                         }
                                     }
                                 }
