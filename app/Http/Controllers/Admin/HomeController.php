@@ -36,7 +36,7 @@ class HomeController extends Controller
         $labels = array('');
         $series = array('');
         foreach ($result as $item) {
-            array_push($labels,$item->categoty);
+            array_push($labels,$item->category);
             array_push($series,$item->order_count);
         };
         return view('admin.index', compact("labels","series"));
