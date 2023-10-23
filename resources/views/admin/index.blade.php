@@ -20,13 +20,13 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
                                             <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">Profit</span>
-                                <h3 class="card-title mb-2">$12,628</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                                <span class="fw-semibold d-block mb-1">Confirmed</span>
+                                <h3 class="card-title mb-2">
+                                    {{ \App\Models\Order::where('statue', 1)->distinct('order_number')->count('order_number') }}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -45,13 +45,13 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                             <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                                <span>Sales</span>
-                                <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                                <span>Anuller</span>
+                                <h3 class="card-title text-nowrap mb-1">
+                                    {{ \App\Models\Order::where('statue', 2)->distinct('order_number')->count('order_number') }}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -74,14 +74,13 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
                                             <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="d-block mb-1">Payments</span>
-                                <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                                <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>
-                                    -14.82%</small>
+                                <span class="d-block mb-1">Delivree</span>
+                                <h3 class="card-title text-nowrap mb-2">
+                                    {{ \App\Models\Order::where('statue', 5)->distinct('order_number')->count('order_number') }}
+                                </h3>
                             </div>
                         </div>
                     </div>
@@ -100,18 +99,14 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="cardOpt1">
                                             <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">Transactions</span>
-                                <h3 class="card-title mb-2">$14,857</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                                <span class="fw-semibold d-block mb-1">returned</span>
+                                <h3 class="card-title mb-2">{{ \App\Models\Order::where('statue', 4)->distinct('order_number')->count('order_number') }}</h3>
                             </div>
                         </div>
                     </div>
-                    <!-- </div>
-                                            <div class="row"> -->
                 </div>
             </div>
             <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
@@ -131,14 +126,11 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
                                             <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="d-block mb-1">Payments</span>
-                                <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                                <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i>
-                                    -14.82%</small>
+                                <span class="d-block mb-1">Products</span>
+                                <h3 class="card-title text-nowrap mb-2">{{ \App\Models\Product::count() }}</h3>
                             </div>
                         </div>
                     </div>
@@ -157,18 +149,14 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="cardOpt1">
                                             <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                                         </div>
                                     </div>
                                 </div>
-                                <span class="fw-semibold d-block mb-1">Transactions</span>
-                                <h3 class="card-title mb-2">$14,857</h3>
-                                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                                <span class="fw-semibold d-block mb-1">Categorie</span>
+                                <h3 class="card-title mb-2">{{ \App\Models\Categorie::count() }}</h3>
                             </div>
                         </div>
                     </div>
-                    <!-- </div>
-                                            <div class="row"> -->
                 </div>
             </div>
         </div>

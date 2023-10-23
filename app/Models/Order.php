@@ -57,8 +57,12 @@ class Order extends Model
             return '<span class="badge bg-label-success me-1">confirmed</span>';
         } elseif ($value == 2) {
             return '<span class="badge bg-label-danger me-1">annuller</span>';
-        } else {
-            return "hj";
+        }  elseif ($value == 3) {
+            return '<span class="badge bg-label-warning me-1">On delivery</span>';
+        } elseif ($value == 4) {
+            return '<span class="badge bg-label-danger me-1">returned</span>';
+        } elseif ($value == 5) {
+            return '<span class="badge bg-label-success me-1">delivred</span>';
         }
         // return $value = 1 ? "confirmed" : "dfger";
     }
