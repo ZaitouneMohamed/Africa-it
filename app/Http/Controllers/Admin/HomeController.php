@@ -33,14 +33,12 @@ class HomeController extends Controller
     public function home()
     {
         $result = DB::select(DB::raw("SELECT c.name AS category, COUNT(o.id) AS order_count FROM categories c JOIN sub_categories s ON c.id = s.categorie_id JOIN products p ON s.id = p.sub_categorie_id JOIN orders o ON p.id = o.product_id GROUP BY c.name;"));
-        $labels = '';
-        $series = '';
+        $labels = array('');
+        $series = array('');
         foreach ($result as $item) {
-            $labels .= "['" . $item->category . "']";
-            $series .= "[" . $item->order_count . "]";
+            array_push($labels,$item->categoty);
+            array_push($series,$item->order_count);
         };
-        $labels_arr["labels_arr"] = rtrim($labels, ",");
-        $series_arr["series_arr"] = rtrim($labels, ",");
         return view('admin.index', compact("labels","series"));
     }
     public function profile()
