@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SubCategorieController;
 use App\Http\Controllers\Admin\SwitchController;
 use App\Http\Controllers\Admin\TimeSlotController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\ForgetPassworController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\Profile\ProfileController;
 use App\Http\Controllers\Cart\CartController;
@@ -44,6 +45,13 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/Product/{id} ', 'OneProduct')->name("oneProduct");
     Route::get('/categories/{id} ', 'ProductOfCategorie')->name("ProductOfCategorie");
     Route::post('/AddReview/{id} ', 'AddReview')->name("AddReview");
+});
+
+Route::controller(ForgetPassworController::class)->group(function () {
+    Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.get');
+    Route::post('forget-password',  'submitForgetPasswordForm')->name('forget.password.post');
+    Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
+    Route::post('reset-password', 'submitResetPasswordForm')->name('reset.password.post');
 });
 
 

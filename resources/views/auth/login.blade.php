@@ -55,7 +55,8 @@
                                             <button class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i
                                                     class="fab fa-google"></i>
 
-                                                <span><a href="{{ route('google.redirect') }}" style="color: white">Signin with
+                                                <span><a href="{{ route('google.redirect') }}" style="color: white">Signin
+                                                        with
                                                         Google</a></span></button>
                                         </div>
                                     </div>
@@ -89,7 +90,8 @@
                                                     type="submit">LOGIN</button>
                                             </div>
                                             <div class="u-s-m-b-30">
-                                                <a class="gl-link" href="lost-password.html">Lost Your Password?</a>
+                                                <a class="gl-link" href="{{ route('forget.password.get') }}">Lost Your
+                                                    Password?</a>
                                             </div>
                                         </div>
                                         <div class="u-s-m-b-30">
