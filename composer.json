@@ -32,7 +32,8 @@
         },
         "files":[
             "app/Helpers/HelpersIndex.php",
-            "app/Services/ImagesServices.php"
+            "app/Services/ImagesServices.php",
+            "app/Services/GlobalServices.php"
         ]
     },
     "autoload-dev": {

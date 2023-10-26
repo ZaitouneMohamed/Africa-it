@@ -173,9 +173,9 @@
                                                             <span
                                                                 class="product-o__review">({{ $item->OverallReviews }})</span>
                                                         </div>
-                                                        <span class="product-o__price">${{ $item->price }}
+                                                        <span class="product-o__price">DH {{ $item->price }}
                                                             <span
-                                                                class="product-o__discount">${{ $item->old_price }}</span></span>
+                                                                class="product-o__discount">DH {{ $item->old_price }}</span></span>
                                                     </div>
                                                 </div>
                                             @empty

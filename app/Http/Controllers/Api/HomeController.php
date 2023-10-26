@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\SubCategorie;
+use App\Services\GlobalServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    protected $Services;
+
+    public function __construct(GlobalServices $Services)
+    {
+        $this->Services = $Services;
+    }
     function GetSubCategories($id)
     {
         $subcategories = SubCategorie::where('categorie_id', $id)->get();
@@ -54,5 +61,13 @@ class HomeController extends Controller
                 "success" => "product deleted from wishlist with success"
             ]);
         }
+    }
+    public function CheckCouponCode(Request $request)
+    {
+        $this->validate($request, [
+            "code" => "required|exists:coupons,code"
+        ]);
+        $code = $request->code;
+        return response()->json($this->Services->CheckCoupon($code));
     }
 }
