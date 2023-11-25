@@ -27,7 +27,7 @@
                                                     <span
                                                         class="content-span-2 u-c-white">{{ $item->categorie->name }}</span><br><br><br><br>
                                                     <a class="shop-now-link btn--e-brand"
-                                                        href="{{ route('ProductOfCategorie', $item->categorie->id) }}">SHOP
+                                                        href="/AllProducts?categorie_id={{ $item->categorie_id }}">SHOP
                                                         NOW</a>
                                                 </div>
                                             </div>
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="category-o__info">
                                                 <a class="category-o__shop-now btn--e-white-brand"
-                                                    href="{{ route('ProductOfCategorie', $item->id) }}">{{ $item->name }}</a>
+                                                    href="/AllProducts?categorie_id={{ $item->id }}">{{ $item->name }}</a>
                                             </div>
                                         </div>
                                     </div>

@@ -13,12 +13,10 @@
                 </a>
                 <!--====== End - Main Logo ======-->
                 <!--====== Search Form ======-->
-                <form class="main-form" action="{{ route('Search') }}" method="POST">
-                    @csrf
-                    @method('GET')
+                <form class="main-form" action="{{ route('allProducts') }}" method="GET">
                     <label for="main-search"></label>
                     <input class="input-text input-text--border-radius input-text--style-2" type="text"
-                        id="main-search" placeholder="Search">
+                        id="main-search" placeholder="Search" name="title">
                     <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
                 </form>
                 <!--====== End - Search Form ======-->
@@ -152,7 +150,7 @@
                                             <ul>
                                                 @foreach ($categories as $item)
                                                     <li @if ($loop->first) class="js-active" @endif>
-                                                        <a href="{{ route('ProductOfCategorie', $item->id) }}"><i
+                                                        <a href="/AllProducts?categorie={{ $item->id }}"><i
                                                                 class="{{ $item->icon_class }}"></i>
                                                             <span>{{ $item->name }}</span></a>
                                                         <span class="js-menu-toggle js-toggle-mark"></span>
@@ -169,13 +167,8 @@
                                                             <div class="col-lg-3">
                                                                 <ul>
                                                                     <li class="mega-list-title">
-                                                                        <form action="{{route('ProductOfCategorie',$item->id)}}" method="post">
-                                                                            @csrf
-                                                                            @method("GET")
-                                                                            <input type="hidden" name="subcategorie"
-                                                                                value="{{ $item->id }}">
-                                                                            <button style="border: none;background-color: white">{{ $item->name }}</button>
-                                                                        </form>
+                                                                        <a
+                                                                            href="/AllProducts?subcategorie_id={{ $item->id }}">{{ $item->name }}</a>
                                                                     </li>
                                                                     @if ($item->products->count() != 0)
                                                                         @foreach ($item->products->take(4) as $item)

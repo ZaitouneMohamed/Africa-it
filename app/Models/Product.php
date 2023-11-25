@@ -14,7 +14,7 @@ class Product extends Model
     protected $fillable = [
         "title", "slug", "description",
         "price", "old_price", "offer",
-        "prenium", "active", "sub_categorie_id", "categorie_id","fiche_technique"
+        "prenium", "active", "sub_categorie_id", "categorie_id", "fiche_technique"
     ];
 
     // set slug attribut
@@ -80,5 +80,34 @@ class Product extends Model
             };
             return $stars / $count;
         }
+    }
+
+    /**
+     * Perform a search query based on the given request parameters.
+     *
+     * @param mixed $query The query to be modified.
+     * @param mixed $request The request object containing the search parameters.
+     * @return void
+     */
+    public function scopeSearch($query, $request)
+    {
+        return $query
+            ->when($request->has('subcategorie_id'), function ($query) use ($request) {
+                return $query->where("sub_categorie_id", $request->subcategorie_id);
+            })
+            ->when($request->has('title'), function ($query) use ($request) {
+                return $query->where('title', 'LIKE', '%' . $request->title . '%');
+            })
+            ->when($request->has('min') && $request->min > 0, function ($query) use ($request) {
+                return $query->where('price', '>=', $request->min);
+            })
+            ->when($request->has('max') && $request->max > 0, function ($query) use ($request) {
+                return $query->where('price', '<=', $request->max);
+            })
+            ->when($request->has('categorie_id'), function ($query) use ($request) {
+                return $query->whereHas('SubCategorie', function ($subQuery) use ($request) {
+                    $subQuery->where('categorie_id', $request->categorie_id);
+                });
+            });
     }
 }

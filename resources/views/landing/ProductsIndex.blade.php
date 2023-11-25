@@ -10,44 +10,52 @@
                     <div class="col-lg-3 col-md-12">
                         <div class="shop-w-master">
                             <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
-                                <span>FILTERS (Not Working)</span>
+                                <span>FILTERS</span>
                             </h1>
                             @if ($products)
                                 <div class="shop-w-master__sidebar sidebar--bg-snow">
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w">
-                                            <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">PRICE</h1>
-                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-price"
-                                                    data-toggle="collapse"></span>
-                                            </div>
-                                            <div class="shop-w__wrap collapse show" id="s-price">
-                                                <form class="shop-w__form-p" {{-- @if (Route::currentRouteName() == 'allProducts') action="{{ route('allProducts') }}" --}} {{-- @else --}}
-                                                    {{-- action="{{ route('ProductOfCategorie', $id) }}" @endif --}} method="POST" action="#">
-
-                                                    @csrf
-                                                    @method('get')
+                                            <form class="shop-w__form-p" action="{{ url()->current() }}" method="GET">
+                                                @if (request()->has('categorie_id'))
+                                                    <input type="hidden" name="categorie_id"
+                                                        value="{{ request()->categorie_id }}">
+                                                @endif
+                                                @if (request()->has('title'))
+                                                    <input type="hidden" name="title"
+                                                        value="{{ request()->title }}">
+                                                @endif
+                                                @if (request()->has('subcategorie_id'))
+                                                    <input type="hidden" name="subcategorie_id"
+                                                        value="{{ request()->subcategorie_idw }}">
+                                                @endif
+                                                <div class="shop-w__intro-wrap">
+                                                    <h1 class="shop-w__h">PRICE</h1>
+                                                    <span class="fas fa-minus shop-w__toggle" data-target="#s-price"
+                                                        data-toggle="collapse"></span>
+                                                </div>
+                                                <div class="shop-w__wrap collapse show" id="s-price">
                                                     <div class="shop-w__form-p-wrap">
                                                         <div>
                                                             <label for="price-min"></label>
                                                             <input class="input-text input-text--primary-style"
-                                                                type="number" name="min" min="0" id="price-min"
-                                                                placeholder="Min">
-                                                        </div>
-                                                        <div>
-                                                            <label for="price-max"></label>
-                                                            <input class="input-text input-text--primary-style"
+                                                                type="number" name="min"
+                                                                @if (request()->has('min')) value="{{ request()->min }}" @endif
+                                                                min="0" id="price-min" placeholder="Min">
+                                                            </div>
+                                                            <div>
+                                                                <label for="price-max"></label>
+                                                                <input class="input-text input-text--primary-style"
                                                                 type="number" name="max" min="0" id="price-max"
+                                                                @if (request()->has('max')) value="{{ request()->max }}" @endif
                                                                 placeholder="Max">
                                                         </div>
-                                                        <div>
-                                                            <button
-                                                                class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2"
-                                                                type="submit"></button>
-                                                        </div>
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn--e-brand-b-2" type="submit">APPLY</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -111,12 +119,11 @@
                                                 <span class="empty__big-text">SORRY</span>
                                                 <span class="empty__text-1">Your search, did not match any products. A
                                                     partial match of your keywords is listed below.</span>
-                                                <form class="empty__search-form" action="{{ route('Search') }}"
-                                                    method="POST">
-                                                    @csrf
+                                                <form class="empty__search-form" action="{{ route('allProducts') }}"
+                                                    method="GET">
                                                     <label for="search-label"></label>
                                                     <input class="input-text input-text--primary-style" type="text"
-                                                        id="search-label" placeholder="Search Keywords" name="word">
+                                                        id="search-label" placeholder="Search Keywords" name="title">
                                                     <button class="btn btn--icon fas fa-search" type="submit"></button>
                                                 </form>
                                             </div>

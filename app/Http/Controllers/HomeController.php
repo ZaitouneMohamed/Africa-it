@@ -41,18 +41,7 @@ class HomeController extends Controller
     }
     public function AllProducts(Request $request)
     {
-        $query = Product::query();
-
-        if ($request->min) {
-            $query->where('price', '>=', $request->min);
-        }
-
-        if ($request->max) {
-            $query->where('price', '<=', $request->max);
-        }
-
-        $products = $query->with("SubCategorie")->paginate(10);
-
+        $products = Product::search($request)->paginate(18);
         return view('landing.ProductsIndex', compact("products"));
     }
 
