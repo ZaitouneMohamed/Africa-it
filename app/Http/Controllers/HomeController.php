@@ -41,7 +41,7 @@ class HomeController extends Controller
     }
     public function AllProducts(Request $request)
     {
-        $products = Product::search($request)->paginate(18);
+        $products = Product::search($request)->Active()->paginate(18);
         return view('landing.ProductsIndex', compact("products"));
     }
 
