@@ -27,7 +27,7 @@
                                                 @endif
                                                 @if (request()->has('subcategorie_id'))
                                                     <input type="hidden" name="subcategorie_id"
-                                                        value="{{ request()->subcategorie_idw }}">
+                                                        value="{{ request()->subcategorie_id }}">
                                                 @endif
                                                 <div class="shop-w__intro-wrap">
                                                     <h1 class="shop-w__h">PRICE</h1>
